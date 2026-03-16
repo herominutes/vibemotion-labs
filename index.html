@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vibemotion Labs — Free Resource Library</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- PRIVACY: Zero external requests. No tracking. No cookies. No API. MIT licensed. -->
+
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{
@@ -12,7 +13,9 @@ body{
   --ink:#f2efe8;--ink2:#d4d0c8;--ink3:#9c9890;--ink4:#5c5a54;
   --rule:rgba(242,239,232,.10);--rulem:rgba(242,239,232,.18);
   --pm:#b39dfa;--ath:#52e88a;--stk:#fdc840;--inj:#f87171;
-  font-family:'Jost',sans-serif;background:var(--bg);color:var(--ink);
+  --font-serif:'Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif;
+  --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,'Helvetica Neue',Arial,sans-serif;
+  font-family:var(--font-sans);background:var(--bg);color:var(--ink);
   font-weight:300;line-height:1.6;transition:background .35s,color .35s;
 }
 body.light{
@@ -25,7 +28,7 @@ html{scroll-behavior:smooth}
 nav{position:fixed;top:0;left:0;right:0;z-index:999;height:62px;
   display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;
   background:var(--bg);border-bottom:1px solid var(--rule);transition:background .35s}
-.logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;
+.logo{font-family:var(--font-serif);font-size:20px;font-weight:400;
   letter-spacing:.18em;text-transform:uppercase;color:var(--ink);text-decoration:none}
 .nav-r{display:flex;align-items:center;gap:1.4rem}
 .free-pill{font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
@@ -39,13 +42,13 @@ body.light .tok{transform:translateX(20px)}
   justify-content:flex-end;background:var(--sur);border-bottom:1px solid var(--rule);transition:background .35s}
 .hero-in{padding:3rem 2.5rem 4rem}
 .hero-tag{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-bottom:2rem}
-.hero-h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3rem,8vw,7rem);
+.hero-h1{font-family:var(--font-serif);font-weight:300;font-size:clamp(3rem,8vw,7rem);
   line-height:.93;letter-spacing:-.025em;color:var(--ink);margin-bottom:2.5rem}
 .hero-h1 em{font-style:italic;color:var(--ink3)}
 .hero-bot{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap}
 .hero-desc{font-size:14px;color:var(--ink2);line-height:1.85;max-width:380px}
 .stats{display:flex;gap:2.5rem}
-.stat-n{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:300;line-height:1;color:var(--ink)}
+.stat-n{font-family:var(--font-serif);font-size:2.6rem;font-weight:300;line-height:1;color:var(--ink)}
 .stat-l{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink4);margin-top:3px}
 .ticker{overflow:hidden;border-bottom:1px solid var(--rule);padding:12px 0;background:var(--bg)}
 .ticker-t{display:flex;white-space:nowrap;animation:tick 30s linear infinite}
@@ -73,9 +76,9 @@ body.light .tok{transform:translateX(20px)}
 .pcard{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);
   padding:2rem;display:flex;flex-direction:column;background:var(--bg);transition:background .2s}
 .pcard:hover{background:var(--sur)}
-.p-num{font-family:'Cormorant Garamond',serif;font-size:12px;font-weight:300;
+.p-num{font-family:var(--font-serif);font-size:12px;font-weight:300;
   color:var(--ink4);letter-spacing:.1em;margin-bottom:.75rem}
-.p-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;
+.p-name{font-family:var(--font-serif);font-size:20px;font-weight:400;
   line-height:1.25;color:var(--ink);margin-bottom:.75rem}
 .p-desc{font-size:12.5px;color:var(--ink2);line-height:1.75;margin-bottom:1.2rem;flex:1}
 .p-div{height:1px;background:var(--rule);margin-bottom:1.2rem}
@@ -83,7 +86,7 @@ body.light .tok{transform:translateX(20px)}
 .p-key{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
   color:var(--ink4);min-width:80px;flex-shrink:0}
 .p-val{font-size:11.5px;color:var(--ink2);line-height:1.55}
-.p-hook{font-family:'Cormorant Garamond',serif;font-size:13.5px;font-style:italic;
+.p-hook{font-family:var(--font-serif);font-size:13.5px;font-style:italic;
   color:var(--ink3);line-height:1.6;margin:1rem 0 1.4rem}
 .dl{display:flex;align-items:center;justify-content:space-between;
   padding:11px 15px;margin-top:auto;background:var(--sur2);border:1px solid var(--rulem);
@@ -102,14 +105,14 @@ body.light .tok{transform:translateX(20px)}
 .t-pm{color:var(--pm)}.t-pm::before{background:var(--pm)}
 .t-ath{color:var(--ath)}.t-ath::before{background:var(--ath)}
 .t-stk{color:var(--stk)}.t-stk::before{background:var(--stk)}
-.c-name{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;
+.c-name{font-family:var(--font-serif);font-size:24px;font-weight:300;
   line-height:1.2;color:var(--ink);margin-bottom:.75rem}
 .c-desc{font-size:12.5px;color:var(--ink2);line-height:1.75;margin-bottom:1.4rem}
 .c-list{list-style:none;display:flex;flex-direction:column;gap:5px;margin-bottom:1.5rem;
   padding-bottom:1.5rem;border-bottom:1px solid var(--rule)}
 .c-list li{font-size:11.5px;color:var(--ink2);font-weight:300;display:flex;align-items:center;gap:9px}
 .c-list li::before{content:'';width:14px;height:1px;background:var(--ink4);flex-shrink:0;display:block}
-.c-free{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--ath);margin-bottom:1.2rem}
+.c-free{font-family:var(--font-serif);font-size:26px;font-weight:300;color:var(--ath);margin-bottom:1.2rem}
 .c-dl{display:flex;align-items:center;justify-content:space-between;
   padding:11px 15px;width:100%;background:var(--bg);border:1px solid var(--rulem);
   font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
@@ -119,17 +122,65 @@ body.light .tok{transform:translateX(20px)}
 .hgrid{display:grid;grid-template-columns:repeat(4,1fr);
   border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
 .hstep{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:2rem}
-.h-n{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:300;color:var(--ink4);line-height:1;margin-bottom:1rem}
-.h-t{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;color:var(--ink);margin-bottom:.6rem}
+.h-n{font-family:var(--font-serif);font-size:44px;font-weight:300;color:var(--ink4);line-height:1;margin-bottom:1rem}
+.h-t{font-family:var(--font-serif);font-size:18px;font-weight:400;color:var(--ink);margin-bottom:.6rem}
 .h-d{font-size:12.5px;color:var(--ink2);line-height:1.75}
 footer{border-top:1px solid var(--rule);padding:2rem 2.5rem;
   display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
   background:var(--sur);transition:background .35s}
-.f-logo{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
+.f-logo{font-family:var(--font-serif);font-size:16px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
 .f-links{display:flex;gap:1.8rem;flex-wrap:wrap}
 .f-links a{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink4);text-decoration:none;transition:color .2s}
 .f-links a:hover{color:var(--ink)}
 .f-copy{font-size:10px;color:var(--ink4)}
+
+/* ── AI PROMPTS SECTION ── */
+.ai-wrap{padding:3.5rem 2.5rem;background:var(--bg);border-top:1px solid var(--rule);transition:background .35s}
+.ai-intro{font-size:13px;color:var(--ink2);line-height:1.8;max-width:700px;margin-bottom:2.5rem}
+.ai-stream-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:2.5rem}
+.ast{padding:8px 18px;border-radius:2px;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  background:none;border:1px solid var(--rulem);color:var(--ink4);cursor:pointer;transition:all .2s}
+.ast:hover{color:var(--ink2);border-color:var(--ink3)}
+.ast.on{color:var(--ink);border-color:var(--ink);background:var(--sur2)}
+.ai-panel{display:none}
+.ai-panel.on{display:block}
+.llm-tabs{display:flex;margin-bottom:1.5rem;border-bottom:1px solid var(--rule)}
+.lt{padding:12px 0;margin-right:2rem;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink4);background:none;border:none;cursor:pointer;position:relative;transition:color .2s}
+.lt::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:2px;background:var(--ink);transform:scaleX(0);transition:transform .25s}
+.lt:hover{color:var(--ink2)}
+.lt.on{color:var(--ink)}
+.lt.on::after{transform:scaleX(1)}
+.llm-panel{display:none}
+.llm-panel.on{display:block}
+.llm-badge{display:inline-flex;align-items:center;gap:8px;margin-bottom:1.5rem;
+  font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.llm-badge span{width:8px;height:8px;border-radius:50%;display:block}
+.badge-claude span{background:#d97706}
+.badge-gpt span{background:#10a37f}
+.prompt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.prompt-card{background:var(--sur);border:1px solid var(--rule);padding:1.5rem;border-radius:2px;
+  display:flex;flex-direction:column;gap:10px;transition:background .2s}
+.prompt-card:hover{background:var(--sur2)}
+.prompt-n{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)}
+.prompt-title{font-family:var(--font-serif);font-size:16px;font-weight:400;color:var(--ink);line-height:1.3}
+.prompt-use{font-size:11.5px;color:var(--ink3);font-style:italic;line-height:1.5}
+.prompt-text{font-size:12px;color:var(--ink2);line-height:1.75;background:var(--sur2);
+  padding:12px 14px;border-left:2px solid var(--rulem);border-radius:1px;font-family:var(--font-sans)}
+.copy-btn{display:flex;align-items:center;justify-content:space-between;
+  padding:9px 14px;background:none;border:1px solid var(--rulem);
+  font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink4);cursor:pointer;border-radius:2px;transition:all .2s;margin-top:auto}
+.copy-btn:hover{border-color:var(--ink);color:var(--ink)}
+.copy-btn.copied{border-color:var(--ath);color:var(--ath)}
+.open-ai-btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;
+  font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink);border:1px solid var(--rulem);text-decoration:none;border-radius:2px;transition:all .2s}
+.open-ai-btn:hover{border-color:var(--ink);background:var(--sur2)}
+.ai-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:2rem;align-items:center}
+.ai-actions-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)}
+@media(max-width:760px){.prompt-grid{grid-template-columns:1fr}}
+
 @media(max-width:960px){.pgrid,.cgrid{grid-template-columns:repeat(2,1fr)}.hgrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:580px){
   nav,.hero-in,.tabs,.gwrap,.cwrap,.hwrap,footer{padding-left:1.25rem;padding-right:1.25rem}
@@ -164,6 +215,16 @@ footer{border-top:1px solid var(--rule);padding:2rem 2.5rem;
   </div>
 </section>
 
+
+<!-- PRIVACY BAR -->
+<div style="display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap;padding:10px 2.5rem;background:var(--sur2);border-bottom:1px solid var(--rule);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);">
+  <span style="display:flex;align-items:center;gap:5px;"><span style="width:6px;height:6px;border-radius:50%;background:var(--ath);display:inline-block;"></span>No cookies</span>
+  <span style="display:flex;align-items:center;gap:5px;"><span style="width:6px;height:6px;border-radius:50%;background:var(--ath);display:inline-block;"></span>No tracking</span>
+  <span style="display:flex;align-items:center;gap:5px;"><span style="width:6px;height:6px;border-radius:50%;background:var(--ath);display:inline-block;"></span>No data collected</span>
+  <span style="display:flex;align-items:center;gap:5px;"><span style="width:6px;height:6px;border-radius:50%;background:var(--ath);display:inline-block;"></span>No external requests</span>
+  <span style="display:flex;align-items:center;gap:5px;"><span style="width:6px;height:6px;border-radius:50%;background:var(--ath);display:inline-block;"></span>MIT licensed</span>
+</div>
+
 <div class="ticker">
   <div class="ticker-t">
     <span>Product Management</span><span class="dot">·</span><span>Athlete Recovery</span><span class="dot">·</span><span>Injury Programmes</span><span class="dot">·</span><span>Stock Market</span><span class="dot">·</span><span>Amazon Frameworks</span><span class="dot">·</span><span>Apple Frameworks</span><span class="dot">·</span><span>Free Download</span><span class="dot">·</span><span>Open Source</span><span class="dot">·</span><span>Product Management</span><span class="dot">·</span><span>Athlete Recovery</span><span class="dot">·</span><span>Injury Programmes</span><span class="dot">·</span><span>Stock Market</span><span class="dot">·</span><span>Amazon Frameworks</span><span class="dot">·</span><span>Apple Frameworks</span><span class="dot">·</span><span>Free Download</span><span class="dot">·</span><span>Open Source</span><span class="dot">·</span>
@@ -175,6 +236,7 @@ footer{border-top:1px solid var(--rule);padding:2rem 2.5rem;
   <button class="tab"    onclick="show('ath',this)">Athlete Recovery</button>
   <button class="tab"    onclick="show('inj',this)">Injury Programmes</button>
   <button class="tab"    onclick="show('stk',this)">Stock Market</button>
+  <button class="tab"    onclick="show('ai',this)">AI Prompts</button>
 </div>
 
 <div class="gwrap">
@@ -187,6 +249,7 @@ footer{border-top:1px solid var(--rule);padding:2rem 2.5rem;
   <div class="panel"    id="panel-ath"></div>
   <div class="panel"    id="panel-inj"></div>
   <div class="panel"    id="panel-stk"></div>
+  <div class="panel"    id="panel-ai"></div>
 </div>
 
 <div class="cwrap" id="collections">
@@ -208,7 +271,7 @@ footer{border-top:1px solid var(--rule);padding:2rem 2.5rem;
         <li>Prioritization Cheat Sheet + Interview Script</li>
       </ul>
       <div class="c-free">Free</div>
-      <a class="c-dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/pm/PM_Amazon_Working_Backwards.pdf" target="_blank"><span>Open PM Guide</span><span>↗</span></a>
+      <a class="c-dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/pm/PM_Amazon_Working_Backwards.pdf" target="_blank" rel="noopener"><span>Open PM Guide</span><span>↗</span></a>
     </div>
     <div class="ccard">
       <div class="c-tag t-ath">Athlete Recovery</div>
@@ -222,7 +285,7 @@ footer{border-top:1px solid var(--rule);padding:2rem 2.5rem;
         <li>Phase 5 — Return to Athletic Performance</li>
       </ul>
       <div class="c-free">Free</div>
-      <a class="c-dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_PHASE1_Pain_Control.pdf" target="_blank"><span>Open Recovery Guide</span><span>↗</span></a>
+      <a class="c-dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_PHASE1_Pain_Control.pdf" target="_blank" rel="noopener"><span>Open Recovery Guide</span><span>↗</span></a>
     </div>
     <div class="ccard">
       <div class="c-tag t-stk">Stock Market</div>
@@ -236,7 +299,7 @@ footer{border-top:1px solid var(--rule);padding:2rem 2.5rem;
         <li>Financial Statement Analysis Guide</li>
       </ul>
       <div class="c-free">Free</div>
-      <a class="c-dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/stock/STK_01_Stock_Screening_Checklist.pdf" target="_blank"><span>Open Investor Guide</span><span>↗</span></a>
+      <a class="c-dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/stock/STK_01_Stock_Screening_Checklist.pdf" target="_blank" rel="noopener"><span>Open Investor Guide</span><span>↗</span></a>
     </div>
   </div>
 </div>
@@ -255,10 +318,91 @@ footer{border-top:1px solid var(--rule);padding:2rem 2.5rem;
   </div>
 </div>
 
+
+<!-- AI PROMPTS SECTION -->
+<div class="ai-wrap" id="ai-section">
+  <div class="ghead">
+    <span class="glbl">AI Prompts</span>
+    <div class="gline"></div>
+    <span class="glbl">10 Prompts × 2 AI Tools × 3 Disciplines = 60 Total</span>
+  </div>
+  <p class="ai-intro">
+    Use these prompts with your free Claude.ai or ChatGPT account alongside the Vibemotion Labs guides.
+    Click <strong>Copy Prompt</strong> — paste directly into Claude or ChatGPT — get expert-level answers instantly.
+    No API key. No account needed here. Just copy and go.
+  </p>
+  <div class="ai-actions">
+    <span class="ai-actions-label">Open free AI tools:</span>
+    <a class="open-ai-btn" href="https://claude.ai" target="_blank" rel="noopener">
+      <span style="width:8px;height:8px;border-radius:50%;background:#d97706;display:block"></span>
+      Open Claude.ai ↗
+    </a>
+    <a class="open-ai-btn" href="https://chatgpt.com" target="_blank" rel="noopener">
+      <span style="width:8px;height:8px;border-radius:50%;background:#10a37f;display:block"></span>
+      Open ChatGPT ↗
+    </a>
+  </div>
+
+  <!-- STREAM SELECTOR -->
+  <div class="ai-stream-tabs">
+    <button class="ast on" onclick="showAiStream('pm',this)">Product Management</button>
+    <button class="ast"    onclick="showAiStream('ath',this)">Athlete Recovery</button>
+    <button class="ast"    onclick="showAiStream('stk',this)">Stock Market</button>
+  </div>
+
+  <!-- PM PROMPTS -->
+  <div class="ai-panel on" id="ai-pm">
+    <div class="llm-tabs">
+      <button class="lt on" onclick="showLlm('pm','claude',this)">Claude</button>
+      <button class="lt"    onclick="showLlm('pm','gpt',this)">ChatGPT</button>
+    </div>
+    <div class="llm-panel on" id="llm-pm-claude">
+      <div class="llm-badge badge-claude"><span></span>Claude — Product Management Prompts</div>
+      <div class="prompt-grid" id="pg-pm-claude"></div>
+    </div>
+    <div class="llm-panel" id="llm-pm-gpt">
+      <div class="llm-badge badge-gpt"><span></span>ChatGPT — Product Management Prompts</div>
+      <div class="prompt-grid" id="pg-pm-gpt"></div>
+    </div>
+  </div>
+
+  <!-- ATHLETE PROMPTS -->
+  <div class="ai-panel" id="ai-ath">
+    <div class="llm-tabs">
+      <button class="lt on" onclick="showLlm('ath','claude',this)">Claude</button>
+      <button class="lt"    onclick="showLlm('ath','gpt',this)">ChatGPT</button>
+    </div>
+    <div class="llm-panel on" id="llm-ath-claude">
+      <div class="llm-badge badge-claude"><span></span>Claude — Athlete Recovery Prompts</div>
+      <div class="prompt-grid" id="pg-ath-claude"></div>
+    </div>
+    <div class="llm-panel" id="llm-ath-gpt">
+      <div class="llm-badge badge-gpt"><span></span>ChatGPT — Athlete Recovery Prompts</div>
+      <div class="prompt-grid" id="pg-ath-gpt"></div>
+    </div>
+  </div>
+
+  <!-- STOCK PROMPTS -->
+  <div class="ai-panel" id="ai-stk">
+    <div class="llm-tabs">
+      <button class="lt on" onclick="showLlm('stk','claude',this)">Claude</button>
+      <button class="lt"    onclick="showLlm('stk','gpt',this)">ChatGPT</button>
+    </div>
+    <div class="llm-panel on" id="llm-stk-claude">
+      <div class="llm-badge badge-claude"><span></span>Claude — Stock Market Prompts</div>
+      <div class="prompt-grid" id="pg-stk-claude"></div>
+    </div>
+    <div class="llm-panel" id="llm-stk-gpt">
+      <div class="llm-badge badge-gpt"><span></span>ChatGPT — Stock Market Prompts</div>
+      <div class="prompt-grid" id="pg-stk-gpt"></div>
+    </div>
+  </div>
+</div>
+
 <footer>
   <div class="f-logo">Vibemotion Labs</div>
   <div class="f-links">
-    <a href="https://github.com/herominutes/vibemotion-labs" target="_blank">GitHub</a>
+    <a href="https://github.com/herominutes/vibemotion-labs" target="_blank" rel="noopener">GitHub</a>
     <a href="https://herominutes.github.io/vibemotion-labs/LICENSE">MIT Licence</a>
   </div>
   <div class="f-copy">© 2025 Vibemotion Labs · Open source · Free forever</div>
@@ -268,11 +412,11 @@ footer{border-top:1px solid var(--rule);padding:2rem 2.5rem;
 // THEME
 function toggleTheme(){
   document.body.classList.toggle('light');
-  localStorage.setItem('vml-theme',document.body.classList.contains('light')?'light':'dark');
+  
 }
-(function(){if(localStorage.getItem('vml-theme')==='light')document.body.classList.add('light');})();
 
-var LABELS={pm:'Product Management — 8 Guides',ath:'Athlete Recovery — 8 Guides',inj:'Injury Programmes — 6 Guides',stk:'Stock Market — 5 Guides'};
+
+var LABELS={pm:'Product Management — 8 Guides',ath:'Athlete Recovery — 8 Guides',inj:'Injury Programmes — 6 Guides',stk:'Stock Market — 5 Guides',ai:'AI Prompts — 60 Prompts Across 3 Disciplines'};
 
 function show(niche,btn){
   document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('on');});
@@ -342,7 +486,7 @@ function buildGrid(niche){
       '<div class="p-row"><span class="p-key">Problem</span><span class="p-val">'+p.prob+'</span></div>'+
       '<div class="p-row"><span class="p-key">Use when</span><span class="p-val">'+p.use+'</span></div>'+
       '<div class="p-hook">'+p.hook+'</div>'+
-      '<a class="dl" href="'+p.file+'" target="_blank">'+
+      '<a class="dl" href="'+p.file+'" target="_blank" rel="noopener">'+
         '<span>Open Free PDF</span>'+
         '<span class="dl-arr">↗</span>'+
       '</a>';
@@ -356,6 +500,260 @@ buildGrid('pm');
 buildGrid('ath');
 buildGrid('inj');
 buildGrid('stk');
+
+// ── AI PROMPTS DATA ─────────────────────────────────────────────────
+var PROMPTS = {
+  pm: {
+    claude: [
+      { title:'Working Backwards from the Customer', use:'Before starting any new product initiative',
+        text:'I am a product manager starting a new initiative. Help me apply Amazon's Working Backwards framework. Ask me questions one at a time to help me write a PRFAQ: first the customer problem, then the proposed solution, then the success metrics, then the risks. Be rigorous — push back if my answers are vague or solution-first rather than customer-first.' },
+      { title:'PRD Review and Strengthening', use:'After writing a first draft PRD',
+        text:'I am going to paste my PRD draft below. Please review it as a senior PM would. Identify: (1) any sections where the customer problem is unclear, (2) success metrics that are not measurable, (3) risks I have not addressed, (4) scope that seems too large for one release. Be direct and specific. Then suggest the three most important improvements.
+
+[PASTE YOUR PRD HERE]' },
+      { title:'Roadmap Prioritisation Using RICE', use:'Before quarterly planning sessions',
+        text:'I need to prioritise my product roadmap using RICE scoring. I will give you a list of features. For each one, help me estimate Reach (users per quarter), Impact (0.25 to 3 scale), Confidence (50/80/100%), and Effort (person-months). Then calculate the RICE score and rank them. Challenge any estimates that seem unrealistic.
+
+Features to score:
+[LIST YOUR FEATURES HERE]' },
+      { title:'Stakeholder Disagreement Resolution', use:'When roadmap conflicts arise',
+        text:'I am a product manager facing a roadmap disagreement. Engineering wants to prioritise technical debt. Marketing wants a new user-facing feature. My CEO wants faster growth metrics. Help me: (1) map each stakeholder's underlying goal, (2) find where their goals actually overlap, (3) draft a proposal that addresses all three perspectives, (4) write the specific talking points I should use in each 1:1.' },
+      { title:'User Research Synthesis', use:'After completing user interviews',
+        text:'I have just completed [NUMBER] user interviews about [TOPIC]. I will paste my raw notes below. Help me: (1) identify the top 5 recurring themes, (2) write an insight statement for each theme in the format "Users struggle to [X] because [Y] which causes [Z]", (3) rank them by frequency and emotional intensity, (4) identify which insights point to the highest-value product opportunity.
+
+[PASTE YOUR NOTES HERE]' },
+      { title:'PM Interview Preparation — Product Sense', use:'One week before a PM interview',
+        text:'I have a product manager interview at [COMPANY] for a [ROLE] position. Help me practise product sense questions. Ask me one product sense question at a time — the type that tests whether I can define a user, identify a problem, and prioritise a solution. After each answer, give me specific feedback on: what I did well, what was missing, and how a top PM candidate would have answered it differently.' },
+      { title:'Jobs to Be Done Analysis', use:'When designing or improving a product',
+        text:'Help me apply the Jobs to Be Done framework to [PRODUCT OR FEATURE]. Walk me through: (1) the functional job the customer is hiring this product for, (2) the emotional job — how they want to feel, (3) the social job — how they want to be perceived, (4) the circumstances that trigger the job, (5) the current alternatives they use and why those fall short. Then help me identify the most underserved part of the job.' },
+      { title:'Metrics Dashboard Design', use:'When setting up product KPIs',
+        text:'I am building a metrics dashboard for [PRODUCT/FEATURE]. Help me define: (1) one north star metric that best represents long-term customer and business value, (2) three primary KPIs that drive the north star, (3) two guardrail metrics I must not let regress, (4) the leading indicators that predict each KPI before it shows up in lagging data. Explain the reasoning behind each choice.' },
+      { title:'Feature Scoping and Scope Creep Defence', use:'During sprint planning',
+        text:'I need to scope a feature for [DESCRIPTION]. Help me apply a strict MoSCoW method. For each item I describe, classify it as Must Have, Should Have, Could Have, or Won't Have — and explain the reasoning. Then tell me what I should explicitly cut to make this shippable in [TIMEFRAME]. If I try to add scope, push back and explain the cost.
+
+Feature scope to review:
+[DESCRIBE YOUR FEATURE]' },
+      { title:'90-Day Onboarding Strategy', use:'First week at a new PM role',
+        text:'I just started a new product manager role at [TYPE OF COMPANY — e.g. early-stage startup / enterprise SaaS]. It is day [X] of my role. Help me build a structured 90-day plan. For each phase — Listen and Learn (days 1–30), Build Credibility (days 31–60), and Lead and Drive (days 61–90) — give me specific weekly actions, the questions I should be asking, and the relationships I need to build. Tailor this to my specific context.' }
+    ],
+    gpt: [
+      { title:'Six-Pager Narrative Writing', use:'Before executive or board-level product reviews',
+        text:'Act as a senior Amazon product leader. Help me write a six-pager narrative for the following initiative: [DESCRIBE YOUR INITIATIVE]. Structure it with these sections: Executive Summary (one page), The Problem (one page), The Proposed Solution (one to two pages), Goals and Tenets (half a page), Risks and Mitigations (half a page), and an Appendix for supporting data. Write in Amazon's clear, direct narrative style — no bullet points in the main sections, no jargon, no passive voice.' },
+      { title:'Competitive Analysis Framework', use:'Before entering a new market or launching a feature',
+        text:'I am a product manager analysing the competitive landscape for [PRODUCT CATEGORY]. Help me build a structured competitive analysis. For each competitor I name, evaluate: (1) their primary customer segment, (2) their core value proposition, (3) their three strongest features, (4) their most significant weaknesses, (5) their likely strategic direction. Then identify the clearest gap in the market that none of them are addressing well.
+
+Competitors to analyse: [LIST COMPETITORS]' },
+      { title:'OKR Writing and Alignment', use:'During quarterly planning',
+        text:'Help me write strong OKRs for my product team for the next quarter. Our company objective is [COMPANY OBJECTIVE]. My team is responsible for [TEAM FOCUS AREA]. For each objective I draft, help me write three to five key results that are: specific and measurable, outcome-focused rather than output-focused, ambitious but achievable, and clearly linked to the company objective. Push back on any key results that are just tasks rather than outcomes.' },
+      { title:'Sprint Goal Setting', use:'Before each sprint planning session',
+        text:'I need to set a clear, compelling sprint goal for my engineering team. Our current backlog items are: [LIST BACKLOG ITEMS]. Help me: (1) identify the single most important outcome we could achieve this sprint, (2) write it as a sprint goal in one sentence that explains the value to the customer rather than describing the tasks, (3) list which backlog items directly support this goal, (4) identify which items I should deprioritise or defer.' },
+      { title:'Launch Plan Creation', use:'Two weeks before any product launch',
+        text:'I am launching [PRODUCT/FEATURE] in [TIMEFRAME]. Help me create a comprehensive launch plan covering: (1) the rollout strategy — phased percentages and timing, (2) internal communications — what each team needs to know and when, (3) external communications — announcement messaging and channel plan, (4) success criteria for declaring the launch successful at 24 hours, 7 days, and 30 days, (5) rollback criteria — what would trigger a rollback and how.' },
+      { title:'Technical Debt Prioritisation', use:'When negotiating with engineering on tech debt',
+        text:'My engineering team has a backlog of technical debt items. Help me evaluate each one from a product perspective using these criteria: (1) customer impact if the debt is not addressed, (2) velocity impact — how much it slows down future feature development, (3) risk — likelihood of causing an incident or degraded user experience, (4) effort to resolve. Score each item 1–5 on each dimension. Then help me build the business case for the top three items to present to leadership.
+
+Tech debt items: [LIST ITEMS]' },
+      { title:'A/B Test Design', use:'Before running any product experiment',
+        text:'I want to run an A/B test for [DESCRIBE THE CHANGE]. Help me design a rigorous experiment: (1) write the specific hypothesis in the format "If we change X, then Y will happen, because Z", (2) define the primary metric and how we will measure it, (3) identify the guardrail metrics that must not regress, (4) calculate the required sample size to reach statistical significance at 95% confidence, (5) define the exact success criteria before I run the test, (6) identify potential confounding variables.' },
+      { title:'Stakeholder Communication Email', use:'After making a major product decision',
+        text:'I need to write an email to senior stakeholders communicating a significant product decision. The decision is: [DESCRIBE THE DECISION]. The stakeholders are: [LIST STAKEHOLDERS AND THEIR CONCERNS]. Help me write an email that: leads with the decision clearly stated, explains the reasoning without being defensive, acknowledges trade-offs honestly, states what happens next and who owns each action, and ends with a clear ask or action from the reader.' },
+      { title:'User Persona Development', use:'During product discovery',
+        text:'I am building user personas for [PRODUCT]. I will describe the key user segments I have observed in my research. For each segment, help me build a persona that includes: a name and representative profile, their primary job title and context, their top three goals related to [PROBLEM SPACE], their top three frustrations with current solutions, their decision-making criteria when evaluating tools, and one defining quote that captures their worldview.
+
+User segments I have observed: [DESCRIBE SEGMENTS]' },
+      { title:'Post-Mortem Facilitation', use:'After a failed launch or major incident',
+        text:'I need to facilitate a blameless post-mortem for [DESCRIBE WHAT HAPPENED]. Help me structure a two-hour session that: (1) establishes a blameless, psychologically safe tone from the opening, (2) reconstructs the timeline of events with contributing factors — not causes, (3) identifies systemic issues rather than individual mistakes, (4) generates specific, actionable improvements with owners and deadlines, (5) closes with clear commitments the team can hold itself accountable to. Provide the agenda and key questions for each section.' }
+    ]
+  },
+  ath: {
+    claude: [
+      { title:'Phase Assessment and Programme Selection', use:'At the start of any injury recovery',
+        text:'I am an injured athlete and I need help selecting the right recovery phase to start with. Here is my situation: I injured my [BODY PART] [TIME AGO]. My current pain level at rest is [X/10]. My pain level during movement is [X/10]. I can [CAN/CANNOT] bear full weight. My swelling is [NONE/MILD/MODERATE/SEVERE]. Based on the Vibemotion Labs five-phase recovery framework, which phase should I begin with, and what are the specific criteria I must meet before advancing to the next phase?' },
+      { title:'Daily Exercise Programme Builder', use:'At the start of each recovery week',
+        text:'I am in Phase [NUMBER] of my injury recovery. My injury is [DESCRIBE INJURY]. I have access to: [LIST EQUIPMENT — e.g. resistance bands, dumbbells, a gym, bodyweight only]. I can train [NUMBER] days per week. Build me a specific daily exercise programme for this week using the Vibemotion Labs Phase [NUMBER] exercises. For each day, list the exercises in order with sets, reps, rest periods, and one coaching cue for each exercise.' },
+      { title:'Pain Monitoring and Progression Decisions', use:'When unsure whether to progress to next phase',
+        text:'I need help making a progression decision in my recovery. I am currently in Phase [NUMBER]. Here is my pain data from the last 7 sessions: [LIST PAIN SCORES BEFORE, DURING, AND AFTER EACH SESSION]. My swelling status is: [DESCRIBE]. I can currently perform: [LIST WHAT YOU CAN DO]. Help me analyse this data and tell me clearly: (1) whether my recovery is progressing as expected, (2) any red flags I should address before progressing, (3) whether I am ready to advance to Phase [NEXT PHASE] and why.' },
+      { title:'Injury-Specific Exercise Modifications', use:'When standard exercises cause pain',
+        text:'I am following Phase [NUMBER] of the Vibemotion Labs recovery programme but I am having difficulty with [SPECIFIC EXERCISE]. When I perform it, I feel [DESCRIBE THE PAIN OR DIFFICULTY — location, type, intensity out of 10]. Help me: (1) identify the likely cause of this difficulty, (2) suggest two or three modifications that reduce the load while maintaining the therapeutic benefit, (3) tell me what I should feel vs. what is a warning sign to stop.' },
+      { title:'Nutrition Plan for Recovery Phase', use:'At the start of each recovery phase',
+        text:'I am in Phase [NUMBER] of injury recovery from a [INJURY TYPE]. I weigh [WEIGHT] kg. I am [MALE/FEMALE], aged [AGE]. My current activity level is [DESCRIBE — e.g. mostly sedentary due to injury / light rehab only / moderate rehab]. Using the Vibemotion Labs nutrition framework, calculate my specific daily protein, carbohydrate, and calorie targets for this phase. Then build me a 3-day sample meal plan that hits these targets and includes the key healing nutrients — Vitamin C, Zinc, Omega-3, and collagen.' },
+      { title:'Mental Barriers and Fear of Re-injury', use:'When motivation drops or fear holds you back',
+        text:'I am struggling with the mental side of my injury recovery. My injury is [DESCRIBE]. I am in week [NUMBER] of recovery. The main psychological barriers I am facing are: [DESCRIBE — e.g. fear of re-injury, loss of athletic identity, frustration with slow progress, anxiety about returning to sport]. Using evidence-based sports psychology principles, help me: (1) understand why these feelings are normal and expected, (2) give me three concrete daily practices to address each barrier, (3) help me write a weekly journal prompt for the Vibemotion Labs Mental Performance Journal.' },
+      { title:'Return-to-Sport Readiness Assessment', use:'When approaching sport clearance',
+        text:'I am preparing to return to [SPORT]. I have completed Phase [NUMBER] of the Vibemotion Labs recovery programme. Help me conduct a self-assessment against the return-to-sport clearance criteria. I will give you my current performance data: pain scores, single-leg balance duration, hop test distances on both legs, and any strength test results I have. Tell me clearly: (1) which criteria I meet, (2) which I do not yet meet, (3) exactly what I need to achieve in each incomplete area before I can safely return.' },
+      { title:'Long-Term Injury Prevention Planning', use:'After returning to full sport',
+        text:'I have returned to [SPORT] after recovering from a [INJURY]. I want to build a long-term injury prevention programme to ensure I never experience this same injury again. Based on the Vibemotion Labs Phase 5 prehab protocol: (1) design a 15-minute pre-training warm-up routine I can do before every session, (2) design a weekly maintenance strength programme that takes no more than 30 minutes, (3) identify the three highest-risk movements in my sport and give me specific techniques to perform each one more safely.' },
+      { title:'Sleep Optimisation for Injury Recovery', use:'When recovery feels slow',
+        text:'I am recovering from a [INJURY] and I want to maximise my sleep quality to accelerate tissue repair. My current sleep situation is: I typically sleep [HOURS] per night. I fall asleep [EASILY / WITH DIFFICULTY]. I wake up during the night [NEVER / OCCASIONALLY / FREQUENTLY]. My bedroom is [DESCRIBE SETUP]. My pre-bed routine currently includes [DESCRIBE]. Using the Vibemotion Labs sleep optimisation framework, give me a personalised nightly protocol with specific timing, environment changes, and supplement recommendations.' },
+      { title:'Weekly Recovery Progress Review', use:'Every Sunday throughout recovery',
+        text:'I want to do a structured weekly review of my injury recovery progress. This is week [NUMBER] of my recovery from [INJURY]. Help me analyse: (1) my pain scores across the week — trend improving, stable, or worsening, (2) which exercises I progressed on and which I struggled with, (3) my nutrition adherence this week and any gaps, (4) my mental state and any fear or frustration patterns, (5) my specific targets for next week. Then write a one-paragraph summary I can record in my Mental Performance Journal.' }
+    ],
+    gpt: [
+      { title:'ACL Recovery Timeline Personalisation', use:'After ACL surgery',
+        text:'I have just had ACL reconstruction surgery [NUMBER] days ago. My graft type is [PATELLAR TENDON / HAMSTRING / QUADRICEPS / ALLOGRAFT]. My surgeon has given me the following restrictions: [LIST RESTRICTIONS]. Using the Vibemotion Labs ACL Recovery Programme, help me build a personalised week-by-week timeline from now until return to sport. For each phase, tell me the specific goals, the exercises I should focus on, and the measurable criteria that determine when I advance.' },
+      { title:'Hamstring Strain Grade Assessment', use:'Immediately after a hamstring injury',
+        text:'I think I have pulled my hamstring during [ACTIVITY]. The incident happened [TIME AGO]. Here is what I am experiencing: pain location is [DESCRIBE — e.g. mid-belly of the hamstring / near the buttock / behind the knee], pain intensity is [X/10], I [CAN / CANNOT] walk normally, swelling is [PRESENT / ABSENT], bruising is [PRESENT / ABSENT]. Help me assess the likely grade of my strain, what I should do in the next 72 hours, and which phase of the Vibemotion Labs Hamstring Recovery Programme to begin.' },
+      { title:'Knee Pain Diagnosis and Programme Selection', use:'When knee pain begins',
+        text:'I have been experiencing knee pain for [DURATION]. Describe my symptoms: the pain is located [FRONT / BEHIND / INSIDE / OUTSIDE] of the knee. It is worst when I [DESCRIBE ACTIVITY — e.g. go down stairs / sit for long periods / run / squat]. My pain level is [X/10] at its worst. I am [AGE] years old and I play [SPORT OR ACTIVITY LEVEL]. Help me identify whether this is more likely patellofemoral pain or patellar tendinopathy, then guide me to the correct starting point in the Vibemotion Labs Knee Recovery Programme.' },
+      { title:'Low Back Pain Exercise Safety Check', use:'When resuming training with back pain',
+        text:'I have low back pain and I want to know which exercises are safe for me to continue and which I should avoid. My diagnosis is [DESCRIBE — e.g. disc herniation at L4/L5 / non-specific low back pain / facet joint irritation]. My pain is currently [X/10]. I normally train [DESCRIBE TRAINING — e.g. CrossFit 4 times per week / weightlifting / running]. For each exercise in my current programme, tell me: safe to continue, modify and continue, or avoid — with the specific reasoning for each decision.' },
+      { title:'Shoulder Injury Rehab Progression', use:'During shoulder rehabilitation',
+        text:'I am rehabilitating a [ROTATOR CUFF TEAR / SHOULDER IMPINGEMENT / SLAP TEAR]. I am currently in week [NUMBER] of recovery. The exercises I can currently perform without pain are: [LIST]. The exercises that cause pain are: [LIST AND DESCRIBE THE PAIN]. Using the Vibemotion Labs Shoulder Recovery Programme, tell me: (1) which phase I am in based on my current ability, (2) the three exercises I should focus on most this week, (3) what I should feel vs. when I should stop during each exercise.' },
+      { title:'Ankle Instability Prevention Protocol', use:'After an ankle sprain or with chronic instability',
+        text:'I have [RECENTLY SPRAINED / CHRONIC INSTABILITY IN] my [LEFT / RIGHT] ankle. This is my [FIRST / SECOND / THIRD OR MORE] significant ankle sprain. I play [SPORT]. I want to break the cycle of repeated sprains. Build me a 6-week progressive balance and proprioception programme based on the Vibemotion Labs five-stage balance progression. For each week, specify the exercises, duration, and how I know I am ready to advance to the next stage.' },
+      { title:'Return to Running After Injury', use:'When beginning the running phase of recovery',
+        text:'I am preparing to return to running after recovering from [INJURY]. I have been cleared to begin jogging by my physiotherapist. My current fitness baseline is: I can walk for [DURATION] without pain. My pain level during fast walking is [X/10]. I have not run for [NUMBER] weeks. Using the Vibemotion Labs progressive running protocol, build me a 6-week return-to-running plan with specific session details — warm-up, intervals, duration, pace, and the signs that tell me to stop a session early.' },
+      { title:'Nordic Hamstring Curl Programme', use:'For hamstring injury prevention or rehabilitation',
+        text:'I want to build up to the full Nordic Hamstring Curl as described in the Vibemotion Labs Hamstring programme. Currently I [CAN / CANNOT] perform any Nordic curl at all. My hamstring strength compared to my uninjured side feels [DESCRIBE]. Build me a progressive 8-week Nordic curl programme starting from where I am now. For each week, specify the sets, reps, tempo, and what a successful session looks and feels like. Tell me what DOMS to expect and how to distinguish normal soreness from a warning sign.' },
+      { title:'Injury Recovery Nutrition — Supplement Stack', use:'When optimising nutrition for healing',
+        text:'I am recovering from [INJURY] and I want to optimise my supplement stack to accelerate tissue repair. I weigh [WEIGHT] kg. I am [MALE / FEMALE], aged [AGE]. My diet is [OMNIVORE / VEGETARIAN / VEGAN]. Based on the Vibemotion Labs nutrition framework, tell me: (1) the exact dose of each evidence-based healing supplement — Vitamin C, Zinc, Omega-3, Collagen Peptides, and Creatine, (2) the best timing for each supplement relative to meals and sleep, (3) any interactions between supplements I should be aware of, (4) the whole-food sources I can use instead of or alongside supplements.' },
+      { title:'Sport-Specific Return to Performance', use:'In the final phase of recovery',
+        text:'I am in the final phase of recovery from [INJURY] and I want to return to [SPORT] at the highest level possible — not just healed, but better than before. My sport demands: [DESCRIBE KEY PHYSICAL DEMANDS — e.g. repeated sprinting, jumping, change of direction, overhead throwing]. Using Phase 5 of the Vibemotion Labs programme, build me a 4-week sport-specific performance programme that bridges my rehab into full training. Include strength benchmarks I should hit before returning to unrestricted competition.' }
+    ]
+  },
+  stk: {
+    claude: [
+      { title:'Company Deep Dive — Full Due Diligence', use:'Before investing in any individual stock',
+        text:'I want to do a thorough fundamental analysis of [COMPANY NAME / TICKER]. Help me work through the Vibemotion Labs Stock Screening Checklist systematically. Ask me one section at a time: first business quality, then financial health, then valuation, then risk. For each section, explain what I should be looking for, where to find the data, and what good vs. concerning looks like. At the end, summarise the key green flags and red flags and tell me what further research is most important.' },
+      { title:'Financial Statement Line-by-Line Analysis', use:'When reading a company annual report',
+        text:'I am going to paste the key financial data from [COMPANY]'s most recent annual report. Help me analyse each statement — income statement, balance sheet, and cash flow statement — using the Vibemotion Labs framework. For each line item, tell me: (1) what the number means in plain English, (2) whether it looks healthy, concerning, or requires context, (3) the trend I should look up compared to prior years. Be direct — tell me what you would focus on as a serious fundamental investor.
+
+[PASTE FINANCIAL DATA HERE]' },
+      { title:'IPO Red Flag Analysis', use:'Before participating in any IPO',
+        text:'I am considering investing in the upcoming IPO of [COMPANY]. Help me run through the Vibemotion Labs 10-point IPO checklist. I will give you what I know about the company and you flag every red flag you identify — do not be diplomatic. Specifically I want you to assess: business model clarity, revenue growth trend and direction, path to profitability, cash burn runway, use of proceeds, insider selling, competitive moat, customer concentration, valuation vs. peers, and management track record.
+
+Here is what I know about the company: [PASTE PROSPECTUS DETAILS OR WHAT YOU KNOW]' },
+      { title:'Chart Pattern Identification Practice', use:'When developing technical analysis skills',
+        text:'I want to practise identifying chart patterns from the Vibemotion Labs Technical Analysis guide. Describe a price action scenario to me — not a real stock, but a fictional price history — and I will try to identify the pattern. Then tell me: (1) whether I identified it correctly, (2) what the textbook entry, target, and stop would be for this pattern, (3) what additional confirmation I should look for before trading it. Give me 5 progressively more challenging scenarios.' },
+      { title:'Portfolio Position Sizing', use:'When deciding how much to invest in a position',
+        text:'Help me think through position sizing for a potential investment. My total portfolio is [AMOUNT]. The stock I am considering is [TICKER]. My conviction level is [LOW / MEDIUM / HIGH] based on my research. My stop loss would be at [PRICE OR % BELOW ENTRY]. Help me calculate: (1) the maximum position size based on risking no more than 1–2% of portfolio on this trade, (2) how this position relates to my other holdings for concentration risk, (3) how I should think about adding to the position if it moves in my favour.' },
+      { title:'Pre-Trade Journal Entry', use:'Before placing any trade',
+        text:'Help me complete a pre-trade journal entry using the Vibemotion Labs Trading Journal format. I am considering [BUYING / SELLING] [TICKER]. Walk me through each section: (1) my thesis in one clear sentence, (2) the specific entry trigger — what must happen for me to enter, (3) my exact stop loss price and why I chose that level, (4) my profit targets, (5) my risk-reward ratio, (6) my position size as a percentage of portfolio, (7) what would invalidate this trade. Ask me each question and push back if my answers are unclear or based on emotion rather than evidence.' },
+      { title:'Earnings Analysis Framework', use:'Before or after earnings reports',
+        text:'[COMPANY] is reporting earnings [IN X DAYS / YESTERDAY]. Help me analyse the report using a structured framework. I want to assess: (1) revenue growth vs. consensus estimate and vs. prior quarter — is the trend accelerating or decelerating, (2) gross and operating margin trend, (3) management guidance for next quarter and the tone of the commentary, (4) free cash flow generation, (5) any red flags in the balance sheet. Then give me your honest assessment of whether the reaction is justified or whether the market is overreacting in either direction.' },
+      { title:'Sector Rotation Analysis', use:'When macro conditions shift',
+        text:'Help me think through sector rotation given the current macro environment. The key conditions right now are: interest rates are [RISING / FALLING / FLAT], inflation is [HIGH / MODERATE / LOW AND FALLING], GDP growth is [STRONG / SLOWING / CONTRACTING], and the Fed is in [TIGHTENING / EASING / HOLDING] mode. Based on these conditions: (1) which sectors typically outperform and underperform in this environment, (2) which sectors of my current portfolio might be at risk, (3) which sectors I should consider adding exposure to, (4) what indicators I should watch to know when the rotation is shifting again.' },
+      { title:'Post-Trade Review and Pattern Analysis', use:'After closing any position',
+        text:'I just closed a trade on [TICKER] with a [PROFIT / LOSS] of [AMOUNT / %]. Help me do a thorough post-trade review. Here is what happened: [DESCRIBE THE TRADE FROM ENTRY TO EXIT]. Walk me through: (1) whether I followed my pre-trade plan — if not, why not, (2) what the outcome would have been if I had followed the plan exactly, (3) whether this was a good process even if the outcome was bad, or a bad process even if the outcome was good, (4) what specific behaviour I should change in my next trade, (5) the grade I should give this trade on process alone.' },
+      { title:'Building a Dividend Income Strategy', use:'When planning long-term income investing',
+        text:'I want to build a dividend income portfolio. My goals are: income target of [AMOUNT] per year in [NUMBER] years. My current portfolio is [AMOUNT]. I can invest [AMOUNT] per month. Help me: (1) calculate the portfolio size and average yield I need to hit my income target, (2) identify the characteristics of sustainable dividend payers vs. dividend traps, (3) suggest how to think about diversification across sectors, (4) build a reinvestment plan using the Vibemotion Labs Dividend Tracker framework, (5) identify the tax considerations I should research for my situation.' }
+    ],
+    gpt: [
+      { title:'Stock Valuation — DCF Analysis', use:'When trying to estimate a stock's intrinsic value',
+        text:'Help me build a discounted cash flow valuation for [COMPANY / TICKER]. I will give you the key financial inputs. Walk me through each step: (1) estimating free cash flow for the next 5 years based on historical growth rates, (2) choosing an appropriate discount rate (WACC) for this type of business, (3) calculating the terminal value, (4) arriving at an intrinsic value per share, (5) comparing it to the current price to calculate the margin of safety. Use conservative assumptions and show me how the valuation changes if growth is 50% lower than expected.
+
+Financial inputs: [PASTE REVENUE, FCF, DEBT, SHARES OUTSTANDING]' },
+      { title:'Competitor Comparison Analysis', use:'When evaluating a company against its peers',
+        text:'I am evaluating [COMPANY] against its main competitors. Help me build a structured comparison table. For each company I list, compare: revenue growth rate (3-year CAGR), gross margin, operating margin, return on equity, debt-to-equity ratio, P/E ratio, and EV/EBITDA. Then tell me: (1) which company has the strongest financial profile and why, (2) which is the most attractively valued relative to its quality, (3) which has the clearest competitive moat, (4) what risks I should weight most heavily in my decision.
+
+Companies to compare: [LIST COMPANIES]' },
+      { title:'Reading an Annual Report — 10-K Analysis', use:'When starting fundamental research on a company',
+        text:'I want to read [COMPANY]'s most recent 10-K annual report like a professional analyst. Guide me through it section by section. Tell me: (1) which sections to read in full vs. skim, (2) the three most important things to look for in the Business Description, (3) the specific risk factors I should take most seriously vs. boilerplate language, (4) what the MD&A section reveals that the financials alone do not, (5) the five numbers I must extract from the financial statements before forming any opinion on the company.' },
+      { title:'Technical Chart Setup Identification', use:'When building a trading watchlist',
+        text:'I am building a watchlist of stocks with strong technical setups. For each ticker I give you, describe: (1) the primary chart pattern forming and its implications, (2) the key price levels — support, resistance, and the line in the sand that changes the technical picture, (3) the volume pattern and what it suggests about institutional interest, (4) whether the setup favours a long or short trade and why, (5) the ideal entry, target, and stop loss levels with risk-reward ratio.
+
+Tickers to analyse: [LIST TICKERS WITH ANY CONTEXT YOU HAVE]' },
+      { title:'Options Strategy Selection', use:'When exploring options as a strategy',
+        text:'I want to understand which options strategy is appropriate for my view on [TICKER]. My view is: I think the stock will [GO UP / GO DOWN / STAY FLAT] over the next [TIMEFRAME]. My conviction level is [LOW / MEDIUM / HIGH]. I am [COMFORTABLE / NOT COMFORTABLE] with the potential to lose my entire premium. Help me: (1) identify the two or three most appropriate options strategies for this view, (2) explain the maximum gain, maximum loss, and break-even for each, (3) tell me the key variables I should monitor, (4) explain what the Vibemotion Labs options basics guide means by delta, theta, and vega in the context of this specific trade.' },
+      { title:'Portfolio Rebalancing Analysis', use:'Quarterly portfolio review',
+        text:'I need to rebalance my investment portfolio. Here are my current holdings with percentages: [LIST HOLDINGS AND PERCENTAGES]. My target allocation is: [DESCRIBE TARGET — e.g. 60% equities, 20% bonds, 10% international, 10% cash]. Help me: (1) identify which positions are most overweight and underweight vs. target, (2) calculate the specific trades needed to rebalance, (3) consider the tax implications of selling overweight positions, (4) suggest whether current market conditions argue for staying overweight in any particular area before rebalancing, (5) set a rebalancing threshold for future reviews.' },
+      { title:'IPO Lock-Up Expiry Strategy', use:'When an IPO lock-up is expiring',
+        text:'The lock-up period for [COMPANY] IPO expires in [NUMBER] days. This means [NUMBER OF SHARES / ESTIMATED VALUE] in insider shares will become eligible for sale. Help me think through: (1) the typical price pattern around lock-up expiries and why it happens, (2) how to estimate the selling pressure from the specific insider ownership structure, (3) whether the company's recent earnings and growth trajectory changes the calculus, (4) how I should position — reduce, hold, add, or avoid — given my current position size and conviction, (5) what price levels I should watch as triggers.' },
+      { title:'Macro Impact on Portfolio', use:'When major economic events occur',
+        text:'A major macro event has just occurred: [DESCRIBE EVENT — e.g. Fed raised rates by 50bps / inflation came in hot / GDP missed expectations]. Help me analyse the likely second and third-order effects on my portfolio. My holdings are: [LIST SECTORS OR SPECIFIC HOLDINGS]. For each holding, tell me: (1) the direct impact of this event on the company's business fundamentals, (2) the likely market reaction over the next 1–3 months, (3) whether this changes my long-term thesis, (4) any position adjustments I should consider as a result.' },
+      { title:'Earnings Season Preparation', use:'Before each earnings season',
+        text:'Earnings season is approaching. I hold positions in the following companies: [LIST TICKERS AND EARNINGS DATES]. For each company, help me prepare by: (1) identifying the single most important metric the market will focus on, (2) setting my expectations for revenue and EPS based on analyst consensus, (3) identifying the two or three questions from the earnings call that will most determine the stock's reaction, (4) deciding in advance how I will respond if earnings beat, meet, or miss expectations — so I am not making emotional decisions in the moment.' },
+      { title:'Risk Management and Stop Loss Strategy', use:'When building a trade management system',
+        text:'I need to build a disciplined risk management system for my stock portfolio. My total account size is [AMOUNT]. Help me establish: (1) the maximum I should risk on any single trade as a percentage of portfolio, (2) how to set stop losses that are technically meaningful rather than arbitrary round numbers, (3) how to use trailing stops vs. fixed stops for different types of positions, (4) the maximum drawdown level at which I should stop trading and reassess my strategy, (5) a rules-based process using the Vibemotion Labs Trading Journal to ensure I follow my risk rules consistently.' }
+    ]
+  }
+};
+
+// ── AI PROMPT UI FUNCTIONS ───────────────────────────────────────────
+function showAiStream(stream, btn) {
+  var panels = document.querySelectorAll('.ai-panel');
+  for (var i = 0; i < panels.length; i++) { panels[i].classList.remove('on'); }
+  var btns = document.querySelectorAll('.ast');
+  for (var j = 0; j < btns.length; j++) { btns[j].classList.remove('on'); }
+  document.getElementById('ai-' + stream).classList.add('on');
+  btn.classList.add('on');
+}
+
+function showLlm(stream, llm, btn) {
+  var parent = document.getElementById('ai-' + stream);
+  var panels = parent.querySelectorAll('.llm-panel');
+  for (var i = 0; i < panels.length; i++) { panels[i].classList.remove('on'); }
+  var btns = parent.querySelectorAll('.lt');
+  for (var j = 0; j < btns.length; j++) { btns[j].classList.remove('on'); }
+  document.getElementById('llm-' + stream + '-' + llm).classList.add('on');
+  btn.classList.add('on');
+}
+
+function copyPrompt(text, btn) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function() {
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(function() {
+        btn.textContent = 'Copy Prompt';
+        btn.classList.remove('copied');
+      }, 1800);
+    });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(function() {
+      btn.textContent = 'Copy Prompt';
+      btn.classList.remove('copied');
+    }, 1800);
+  }
+}
+
+function buildPromptGrid(stream, llm) {
+  var grid = document.getElementById('pg-' + stream + '-' + llm);
+  if (!grid || grid.children.length > 0) return;
+  var prompts = PROMPTS[stream][llm];
+  for (var i = 0; i < prompts.length; i++) {
+    var p = prompts[i];
+    var card = document.createElement('div');
+    card.className = 'prompt-card';
+    var safeText = p.text.replace(/\/g, '\\').replace(/'/g, "\'").replace(/
+/g, '\n');
+    card.innerHTML =
+      '<div class="prompt-n">0' + (i+1) + '</div>' +
+      '<div class="prompt-title">' + p.title + '</div>' +
+      '<div class="prompt-use">Best used: ' + p.use + '</div>' +
+      '<div class="prompt-text">' + p.text.replace(/
+/g,'<br>') + '</div>' +
+      '<button class="copy-btn" onclick="copyPrompt('' + safeText + '', this)">Copy Prompt</button>';
+    grid.appendChild(card);
+  }
+}
+
+// Build all prompt grids on load
+buildPromptGrid('pm','claude'); buildPromptGrid('pm','gpt');
+buildPromptGrid('ath','claude'); buildPromptGrid('ath','gpt');
+buildPromptGrid('stk','claude'); buildPromptGrid('stk','gpt');
+
+// Show AI section when AI Prompts tab is clicked
+var origShow = show;
+show = function(niche, btn) {
+  origShow(niche, btn);
+  var aiSection = document.getElementById('ai-section');
+  if (niche === 'ai') {
+    aiSection.style.display = 'block';
+    aiSection.scrollIntoView({behavior:'smooth'});
+  }
+};
+
 </script>
 </body>
 </html>
