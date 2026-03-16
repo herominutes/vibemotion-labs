@@ -4,68 +4,73 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vibemotion Labs — Free Resource Library</title>
-<!-- PRIVACY: Zero external requests. No tracking. No cookies. No API. MIT licensed. -->
-
+<!-- Zero external requests. No tracking. No cookies. No API. MIT licensed. -->
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{
   --bg:#0e0d0b;--sur:#1a1917;--sur2:#222120;
   --ink:#f2efe8;--ink2:#d4d0c8;--ink3:#9c9890;--ink4:#5c5a54;
   --rule:rgba(242,239,232,.10);--rulem:rgba(242,239,232,.18);
-  --pm:#b39dfa;--ath:#52e88a;--stk:#fdc840;--inj:#f87171;
-  --font-serif:'Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif;
-  --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,'Helvetica Neue',Arial,sans-serif;
-  font-family:var(--font-sans);background:var(--bg);color:var(--ink);
-  font-weight:300;line-height:1.6;transition:background .35s,color .35s;
+  --pm:#b39dfa;--ath:#52e88a;--stk:#fdc840;--inj:#f87171;--ai:#60a5fa;
+  --serif:'Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,'Helvetica Neue',Arial,sans-serif;
+  font-family:var(--sans);background:var(--bg);color:var(--ink);
+  font-weight:300;line-height:1.6;transition:background .3s,color .3s;
 }
 body.light{
   --bg:#fdfcfa;--sur:#f5f2eb;--sur2:#ece9e1;
   --ink:#18170f;--ink2:#343228;--ink3:#6a6860;--ink4:#aaa89f;
   --rule:rgba(24,23,15,.10);--rulem:rgba(24,23,15,.20);
-  --pm:#5a4d9a;--ath:#2a6e44;--stk:#8a5c10;--inj:#9a3a3a;
+  --pm:#5a4d9a;--ath:#2a6e44;--stk:#8a5c10;--inj:#9a3a3a;--ai:#2563eb;
 }
 html{scroll-behavior:smooth}
-nav{position:fixed;top:0;left:0;right:0;z-index:999;height:62px;
-  display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;
-  background:var(--bg);border-bottom:1px solid var(--rule);transition:background .35s}
-.logo{font-family:var(--font-serif);font-size:20px;font-weight:400;
-  letter-spacing:.18em;text-transform:uppercase;color:var(--ink);text-decoration:none}
-.nav-r{display:flex;align-items:center;gap:1.4rem}
-.free-pill{font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+nav{position:fixed;top:0;left:0;right:0;z-index:999;height:62px;display:flex;
+  align-items:center;justify-content:space-between;padding:0 2.5rem;
+  background:var(--bg);border-bottom:1px solid var(--rule);transition:background .3s}
+.logo{font-family:var(--serif);font-size:19px;font-weight:400;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink);text-decoration:none}
+.nav-r{display:flex;align-items:center;gap:1.2rem}
+.free-pill{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
   color:var(--ath);border:1px solid var(--ath);padding:4px 11px;border-radius:2px}
 .tog{width:44px;height:24px;border-radius:12px;background:var(--sur2);
-  border:1px solid var(--rulem);cursor:pointer;position:relative;transition:background .3s}
+  border:1px solid var(--rulem);cursor:pointer;position:relative;flex-shrink:0}
 .tok{position:absolute;top:4px;left:4px;width:14px;height:14px;border-radius:50%;
   background:var(--ink);transition:transform .3s}
 body.light .tok{transform:translateX(20px)}
 .hero{padding-top:62px;min-height:100vh;display:flex;flex-direction:column;
-  justify-content:flex-end;background:var(--sur);border-bottom:1px solid var(--rule);transition:background .35s}
+  justify-content:flex-end;background:var(--sur);border-bottom:1px solid var(--rule);
+  transition:background .3s}
 .hero-in{padding:3rem 2.5rem 4rem}
 .hero-tag{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-bottom:2rem}
-.hero-h1{font-family:var(--font-serif);font-weight:300;font-size:clamp(3rem,8vw,7rem);
-  line-height:.93;letter-spacing:-.025em;color:var(--ink);margin-bottom:2.5rem}
+.hero-h1{font-family:var(--serif);font-weight:300;font-size:clamp(3rem,8vw,7rem);
+  line-height:.93;letter-spacing:-.02em;color:var(--ink);margin-bottom:2.5rem}
 .hero-h1 em{font-style:italic;color:var(--ink3)}
 .hero-bot{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap}
-.hero-desc{font-size:14px;color:var(--ink2);line-height:1.85;max-width:380px}
+.hero-desc{font-size:14px;color:var(--ink2);line-height:1.85;max-width:400px}
 .stats{display:flex;gap:2.5rem}
-.stat-n{font-family:var(--font-serif);font-size:2.6rem;font-weight:300;line-height:1;color:var(--ink)}
+.stat-n{font-family:var(--serif);font-size:2.6rem;font-weight:300;line-height:1;color:var(--ink)}
 .stat-l{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink4);margin-top:3px}
-.ticker{overflow:hidden;border-bottom:1px solid var(--rule);padding:12px 0;background:var(--bg)}
-.ticker-t{display:flex;white-space:nowrap;animation:tick 30s linear infinite}
+.privacy{display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap;
+  padding:10px 2.5rem;background:var(--sur2);border-bottom:1px solid var(--rule);
+  font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4)}
+.privacy span{display:flex;align-items:center;gap:5px}
+.privacy span::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--ath);display:inline-block}
+.ticker{overflow:hidden;border-bottom:1px solid var(--rule);padding:11px 0;background:var(--bg)}
+.ticker-t{display:flex;white-space:nowrap;animation:tick 32s linear infinite}
 .ticker-t span{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink4);padding:0 2rem}
 .ticker-t .dot{color:var(--ink3);padding:0}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .tabs{position:sticky;top:62px;z-index:100;display:flex;background:var(--bg);
-  border-bottom:1px solid var(--rule);padding:0 2.5rem;transition:background .35s;overflow-x:auto}
-.tab{padding:16px 0;margin-right:2rem;font-size:11px;font-weight:400;letter-spacing:.12em;
+  border-bottom:1px solid var(--rule);padding:0 2.5rem;transition:background .3s;overflow-x:auto}
+.tab{padding:16px 0;margin-right:2rem;font-size:11px;font-weight:500;letter-spacing:.12em;
   text-transform:uppercase;color:var(--ink4);background:none;border:none;cursor:pointer;
-  position:relative;transition:color .2s;white-space:nowrap;flex-shrink:0}
+  position:relative;white-space:nowrap;flex-shrink:0;transition:color .2s}
 .tab::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:2px;
   background:var(--ink);transform:scaleX(0);transition:transform .25s}
 .tab:hover{color:var(--ink2)}
 .tab.on{color:var(--ink)}
 .tab.on::after{transform:scaleX(1)}
-.gwrap{padding:3.5rem 2.5rem;background:var(--bg);transition:background .35s}
+.gwrap{padding:3.5rem 2.5rem;background:var(--bg);transition:background .3s}
 .ghead{display:flex;align-items:center;gap:1.2rem;margin-bottom:2.5rem}
 .gline{flex:1;height:1px;background:var(--rule)}
 .glbl{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink4);white-space:nowrap}
@@ -76,115 +81,60 @@ body.light .tok{transform:translateX(20px)}
 .pcard{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);
   padding:2rem;display:flex;flex-direction:column;background:var(--bg);transition:background .2s}
 .pcard:hover{background:var(--sur)}
-.p-num{font-family:var(--font-serif);font-size:12px;font-weight:300;
-  color:var(--ink4);letter-spacing:.1em;margin-bottom:.75rem}
-.p-name{font-family:var(--font-serif);font-size:20px;font-weight:400;
-  line-height:1.25;color:var(--ink);margin-bottom:.75rem}
+.p-num{font-family:var(--serif);font-size:12px;font-weight:300;color:var(--ink4);
+  letter-spacing:.1em;margin-bottom:.75rem}
+.p-name{font-family:var(--serif);font-size:19px;font-weight:400;line-height:1.25;
+  color:var(--ink);margin-bottom:.75rem}
 .p-desc{font-size:12.5px;color:var(--ink2);line-height:1.75;margin-bottom:1.2rem;flex:1}
 .p-div{height:1px;background:var(--rule);margin-bottom:1.2rem}
 .p-row{display:flex;gap:8px;margin-bottom:5px}
-.p-key{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+.p-key{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
   color:var(--ink4);min-width:80px;flex-shrink:0}
 .p-val{font-size:11.5px;color:var(--ink2);line-height:1.55}
-.p-hook{font-family:var(--font-serif);font-size:13.5px;font-style:italic;
-  color:var(--ink3);line-height:1.6;margin:1rem 0 1.4rem}
+.p-hook{font-family:var(--serif);font-size:13px;font-style:italic;
+  color:var(--ink3);line-height:1.6;margin:1rem 0 1.2rem}
 .dl{display:flex;align-items:center;justify-content:space-between;
   padding:11px 15px;margin-top:auto;background:var(--sur2);border:1px solid var(--rulem);
-  font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
   color:var(--ink);text-decoration:none;border-radius:2px;transition:background .2s,border-color .2s}
 .dl:hover{background:var(--sur);border-color:var(--ink)}
-.dl-arr{font-size:16px;font-weight:300}
-.cwrap{padding:3.5rem 2.5rem;background:var(--sur);border-top:1px solid var(--rule);transition:background .35s}
-.cgrid{display:grid;grid-template-columns:repeat(3,1fr);
-  border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
-.ccard{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:2rem;transition:background .2s}
-.ccard:hover{background:var(--sur2)}
-.c-tag{font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
-  margin-bottom:1.1rem;display:flex;align-items:center;gap:10px}
-.c-tag::before{content:'';width:20px;height:1px;display:block}
-.t-pm{color:var(--pm)}.t-pm::before{background:var(--pm)}
-.t-ath{color:var(--ath)}.t-ath::before{background:var(--ath)}
-.t-stk{color:var(--stk)}.t-stk::before{background:var(--stk)}
-.c-name{font-family:var(--font-serif);font-size:24px;font-weight:300;
-  line-height:1.2;color:var(--ink);margin-bottom:.75rem}
-.c-desc{font-size:12.5px;color:var(--ink2);line-height:1.75;margin-bottom:1.4rem}
-.c-list{list-style:none;display:flex;flex-direction:column;gap:5px;margin-bottom:1.5rem;
-  padding-bottom:1.5rem;border-bottom:1px solid var(--rule)}
-.c-list li{font-size:11.5px;color:var(--ink2);font-weight:300;display:flex;align-items:center;gap:9px}
-.c-list li::before{content:'';width:14px;height:1px;background:var(--ink4);flex-shrink:0;display:block}
-.c-free{font-family:var(--font-serif);font-size:26px;font-weight:300;color:var(--ath);margin-bottom:1.2rem}
-.c-dl{display:flex;align-items:center;justify-content:space-between;
-  padding:11px 15px;width:100%;background:var(--bg);border:1px solid var(--rulem);
-  font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--ink);text-decoration:none;border-radius:2px;transition:background .2s,border-color .2s}
-.c-dl:hover{border-color:var(--ink);background:var(--sur2)}
-.hwrap{padding:3.5rem 2.5rem;border-top:1px solid var(--rule);background:var(--bg);transition:background .35s}
-.hgrid{display:grid;grid-template-columns:repeat(4,1fr);
-  border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
-.hstep{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:2rem}
-.h-n{font-family:var(--font-serif);font-size:44px;font-weight:300;color:var(--ink4);line-height:1;margin-bottom:1rem}
-.h-t{font-family:var(--font-serif);font-size:18px;font-weight:400;color:var(--ink);margin-bottom:.6rem}
-.h-d{font-size:12.5px;color:var(--ink2);line-height:1.75}
-footer{border-top:1px solid var(--rule);padding:2rem 2.5rem;
-  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
-  background:var(--sur);transition:background .35s}
-.f-logo{font-family:var(--font-serif);font-size:16px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
-.f-links{display:flex;gap:1.8rem;flex-wrap:wrap}
-.f-links a{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink4);text-decoration:none;transition:color .2s}
-.f-links a:hover{color:var(--ink)}
-.f-copy{font-size:10px;color:var(--ink4)}
-
-/* ── AI PROMPTS SECTION ── */
-.ai-wrap{padding:3.5rem 2.5rem;background:var(--bg);border-top:1px solid var(--rule);transition:background .35s}
-.ai-intro{font-size:13px;color:var(--ink2);line-height:1.8;max-width:700px;margin-bottom:2.5rem}
-.ai-stream-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:2.5rem}
-.ast{padding:8px 18px;border-radius:2px;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
-  background:none;border:1px solid var(--rulem);color:var(--ink4);cursor:pointer;transition:all .2s}
-.ast:hover{color:var(--ink2);border-color:var(--ink3)}
+/* AI sub-tabs */
+.ai-sub{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:2rem}
+.ast{padding:7px 16px;border-radius:2px;font-size:10px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;background:none;border:1px solid var(--rulem);color:var(--ink4);
+  cursor:pointer;transition:all .2s}
 .ast.on{color:var(--ink);border-color:var(--ink);background:var(--sur2)}
-.ai-panel{display:none}
-.ai-panel.on{display:block}
 .llm-tabs{display:flex;margin-bottom:1.5rem;border-bottom:1px solid var(--rule)}
-.lt{padding:12px 0;margin-right:2rem;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--ink4);background:none;border:none;cursor:pointer;position:relative;transition:color .2s}
-.lt::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:2px;background:var(--ink);transform:scaleX(0);transition:transform .25s}
-.lt:hover{color:var(--ink2)}
+.lt{padding:11px 0;margin-right:2rem;font-size:11px;font-weight:500;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink4);background:none;border:none;cursor:pointer;
+  position:relative;transition:color .2s}
+.lt::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:2px;
+  background:var(--ink);transform:scaleX(0);transition:transform .25s}
 .lt.on{color:var(--ink)}
 .lt.on::after{transform:scaleX(1)}
-.llm-panel{display:none}
-.llm-panel.on{display:block}
-.llm-badge{display:inline-flex;align-items:center;gap:8px;margin-bottom:1.5rem;
-  font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
-.llm-badge span{width:8px;height:8px;border-radius:50%;display:block}
-.badge-claude span{background:#d97706}
-.badge-gpt span{background:#10a37f}
-.prompt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.prompt-card{background:var(--sur);border:1px solid var(--rule);padding:1.5rem;border-radius:2px;
-  display:flex;flex-direction:column;gap:10px;transition:background .2s}
-.prompt-card:hover{background:var(--sur2)}
-.prompt-n{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)}
-.prompt-title{font-family:var(--font-serif);font-size:16px;font-weight:400;color:var(--ink);line-height:1.3}
-.prompt-use{font-size:11.5px;color:var(--ink3);font-style:italic;line-height:1.5}
-.prompt-text{font-size:12px;color:var(--ink2);line-height:1.75;background:var(--sur2);
-  padding:12px 14px;border-left:2px solid var(--rulem);border-radius:1px;font-family:var(--font-sans)}
-.copy-btn{display:flex;align-items:center;justify-content:space-between;
-  padding:9px 14px;background:none;border:1px solid var(--rulem);
+.ai-intro{font-size:13px;color:var(--ink2);line-height:1.8;max-width:680px;margin-bottom:1.5rem}
+.ai-links{display:flex;gap:10px;margin-bottom:2rem;flex-wrap:wrap}
+.ai-link{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;
   font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--ink4);cursor:pointer;border-radius:2px;transition:all .2s;margin-top:auto}
-.copy-btn:hover{border-color:var(--ink);color:var(--ink)}
-.copy-btn.copied{border-color:var(--ath);color:var(--ath)}
-.open-ai-btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;
-  font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--ink);border:1px solid var(--rulem);text-decoration:none;border-radius:2px;transition:all .2s}
-.open-ai-btn:hover{border-color:var(--ink);background:var(--sur2)}
-.ai-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:2rem;align-items:center}
-.ai-actions-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)}
-@media(max-width:760px){.prompt-grid{grid-template-columns:1fr}}
-
-@media(max-width:960px){.pgrid,.cgrid{grid-template-columns:repeat(2,1fr)}.hgrid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:580px){
-  nav,.hero-in,.tabs,.gwrap,.cwrap,.hwrap,footer{padding-left:1.25rem;padding-right:1.25rem}
-  .pgrid,.cgrid,.hgrid{grid-template-columns:1fr}
+  color:var(--ink);border:1px solid var(--rulem);text-decoration:none;border-radius:2px;
+  transition:all .2s}
+.ai-link:hover{border-color:var(--ink);background:var(--sur2)}
+.dot-c{width:8px;height:8px;border-radius:50%;background:#d97706;display:inline-block}
+.dot-g{width:8px;height:8px;border-radius:50%;background:#10a37f;display:inline-block}
+footer{border-top:1px solid var(--rule);padding:2rem 2.5rem;display:flex;
+  align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+  background:var(--sur);transition:background .3s}
+.f-logo{font-family:var(--serif);font-size:16px;font-weight:400;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink)}
+.f-links{display:flex;gap:1.8rem}
+.f-links a{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink4);
+  text-decoration:none;transition:color .2s}
+.f-links a:hover{color:var(--ink)}
+.f-copy{font-size:10px;color:var(--ink4)}
+@media(max-width:900px){.pgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){
+  nav,.hero-in,.tabs,.gwrap,footer,.privacy,.ai-sub,.ai-links,.llm-tabs,.ai-intro{padding-left:1.25rem;padding-right:1.25rem}
+  .pgrid{grid-template-columns:1fr}
   .hero-bot{flex-direction:column;align-items:flex-start}
   footer{flex-direction:column}
 }
@@ -196,16 +146,20 @@ footer{border-top:1px solid var(--rule);padding:2rem 2.5rem;
   <a class="logo" href="#">Vibemotion Labs</a>
   <div class="nav-r">
     <span class="free-pill">100% Free</span>
-    <button class="tog" onclick="toggleTheme()" aria-label="Toggle theme"><div class="tok"></div></button>
+    <button class="tog" onclick="document.body.classList.toggle('light')" aria-label="Toggle theme">
+      <div class="tok"></div>
+    </button>
   </div>
 </nav>
 
 <section class="hero">
   <div class="hero-in">
-    <p class="hero-tag">Free Open-Source Resource Library · Est. 2025</p>
+    <p class="hero-tag">Free Open-Source Resource Library &middot; Est. 2025</p>
     <h1 class="hero-h1">Precision tools<br>for <em>focused</em><br>professionals</h1>
     <div class="hero-bot">
-      <p class="hero-desc">Free open-source templates, guides, and frameworks for product managers, athletes recovering from injury, and serious investors. No sign-up. No payment. Click download and use it today.</p>
+      <p class="hero-desc">Free, open-source templates, guides, and frameworks for product managers,
+        athletes recovering from injury, and serious investors.
+        No sign-up. No payment. No tracking. Click and use it today.</p>
       <div class="stats">
         <div><div class="stat-n">29</div><div class="stat-l">Resources</div></div>
         <div><div class="stat-n">3</div><div class="stat-l">Disciplines</div></div>
@@ -215,476 +169,1035 @@ footer{border-top:1px solid var(--rule);padding:2rem 2.5rem;
   </div>
 </section>
 
-
-<!-- PRIVACY BAR -->
-<div style="display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap;padding:10px 2.5rem;background:var(--sur2);border-bottom:1px solid var(--rule);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);">
-  <span style="display:flex;align-items:center;gap:5px;"><span style="width:6px;height:6px;border-radius:50%;background:var(--ath);display:inline-block;"></span>No cookies</span>
-  <span style="display:flex;align-items:center;gap:5px;"><span style="width:6px;height:6px;border-radius:50%;background:var(--ath);display:inline-block;"></span>No tracking</span>
-  <span style="display:flex;align-items:center;gap:5px;"><span style="width:6px;height:6px;border-radius:50%;background:var(--ath);display:inline-block;"></span>No data collected</span>
-  <span style="display:flex;align-items:center;gap:5px;"><span style="width:6px;height:6px;border-radius:50%;background:var(--ath);display:inline-block;"></span>No external requests</span>
-  <span style="display:flex;align-items:center;gap:5px;"><span style="width:6px;height:6px;border-radius:50%;background:var(--ath);display:inline-block;"></span>MIT licensed</span>
+<div class="privacy">
+  <span>No cookies</span><span>No tracking</span><span>No data collected</span>
+  <span>No external requests</span><span>No sign-up required</span><span>MIT licensed</span>
 </div>
 
-<div class="ticker">
-  <div class="ticker-t">
-    <span>Product Management</span><span class="dot">·</span><span>Athlete Recovery</span><span class="dot">·</span><span>Injury Programmes</span><span class="dot">·</span><span>Stock Market</span><span class="dot">·</span><span>Amazon Frameworks</span><span class="dot">·</span><span>Apple Frameworks</span><span class="dot">·</span><span>Free Download</span><span class="dot">·</span><span>Open Source</span><span class="dot">·</span><span>Product Management</span><span class="dot">·</span><span>Athlete Recovery</span><span class="dot">·</span><span>Injury Programmes</span><span class="dot">·</span><span>Stock Market</span><span class="dot">·</span><span>Amazon Frameworks</span><span class="dot">·</span><span>Apple Frameworks</span><span class="dot">·</span><span>Free Download</span><span class="dot">·</span><span>Open Source</span><span class="dot">·</span>
-  </div>
-</div>
+<div class="ticker"><div class="ticker-t">
+  <span>Product Management</span><span class="dot">&middot;</span>
+  <span>Athlete Recovery</span><span class="dot">&middot;</span>
+  <span>Injury Programmes</span><span class="dot">&middot;</span>
+  <span>Stock Market</span><span class="dot">&middot;</span>
+  <span>AI Prompts</span><span class="dot">&middot;</span>
+  <span>Free Download</span><span class="dot">&middot;</span>
+  <span>Open Source</span><span class="dot">&middot;</span>
+  <span>Zero Tracking</span><span class="dot">&middot;</span>
+  <span>Product Management</span><span class="dot">&middot;</span>
+  <span>Athlete Recovery</span><span class="dot">&middot;</span>
+  <span>Injury Programmes</span><span class="dot">&middot;</span>
+  <span>Stock Market</span><span class="dot">&middot;</span>
+  <span>AI Prompts</span><span class="dot">&middot;</span>
+  <span>Free Download</span><span class="dot">&middot;</span>
+  <span>Open Source</span><span class="dot">&middot;</span>
+  <span>Zero Tracking</span><span class="dot">&middot;</span>
+</div></div>
 
-<div class="tabs" id="resources">
-  <button class="tab on" onclick="show('pm',this)">Product Management</button>
-  <button class="tab"    onclick="show('ath',this)">Athlete Recovery</button>
-  <button class="tab"    onclick="show('inj',this)">Injury Programmes</button>
-  <button class="tab"    onclick="show('stk',this)">Stock Market</button>
-  <button class="tab"    onclick="show('ai',this)">AI Prompts</button>
+<div class="tabs" id="top">
+  <button class="tab on"  onclick="switchTab('pm',this)">Product Management</button>
+  <button class="tab"     onclick="switchTab('ath',this)">Athlete Recovery</button>
+  <button class="tab"     onclick="switchTab('inj',this)">Injury Programmes</button>
+  <button class="tab"     onclick="switchTab('stk',this)">Stock Market</button>
+  <button class="tab"     onclick="switchTab('ai',this)">AI Prompts</button>
 </div>
 
 <div class="gwrap">
   <div class="ghead">
-    <span class="glbl">Free Guides</span>
+    <span class="glbl">Free Resources</span>
     <div class="gline"></div>
-    <span class="glbl" id="glabel">Product Management — 8 Guides</span>
+    <span class="glbl" id="glabel">Product Management &mdash; 8 Guides</span>
   </div>
-  <div class="panel on" id="panel-pm"></div>
-  <div class="panel"    id="panel-ath"></div>
-  <div class="panel"    id="panel-inj"></div>
-  <div class="panel"    id="panel-stk"></div>
-  <div class="panel"    id="panel-ai"></div>
+
+  <div class="panel on" id="panel-pm">
+    <div class="pgrid">
+<div class="pcard">
+  <div class="p-num">01</div>
+  <div class="p-name">Amazon Working Backwards Toolkit</div>
+  <div class="p-desc">PRFAQ, 6-Pager Narrative, Tenets framework, and Working Backwards checklist — fully templated with guidance for every section.</div>
+  <div class="p-div"></div>
+  <div class="p-row"><span class="p-key">Problem</span><span class="p-val">Teams build before they understand the customer</span></div>
+  <div class="p-row"><span class="p-key">Use when</span><span class="p-val">Before any planning session or new initiative</span></div>
+  <div class="p-hook">"Start with the customer. Work backwards. Ship only what is truly needed."</div>
+  <a class="dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/pm/PM_Amazon_Working_Backwards.pdf" target="_blank" rel="noopener"><span>Open Free PDF &#8599;</span></a>
 </div>
-
-<div class="cwrap" id="collections">
-  <div class="ghead">
-    <span class="glbl">Full Collections</span>
-    <div class="gline"></div>
-    <span class="glbl">All Free · PDF Download</span>
-  </div>
-  <div class="cgrid">
-    <div class="ccard">
-      <div class="c-tag t-pm">Product Management</div>
-      <div class="c-name">The Complete<br>PM Toolkit</div>
-      <div class="c-desc">Amazon, Apple, role-based guides, PRD templates, interview scripts, and research tools.</div>
-      <ul class="c-list">
-        <li>Amazon Working Backwards Toolkit</li>
-        <li>Apple: Insanely Simple Toolkit</li>
-        <li>Role-Based Toolkit (Analyst to AI PM)</li>
-        <li>PRD Template Pack</li>
-        <li>Prioritization Cheat Sheet + Interview Script</li>
-      </ul>
-      <div class="c-free">Free</div>
-      <a class="c-dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/pm/PM_Amazon_Working_Backwards.pdf" target="_blank" rel="noopener"><span>Open PM Guide</span><span>↗</span></a>
-    </div>
-    <div class="ccard">
-      <div class="c-tag t-ath">Athlete Recovery</div>
-      <div class="c-name">The Complete<br>Recovery System</div>
-      <div class="c-desc">All five phases from pain control on day one through return to full athletic performance.</div>
-      <ul class="c-list">
-        <li>Phase 1 — Pain Control &amp; Protection</li>
-        <li>Phase 2 — Mobility &amp; Early Strength</li>
-        <li>Phase 3 — Strength &amp; Stability</li>
-        <li>Phase 4 — Power &amp; Plyometrics</li>
-        <li>Phase 5 — Return to Athletic Performance</li>
-      </ul>
-      <div class="c-free">Free</div>
-      <a class="c-dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_PHASE1_Pain_Control.pdf" target="_blank" rel="noopener"><span>Open Recovery Guide</span><span>↗</span></a>
-    </div>
-    <div class="ccard">
-      <div class="c-tag t-stk">Stock Market</div>
-      <div class="c-name">The Complete<br>Investor Toolkit</div>
-      <div class="c-desc">Stock screening, chart patterns, trade journaling, IPO research, and financial statements.</div>
-      <ul class="c-list">
-        <li>Stock Screening Checklist</li>
-        <li>Technical Analysis Pattern Guide</li>
-        <li>Trading Journal Template</li>
-        <li>IPO Research Checklist</li>
-        <li>Financial Statement Analysis Guide</li>
-      </ul>
-      <div class="c-free">Free</div>
-      <a class="c-dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/stock/STK_01_Stock_Screening_Checklist.pdf" target="_blank" rel="noopener"><span>Open Investor Guide</span><span>↗</span></a>
-    </div>
-  </div>
+<div class="pcard">
+  <div class="p-num">02</div>
+  <div class="p-name">Apple: Insanely Simple Toolkit</div>
+  <div class="p-desc">10-to-3-to-1 ideation funnel, Jobs Narrative, Simplicity Audit, and Apple review simulation — for PMs who want products people love.</div>
+  <div class="p-div"></div>
+  <div class="p-row"><span class="p-key">Problem</span><span class="p-val">Products become bloated with features nobody uses</span></div>
+  <div class="p-row"><span class="p-key">Use when</span><span class="p-val">When your roadmap feels overcrowded</span></div>
+  <div class="p-hook">"The best product does less — but does it perfectly."</div>
+  <a class="dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/pm/PM_Apple_Frameworks.pdf" target="_blank" rel="noopener"><span>Open Free PDF &#8599;</span></a>
 </div>
-
-<div class="hwrap" id="how">
-  <div class="ghead">
-    <span class="glbl">How It Works</span>
-    <div class="gline"></div>
-    <span class="glbl">Four Steps</span>
-  </div>
-  <div class="hgrid">
-    <div class="hstep"><div class="h-n">01</div><div class="h-t">Browse</div><div class="h-d">Pick your discipline. Each guide solves one specific problem clearly and immediately.</div></div>
-    <div class="hstep"><div class="h-n">02</div><div class="h-t">Click to open</div><div class="h-d">Click any button to open the PDF in your browser. Then hit the download icon to save it to your device.</div></div>
-    <div class="hstep"><div class="h-n">03</div><div class="h-t">Use it today</div><div class="h-d">Every resource is built for immediate use. Fill in the template, follow the protocol, apply the framework right now.</div></div>
-    <div class="hstep"><div class="h-n">04</div><div class="h-t">Share freely</div><div class="h-d">Everything here is MIT licensed. Share with your team, your community, or anyone who needs it.</div></div>
-  </div>
+<div class="pcard">
+  <div class="p-num">03</div>
+  <div class="p-name">Role-Based PM Toolkit</div>
+  <div class="p-desc">Five complete role profiles — Analyst through AI PM — with responsibilities, core artifacts, success metrics, and level-specific frameworks.</div>
+  <div class="p-div"></div>
+  <div class="p-row"><span class="p-key">Problem</span><span class="p-val">Career progression feels opaque without a clear map</span></div>
+  <div class="p-row"><span class="p-key">Use when</span><span class="p-val">Before a performance review or promotion conversation</span></div>
+  <div class="p-hook">"From Product Analyst to AI PM — a complete career framework."</div>
+  <a class="dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/pm/PM_Role_Based_Toolkit.pdf" target="_blank" rel="noopener"><span>Open Free PDF &#8599;</span></a>
 </div>
-
-
-<!-- AI PROMPTS SECTION -->
-<div class="ai-wrap" id="ai-section">
-  <div class="ghead">
-    <span class="glbl">AI Prompts</span>
-    <div class="gline"></div>
-    <span class="glbl">10 Prompts × 2 AI Tools × 3 Disciplines = 60 Total</span>
-  </div>
-  <p class="ai-intro">
-    Use these prompts with your free Claude.ai or ChatGPT account alongside the Vibemotion Labs guides.
-    Click <strong>Copy Prompt</strong> — paste directly into Claude or ChatGPT — get expert-level answers instantly.
-    No API key. No account needed here. Just copy and go.
-  </p>
-  <div class="ai-actions">
-    <span class="ai-actions-label">Open free AI tools:</span>
-    <a class="open-ai-btn" href="https://claude.ai" target="_blank" rel="noopener">
-      <span style="width:8px;height:8px;border-radius:50%;background:#d97706;display:block"></span>
-      Open Claude.ai ↗
-    </a>
-    <a class="open-ai-btn" href="https://chatgpt.com" target="_blank" rel="noopener">
-      <span style="width:8px;height:8px;border-radius:50%;background:#10a37f;display:block"></span>
-      Open ChatGPT ↗
-    </a>
-  </div>
-
-  <!-- STREAM SELECTOR -->
-  <div class="ai-stream-tabs">
-    <button class="ast on" onclick="showAiStream('pm',this)">Product Management</button>
-    <button class="ast"    onclick="showAiStream('ath',this)">Athlete Recovery</button>
-    <button class="ast"    onclick="showAiStream('stk',this)">Stock Market</button>
-  </div>
-
-  <!-- PM PROMPTS -->
-  <div class="ai-panel on" id="ai-pm">
-    <div class="llm-tabs">
-      <button class="lt on" onclick="showLlm('pm','claude',this)">Claude</button>
-      <button class="lt"    onclick="showLlm('pm','gpt',this)">ChatGPT</button>
-    </div>
-    <div class="llm-panel on" id="llm-pm-claude">
-      <div class="llm-badge badge-claude"><span></span>Claude — Product Management Prompts</div>
-      <div class="prompt-grid" id="pg-pm-claude"></div>
-    </div>
-    <div class="llm-panel" id="llm-pm-gpt">
-      <div class="llm-badge badge-gpt"><span></span>ChatGPT — Product Management Prompts</div>
-      <div class="prompt-grid" id="pg-pm-gpt"></div>
-    </div>
-  </div>
-
-  <!-- ATHLETE PROMPTS -->
-  <div class="ai-panel" id="ai-ath">
-    <div class="llm-tabs">
-      <button class="lt on" onclick="showLlm('ath','claude',this)">Claude</button>
-      <button class="lt"    onclick="showLlm('ath','gpt',this)">ChatGPT</button>
-    </div>
-    <div class="llm-panel on" id="llm-ath-claude">
-      <div class="llm-badge badge-claude"><span></span>Claude — Athlete Recovery Prompts</div>
-      <div class="prompt-grid" id="pg-ath-claude"></div>
-    </div>
-    <div class="llm-panel" id="llm-ath-gpt">
-      <div class="llm-badge badge-gpt"><span></span>ChatGPT — Athlete Recovery Prompts</div>
-      <div class="prompt-grid" id="pg-ath-gpt"></div>
-    </div>
-  </div>
-
-  <!-- STOCK PROMPTS -->
-  <div class="ai-panel" id="ai-stk">
-    <div class="llm-tabs">
-      <button class="lt on" onclick="showLlm('stk','claude',this)">Claude</button>
-      <button class="lt"    onclick="showLlm('stk','gpt',this)">ChatGPT</button>
-    </div>
-    <div class="llm-panel on" id="llm-stk-claude">
-      <div class="llm-badge badge-claude"><span></span>Claude — Stock Market Prompts</div>
-      <div class="prompt-grid" id="pg-stk-claude"></div>
-    </div>
-    <div class="llm-panel" id="llm-stk-gpt">
-      <div class="llm-badge badge-gpt"><span></span>ChatGPT — Stock Market Prompts</div>
-      <div class="prompt-grid" id="pg-stk-gpt"></div>
-    </div>
-  </div>
+<div class="pcard">
+  <div class="p-num">04</div>
+  <div class="p-name">PRD One-Pager Template Pack</div>
+  <div class="p-desc">Three production-ready formats — the one-pager, the full PRD, and the spike doc — for writing clear product requirements fast.</div>
+  <div class="p-div"></div>
+  <div class="p-row"><span class="p-key">Problem</span><span class="p-val">Writing PRDs from scratch wastes hours every sprint</span></div>
+  <div class="p-row"><span class="p-key">Use when</span><span class="p-val">Before sprint planning or any feature kick-off</span></div>
+  <div class="p-hook">"Stop staring at a blank document — ship your PRD in thirty minutes."</div>
+  <a class="dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/pm/PM_01_PRD_Template_Pack.pdf" target="_blank" rel="noopener"><span>Open Free PDF &#8599;</span></a>
 </div>
+<div class="pcard">
+  <div class="p-num">05</div>
+  <div class="p-name">Prioritization Framework Cheat Sheet</div>
+  <div class="p-desc">RICE, ICE, MoSCoW, Kano, and Opportunity Scoring — all five frameworks with formulas, worked examples, and benchmarks.</div>
+  <div class="p-div"></div>
+  <div class="p-row"><span class="p-key">Problem</span><span class="p-val">Stakeholders argue over every roadmap item</span></div>
+  <div class="p-row"><span class="p-key">Use when</span><span class="p-val">Before quarterly planning or roadmap reviews</span></div>
+  <div class="p-hook">"Five frameworks that end every roadmap argument — permanently."</div>
+  <a class="dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/pm/PM_02_Prioritization_Framework_Cheat_Sheet.pdf" target="_blank" rel="noopener"><span>Open Free PDF &#8599;</span></a>
+</div>
+<div class="pcard">
+  <div class="p-num">06</div>
+  <div class="p-name">PM Interview Answer Script</div>
+  <div class="p-desc">Word-for-word answer frameworks for the twenty hardest PM interview questions across product sense, analytical, execution, and strategy.</div>
+  <div class="p-div"></div>
+  <div class="p-row"><span class="p-key">Problem</span><span class="p-val">Failing interviews despite strong real-world experience</span></div>
+  <div class="p-row"><span class="p-key">Use when</span><span class="p-val">One week before any PM interview</span></div>
+  <div class="p-hook">"Answers to the twenty hardest PM interview questions."</div>
+  <a class="dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/pm/PM_03_Interview_Answer_Script.pdf" target="_blank" rel="noopener"><span>Open Free PDF &#8599;</span></a>
+</div>
+<div class="pcard">
+  <div class="p-num">07</div>
+  <div class="p-name">User Research Script + Synthesis Guide</div>
+  <div class="p-desc">Consent language, a forty-five-minute interview script by phase, and the full affinity mapping synthesis method.</div>
+  <div class="p-div"></div>
+  <div class="p-row"><span class="p-key">Problem</span><span class="p-val">Discovery interviews produce unusable unstructured output</span></div>
+  <div class="p-row"><span class="p-key">Use when</span><span class="p-val">Before scheduling any user research sessions</span></div>
+  <div class="p-hook">"Ask better questions. Spot patterns faster. Build what users want."</div>
+  <a class="dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/pm/PM_04_User_Research_Interview_Script.pdf" target="_blank" rel="noopener"><span>Open Free PDF &#8599;</span></a>
+</div>
+<div class="pcard">
+  <div class="p-num">08</div>
+  <div class="p-name">90-Day PM Onboarding Checklist</div>
+  <div class="p-desc">Three phases — Listen and Learn, Build Credibility, Lead and Drive — with structured actions and a ninety-day success benchmark.</div>
+  <div class="p-div"></div>
+  <div class="p-row"><span class="p-key">Problem</span><span class="p-val">New PMs flounder without a structured first-90-days plan</span></div>
+  <div class="p-row"><span class="p-key">Use when</span><span class="p-val">Day one at any new PM role</span></div>
+  <div class="p-hook">"Make your mark in ninety days — the playbook senior PMs wish they had."</div>
+  <a class="dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/pm/PM_05_90Day_Onboarding_Checklist.pdf" target="_blank" rel="noopener"><span>Open Free PDF &#8599;</span></a>
+</div>
+</div>
+  </div>
+
+  <div class="panel" id="panel-ath">
+    <div class="pgrid">
+<div class="pcard">
+  <div class="p-num">01</div>
+  <div class="p-name">Phase 1 — Pain Control and Protection</div>
+  <div class="p-desc">Days 0–14. Ice, compression, elevation protocol plus 6 guided exercises with full how-to steps, coaching cues, sets, reps, and progression criteria.</div>
+  <div class="p-div"></div>
+  <div class="p-row"><span class="p-key">Problem</span><span class="p-val">No structure for the critical first two weeks post-injury</span></div>
+  <div class="p-row"><span class="p-key">Use when</span><span class="p-val">Immediately after any lower limb injury</span></div>
+  <div class="p-hook">"Control the pain. Protect the tissue. Start healing today."</div>
+  <a class="dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_PHASE1_Pain_Control.pdf" target="_blank" rel="noopener"><span>Open Free PDF &#8599;</span></a>
+</div>
+<div class="pcard">
+  <div class="p-num">02</div>
+  <div class="p-name">Phase 2 — Mobility and Early Strength</div>
+  <div class="p-desc">Weeks 2–5. Seven guided exercises — calf raises, band dorsiflexion, hamstring stretches, hip abduction, wall squats, clam shells, ankle alphabet.</div>
+  <div class="p-div"></div>
+  <div class="p-row"><span class="p-key">Problem</span><span class="p-val">Stiffness and weakness set in without structured early loading</span></div>
+  <div class="p-row"><span class="p-key">Use when</span><span class="p-val">Once resting pain is below 2/10 consistently</span></div>
+  <div class="p-hook">"Move better. Get stronger. Give your body a reason to heal faster."</div>
+  <a class="dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_PHASE2_Mobility_Strength.pdf" target="_blank" rel="noopener"><span>Open Free PDF &#8599;</span></a>
+</div>
+<div class="pcard">
+  <div class="p-num">03</div>
+  <div class="p-name">Phase 3 — Strength and Stability</div>
+  <div class="p-desc">Weeks 4–8. Goblet squat, Romanian deadlift, step-ups, single-leg balance, Nordic hamstring curl, and lateral band walks with full how-to.</div>
+  <div class="p-div"></div>
+  <div class="p-row"><span class="p-key">Problem</span><span class="p-val">Returning to sport weak creates a high re-injury risk</span></div>
+  <div class="p-row"><span class="p-key">Use when</span><span class="p-val">When Phase 2 exercises are pain-free for 5 sessions</span></div>
+  <div class="p-hook">"Build the strength that makes re-injury far less likely."</div>
+  <a class="dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_PHASE3_Strength_Stability.pdf" target="_blank" rel="noopener"><span>Open Free PDF &#8599;</span></a>
+</div>
+<div class="pcard">
+  <div class="p-num">04</div>
+  <div class="p-name">Phase 4 — Power and Plyometrics</div>
+  <div class="p-desc">Weeks 7–12. Box jumps, single-leg hop and stick, depth drops, lateral bounds, progressive running protocol, and triple hop LSI testing.</div>
+  <div class="p-div"></div>
+  <div class="p-row"><span class="p-key">Problem</span><span class="p-val">Athletes return to sport without rebuilding explosive power</span></div>
+  <div class="p-row"><span class="p-key">Use when</span><span class="p-val">When Phase 3 strength benchmarks are met</span></div>
+  <div class="p-hook">"Rebuild the power that got you onto the field in the first place."</div>
+  <a class="dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_PHASE4_Power_Plyometrics.pdf" target="_blank" rel="noopener"><span>Open Free PDF &#8599;</span></a>
+</div>
+<div class="pcard">
+  <div class="p-num">05</div>
+  <div class="p-name">Phase 5 — Return to Athletic Performance</div>
+  <div class="p-desc">Weeks 10–16+. Barbell squat, trap bar deadlift, agility drills, sprint mechanics, and a permanent prehab programme plus the full return-to-sport clearance checklist.</div>
+  <div class="p-div"></div>
+  <div class="p-row"><span class="p-key">Problem</span><span class="p-val">Athletes return to competition without hitting pre-injury benchmarks</span></div>
+  <div class="p-row"><span class="p-key">Use when</span><span class="p-val">When LSI reaches 90% on hop testing</span></div>
+  <div class="p-hook">"Not just back to sport. Back to your best — and beyond."</div>
+  <a class="dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_PHASE5_Return_To_Performance.pdf" target="_blank" rel="noopener"><span>Open Free PDF &#8599;</span></a>
+</div>
+<div class="pcard">
+  <div class="p-num">06</div>
+  <div class="p-name">Return-to-Sport Clearance Checklist</div>
+  <div class="p-desc">A five-phase milestone tracker from pain control to full competition clearance with date fields, clinical notes, and phase-by-phase benchmarks.</div>
+  <div class="p-div"></div>
+  <div class="p-row"><span class="p-key">Problem</span><span class="p-val">Athletes re-injure by returning to sport too soon</span></div>
+  <div class="p-row"><span class="p-key">Use when</span><span class="p-val">Before any return to training or competition</span></div>
+  <div class="p-hook">"The clearance checklist your physiotherapist will not always give you."</div>
+  <a class="dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_01_Return_To_Sport_Checklist.pdf" target="_blank" rel="noopener"><span>Open Free PDF &#8599;</span></a>
+</div>
+<div class="pcard">
+  <div class="p-num">07</div>
+  <div class="p-name">Injury Recovery Nutrition Guide</div>
+  <div class="p-desc">Phase-specific macros, six key healing nutrients with clinical dosages, and a complete seven-day sample meal plan for the acute recovery phase.</div>
+  <div class="p-div"></div>
+  <div class="p-row"><span class="p-key">Problem</span><span class="p-val">Poor nutrition measurably slows tissue repair</span></div>
+  <div class="p-row"><span class="p-key">Use when</span><span class="p-val">From day one of any injury recovery</span></div>
+  <div class="p-hook">"Eat to heal faster — the exact macros sports dietitians prescribe."</div>
+  <a class="dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_02_Injury_Recovery_Nutrition_Guide.pdf" target="_blank" rel="noopener"><span>Open Free PDF &#8599;</span></a>
+</div>
+<div class="pcard">
+  <div class="p-num">08</div>
+  <div class="p-name">Mental Performance Journal</div>
+  <div class="p-desc">Daily check-ins and weekly reviews with prompts for athletic identity, fear of re-injury, and performance confidence for the full recovery arc.</div>
+  <div class="p-div"></div>
+  <div class="p-row"><span class="p-key">Problem</span><span class="p-val">Fear and identity loss are the hidden barriers to full recovery</span></div>
+  <div class="p-row"><span class="p-key">Use when</span><span class="p-val">Every day throughout the recovery programme</span></div>
+  <div class="p-hook">"Stay mentally in the game while your body heals."</div>
+  <a class="dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_03_Mental_Performance_Journal.pdf" target="_blank" rel="noopener"><span>Open Free PDF &#8599;</span></a>
+</div>
+</div>
+  </div>
+
+  <div class="panel" id="panel-inj">
+    <div class="pgrid">
+<div class="pcard">
+  <div class="p-num">01</div>
+  <div class="p-name">ACL Reconstruction Recovery</div>
+  <div class="p-desc">Complete 9–12 month programme from surgery to elite performance. All 5 phases with every exercise, set, rep, load, how-to instruction, and return-to-sport clearance checklist.</div>
+  <div class="p-div"></div>
+  <div class="p-row"><span class="p-key">Problem</span><span class="p-val">ACL re-injury rate without structured rehab is 20–25%</span></div>
+  <div class="p-row"><span class="p-key">Use when</span><span class="p-val">From day one post-surgery through return to full competition</span></div>
+  <div class="p-hook">"9 months done right. A career protected."</div>
+  <a class="dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_ACL_Recovery_Programme.pdf" target="_blank" rel="noopener"><span>Open Free PDF &#8599;</span></a>
+</div>
+<div class="pcard">
+  <div class="p-num">02</div>
+  <div class="p-name">Knee Injury Recovery</div>
+  <div class="p-desc">Full programme for patellofemoral pain and patellar tendinopathy. VMO isometrics, Spanish squat, eccentric step-downs, heavy slow resistance, and plyometric reintroduction.</div>
+  <div class="p-div"></div>
+  <div class="p-row"><span class="p-key">Problem</span><span class="p-val">Knee pain is the most undertreated barrier to athletic performance</span></div>
+  <div class="p-row"><span class="p-key">Use when</span><span class="p-val">From first session of knee pain through elite sport return</span></div>
+  <div class="p-hook">"Pain-free knees are not luck — they are built."</div>
+  <a class="dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_Knee_Recovery_Programme.pdf" target="_blank" rel="noopener"><span>Open Free PDF &#8599;</span></a>
+</div>
+<div class="pcard">
+  <div class="p-num">03</div>
+  <div class="p-name">Low Back Injury Recovery</div>
+  <div class="p-desc">Complete programme for athletic low back pain. McKenzie extension, deep core reactivation, dead bug, bird dog, hip hinge restoration, and trap bar deadlift progression.</div>
+  <div class="p-div"></div>
+  <div class="p-row"><span class="p-key">Problem</span><span class="p-val">Low back pain is the leading cause of early career end in athletes</span></div>
+  <div class="p-row"><span class="p-key">Use when</span><span class="p-val">From acute episode through full return to loaded sport</span></div>
+  <div class="p-hook">"A strong back is the foundation of every athletic movement."</div>
+  <a class="dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_Low_Back_Recovery_Programme.pdf" target="_blank" rel="noopener"><span>Open Free PDF &#8599;</span></a>
+</div>
+<div class="pcard">
+  <div class="p-num">04</div>
+  <div class="p-name">Shoulder Injury Recovery</div>
+  <div class="p-desc">Full programme for rotator cuff injuries, impingement, and SLAP tears. Pendulum mobility, infraspinatus strengthening, scapular control, face pulls, and interval throwing programme.</div>
+  <div class="p-div"></div>
+  <div class="p-row"><span class="p-key">Problem</span><span class="p-val">Shoulder injuries end more athletic careers than almost any other injury</span></div>
+  <div class="p-row"><span class="p-key">Use when</span><span class="p-val">From acute post-injury through return to overhead and throwing sport</span></div>
+  <div class="p-hook">"Healthy shoulders throw harder, lift more, and last longer."</div>
+  <a class="dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_Shoulder_Recovery_Programme.pdf" target="_blank" rel="noopener"><span>Open Free PDF &#8599;</span></a>
+</div>
+<div class="pcard">
+  <div class="p-num">05</div>
+  <div class="p-name">Hamstring Strain Recovery</div>
+  <div class="p-desc">Programme for Grade I–III hamstring strains with full Nordic Hamstring Curl protocol and progressive sprint programme. Reduces re-injury rate from 40% to under 10%.</div>
+  <div class="p-div"></div>
+  <div class="p-row"><span class="p-key">Problem</span><span class="p-val">Hamstring strains re-occur in 30–40% of athletes without eccentric training</span></div>
+  <div class="p-row"><span class="p-key">Use when</span><span class="p-val">From day of injury through full sprint speed and sport return</span></div>
+  <div class="p-hook">"The hamstring injury that never comes back."</div>
+  <a class="dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_Hamstring_Recovery_Programme.pdf" target="_blank" rel="noopener"><span>Open Free PDF &#8599;</span></a>
+</div>
+<div class="pcard">
+  <div class="p-num">06</div>
+  <div class="p-name">Ankle Sprain Recovery</div>
+  <div class="p-desc">Comprehensive programme for Grade I–III ankle sprains. PEACE and LOVE acute care, 360-degree strengthening, progressive balance training, and lateral hop protocol.</div>
+  <div class="p-div"></div>
+  <div class="p-row"><span class="p-key">Problem</span><span class="p-val">70% of ankle sprains re-occur without complete rehabilitation</span></div>
+  <div class="p-row"><span class="p-key">Use when</span><span class="p-val">From day of injury through full agility and sport return</span></div>
+  <div class="p-hook">"Rehabilitation done fully. Never roll the same ankle twice."</div>
+  <a class="dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_Ankle_Sprain_Recovery_Programme.pdf" target="_blank" rel="noopener"><span>Open Free PDF &#8599;</span></a>
+</div>
+</div>
+  </div>
+
+  <div class="panel" id="panel-stk">
+    <div class="pgrid">
+<div class="pcard">
+  <div class="p-num">01</div>
+  <div class="p-name">Stock Screening Checklist</div>
+  <div class="p-desc">A twelve-point due diligence filter covering business quality, financial health, valuation, and risk with a final decision and position-sizing template.</div>
+  <div class="p-div"></div>
+  <div class="p-row"><span class="p-key">Problem</span><span class="p-val">Most retail investors buy stocks on emotion not process</span></div>
+  <div class="p-row"><span class="p-key">Use when</span><span class="p-val">Before placing any buy order</span></div>
+  <div class="p-hook">"Never buy a stock without running it through this twelve-point filter."</div>
+  <a class="dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/stock/STK_01_Stock_Screening_Checklist.pdf" target="_blank" rel="noopener"><span>Open Free PDF &#8599;</span></a>
+</div>
+<div class="pcard">
+  <div class="p-num">02</div>
+  <div class="p-name">Technical Analysis Pattern Guide</div>
+  <div class="p-desc">Fifteen chart patterns — reversals, continuations, and candlestick formations — with plain-language descriptions, exact trade setups, and key observations.</div>
+  <div class="p-div"></div>
+  <div class="p-row"><span class="p-key">Problem</span><span class="p-val">Charts feel unreadable without a pattern recognition system</span></div>
+  <div class="p-row"><span class="p-key">Use when</span><span class="p-val">Before reviewing any watchlist or entering a trade</span></div>
+  <div class="p-hook">"Spot the fifteen patterns professional traders watch every day."</div>
+  <a class="dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/stock/STK_02_Technical_Analysis_Pattern_Guide.pdf" target="_blank" rel="noopener"><span>Open Free PDF &#8599;</span></a>
+</div>
+<div class="pcard">
+  <div class="p-num">03</div>
+  <div class="p-name">Trading Journal Template</div>
+  <div class="p-desc">Pre-trade plan and post-trade review covering thesis, risk-reward ratio, position size, emotional state, and a graded execution score for every trade.</div>
+  <div class="p-div"></div>
+  <div class="p-row"><span class="p-key">Problem</span><span class="p-val">Without journaling the same mistakes repeat indefinitely</span></div>
+  <div class="p-row"><span class="p-key">Use when</span><span class="p-val">Before and after every single trade</span></div>
+  <div class="p-hook">"The journal that converts your losses into your most valuable education."</div>
+  <a class="dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/stock/STK_03_Stock_Market_Trading_Journal.pdf" target="_blank" rel="noopener"><span>Open Free PDF &#8599;</span></a>
+</div>
+<div class="pcard">
+  <div class="p-num">04</div>
+  <div class="p-name">IPO Research Checklist</div>
+  <div class="p-desc">A ten-point framework covering business model, cash burn, insider selling, peer valuation, and management track record with a full scoring summary.</div>
+  <div class="p-div"></div>
+  <div class="p-row"><span class="p-key">Problem</span><span class="p-val">IPO hype consistently leads retail investors to overpay</span></div>
+  <div class="p-row"><span class="p-key">Use when</span><span class="p-val">Before participating in any new public offering</span></div>
+  <div class="p-hook">"Before you chase the next IPO, run it through this filter first."</div>
+  <a class="dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/stock/STK_04_IPO_Research_Checklist.pdf" target="_blank" rel="noopener"><span>Open Free PDF &#8599;</span></a>
+</div>
+<div class="pcard">
+  <div class="p-num">05</div>
+  <div class="p-name">Financial Statement Analysis Guide</div>
+  <div class="p-desc">A plain-language breakdown of the income statement, balance sheet, and cash flow statement with key ratios, formulas, and benchmarks for every line item.</div>
+  <div class="p-div"></div>
+  <div class="p-row"><span class="p-key">Problem</span><span class="p-val">Most investors cannot read the financials they invest based on</span></div>
+  <div class="p-row"><span class="p-key">Use when</span><span class="p-val">When researching any company before investing</span></div>
+  <div class="p-hook">"Read any company's financials like a Wall Street analyst."</div>
+  <a class="dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/stock/STK_05_Financial_Statement_Analysis_Guide.pdf" target="_blank" rel="noopener"><span>Open Free PDF &#8599;</span></a>
+</div>
+</div>
+  </div>
+
+  <div class="panel" id="panel-ai">
+    <p class="ai-intro">
+      Copy any prompt below and paste it straight into Claude or ChatGPT.
+      No API key needed. No account required here.
+      Just copy, paste, and get expert-level answers instantly.
+    </p>
+    <div class="ai-links">
+      <a class="ai-link" href="https://claude.ai" target="_blank" rel="noopener">
+        <span class="dot-c"></span> Open Claude.ai &#8599;
+      </a>
+      <a class="ai-link" href="https://chatgpt.com" target="_blank" rel="noopener">
+        <span class="dot-g"></span> Open ChatGPT &#8599;
+      </a>
+    </div>
+    <div class="ai-sub">
+      <button class="ast on" onclick="switchAi('pm',this)">Product Management</button>
+      <button class="ast"    onclick="switchAi('ath',this)">Athlete Recovery</button>
+      <button class="ast"    onclick="switchAi('stk',this)">Stock Market</button>
+    </div>
+
+    <!-- PM prompts -->
+    <div id="ai-pm">
+      <div class="llm-tabs">
+        <button class="lt on" onclick="switchLlm('pm','claude',this)">Claude</button>
+        <button class="lt"    onclick="switchLlm('pm','gpt',this)">ChatGPT</button>
+      </div>
+      <div id="ai-pm-claude"><div class="pgrid">
+<div class="pcard">
+  <div class="p-num">01</div>
+  <div class="p-name">Working Backwards from the Customer</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: Before starting any new product initiative</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I am a product manager starting a new initiative. Help me apply the Amazon Working Backwards framework. Ask me questions one at a time to help me write a PRFAQ: first the customer problem, then the proposed solution, then the success metrics, then the risks. Be rigorous and push back if my answers are vague or solution-first rather than customer-first.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I am a product manager starting a new initiative. Help me apply the Amazon Working Backwards framework. Ask me questions one at a time to help me write a PRFAQ: first the customer problem, then the proposed solution, then the success metrics, then the risks. Be rigorous and push back if my answers are vague or solution-first rather than customer-first."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">02</div>
+  <div class="p-name">PRD Review and Strengthening</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: After writing a first draft PRD</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I am going to paste my PRD draft below. Please review it as a senior PM would. Identify: (1) any sections where the customer problem is unclear, (2) success metrics that are not measurable, (3) risks I have not addressed, (4) scope that seems too large for one release. Be direct and specific. Then suggest the three most important improvements.
+
+[PASTE YOUR PRD HERE]</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I am going to paste my PRD draft below. Please review it as a senior PM would. Identify: (1) any sections where the customer problem is unclear, (2) success metrics that are not measurable, (3) risks I have not addressed, (4) scope that seems too large for one release. Be direct and specific. Then suggest the three most important improvements.&#10;&#10;[PASTE YOUR PRD HERE]"
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">03</div>
+  <div class="p-name">Roadmap Prioritisation Using RICE</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: Before quarterly planning sessions</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I need to prioritise my product roadmap using RICE scoring. I will give you a list of features. For each one, help me estimate Reach, Impact, Confidence, and Effort. Then calculate the RICE score and rank them. Challenge any estimates that seem unrealistic.
+
+Features to score:
+[LIST YOUR FEATURES HERE]</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I need to prioritise my product roadmap using RICE scoring. I will give you a list of features. For each one, help me estimate Reach, Impact, Confidence, and Effort. Then calculate the RICE score and rank them. Challenge any estimates that seem unrealistic.&#10;&#10;Features to score:&#10;[LIST YOUR FEATURES HERE]"
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">04</div>
+  <div class="p-name">Stakeholder Disagreement Resolution</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: When roadmap conflicts arise</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I am a product manager facing a roadmap disagreement. Engineering wants to prioritise technical debt. Marketing wants a new user-facing feature. My CEO wants faster growth metrics. Help me: (1) map each stakeholder goal, (2) find where their goals overlap, (3) draft a proposal that addresses all three perspectives, (4) write the specific talking points for each conversation.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I am a product manager facing a roadmap disagreement. Engineering wants to prioritise technical debt. Marketing wants a new user-facing feature. My CEO wants faster growth metrics. Help me: (1) map each stakeholder goal, (2) find where their goals overlap, (3) draft a proposal that addresses all three perspectives, (4) write the specific talking points for each conversation."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">05</div>
+  <div class="p-name">User Research Synthesis</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: After completing user interviews</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I have just completed [NUMBER] user interviews about [TOPIC]. I will paste my raw notes below. Help me: (1) identify the top 5 recurring themes, (2) write an insight statement for each in the format Users struggle to X because Y which causes Z, (3) rank them by frequency and emotional intensity, (4) identify the highest-value product opportunity.
+
+[PASTE YOUR NOTES HERE]</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I have just completed [NUMBER] user interviews about [TOPIC]. I will paste my raw notes below. Help me: (1) identify the top 5 recurring themes, (2) write an insight statement for each in the format Users struggle to X because Y which causes Z, (3) rank them by frequency and emotional intensity, (4) identify the highest-value product opportunity.&#10;&#10;[PASTE YOUR NOTES HERE]"
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">06</div>
+  <div class="p-name">PM Interview Preparation</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: One week before a PM interview</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I have a product manager interview at [COMPANY] for a [ROLE] position. Help me practise product sense questions. Ask me one question at a time. After each answer, give me specific feedback on: what I did well, what was missing, and how a top PM candidate would have answered differently.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I have a product manager interview at [COMPANY] for a [ROLE] position. Help me practise product sense questions. Ask me one question at a time. After each answer, give me specific feedback on: what I did well, what was missing, and how a top PM candidate would have answered differently."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">07</div>
+  <div class="p-name">Jobs to Be Done Analysis</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: When designing or improving a product</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">Help me apply the Jobs to Be Done framework to [PRODUCT OR FEATURE]. Walk me through: (1) the functional job, (2) the emotional job, (3) the social job, (4) the circumstances that trigger the job, (5) the current alternatives and why they fall short. Then identify the most underserved part of the job.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="Help me apply the Jobs to Be Done framework to [PRODUCT OR FEATURE]. Walk me through: (1) the functional job, (2) the emotional job, (3) the social job, (4) the circumstances that trigger the job, (5) the current alternatives and why they fall short. Then identify the most underserved part of the job."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">08</div>
+  <div class="p-name">Metrics Dashboard Design</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: When setting up product KPIs</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I am building a metrics dashboard for [PRODUCT]. Help me define: (1) one north star metric, (2) three primary KPIs that drive it, (3) two guardrail metrics I must not let regress, (4) the leading indicators that predict each KPI. Explain the reasoning behind each choice.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I am building a metrics dashboard for [PRODUCT]. Help me define: (1) one north star metric, (2) three primary KPIs that drive it, (3) two guardrail metrics I must not let regress, (4) the leading indicators that predict each KPI. Explain the reasoning behind each choice."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">09</div>
+  <div class="p-name">Feature Scoping and Scope Creep Defence</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: During sprint planning</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I need to scope a feature for [DESCRIPTION]. Help me apply a strict MoSCoW method. For each item I describe, classify it as Must Have, Should Have, Could Have, or Will Not Have and explain the reasoning. Then tell me what to cut to make this shippable in [TIMEFRAME].
+
+Feature scope:
+[DESCRIBE YOUR FEATURE]</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I need to scope a feature for [DESCRIPTION]. Help me apply a strict MoSCoW method. For each item I describe, classify it as Must Have, Should Have, Could Have, or Will Not Have and explain the reasoning. Then tell me what to cut to make this shippable in [TIMEFRAME].&#10;&#10;Feature scope:&#10;[DESCRIBE YOUR FEATURE]"
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">010</div>
+  <div class="p-name">90-Day Onboarding Strategy</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: First week at a new PM role</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I just started a new product manager role at [COMPANY TYPE]. It is day [X] of my role. Help me build a structured 90-day plan. For each phase, Listen and Learn days 1 to 30, Build Credibility days 31 to 60, and Lead and Drive days 61 to 90, give me specific weekly actions, key questions to ask, and relationships to build.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I just started a new product manager role at [COMPANY TYPE]. It is day [X] of my role. Help me build a structured 90-day plan. For each phase, Listen and Learn days 1 to 30, Build Credibility days 31 to 60, and Lead and Drive days 61 to 90, give me specific weekly actions, key questions to ask, and relationships to build."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+</div></div>
+      <div id="ai-pm-gpt" style="display:none"><div class="pgrid">
+<div class="pcard">
+  <div class="p-num">01</div>
+  <div class="p-name">Six-Pager Narrative Writing</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: Before executive or board-level product reviews</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">Act as a senior Amazon product leader. Help me write a six-pager narrative for this initiative: [DESCRIBE YOUR INITIATIVE]. Structure it with Executive Summary, The Problem, The Proposed Solution, Goals and Tenets, Risks and Mitigations, and an Appendix. Write in clear direct narrative style with no bullet points in the main sections, no jargon, no passive voice.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="Act as a senior Amazon product leader. Help me write a six-pager narrative for this initiative: [DESCRIBE YOUR INITIATIVE]. Structure it with Executive Summary, The Problem, The Proposed Solution, Goals and Tenets, Risks and Mitigations, and an Appendix. Write in clear direct narrative style with no bullet points in the main sections, no jargon, no passive voice."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">02</div>
+  <div class="p-name">Competitive Analysis Framework</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: Before entering a new market or launching a feature</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I am a product manager analysing the competitive landscape for [PRODUCT CATEGORY]. For each competitor I name, evaluate: (1) their primary customer segment, (2) their core value proposition, (3) their three strongest features, (4) their most significant weaknesses, (5) their likely strategic direction. Then identify the clearest gap in the market.
+
+Competitors: [LIST COMPETITORS]</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I am a product manager analysing the competitive landscape for [PRODUCT CATEGORY]. For each competitor I name, evaluate: (1) their primary customer segment, (2) their core value proposition, (3) their three strongest features, (4) their most significant weaknesses, (5) their likely strategic direction. Then identify the clearest gap in the market.&#10;&#10;Competitors: [LIST COMPETITORS]"
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">03</div>
+  <div class="p-name">OKR Writing and Alignment</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: During quarterly planning</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">Help me write strong OKRs for my product team. Our company objective is [COMPANY OBJECTIVE]. My team is responsible for [TEAM FOCUS AREA]. For each objective I draft, help me write three to five key results that are specific and measurable, outcome-focused, ambitious but achievable, and clearly linked to the company objective.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="Help me write strong OKRs for my product team. Our company objective is [COMPANY OBJECTIVE]. My team is responsible for [TEAM FOCUS AREA]. For each objective I draft, help me write three to five key results that are specific and measurable, outcome-focused, ambitious but achievable, and clearly linked to the company objective."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">04</div>
+  <div class="p-name">Sprint Goal Setting</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: Before each sprint planning session</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I need to set a clear sprint goal for my engineering team. Our current backlog items are: [LIST BACKLOG ITEMS]. Help me: (1) identify the single most important outcome we could achieve this sprint, (2) write it as a sprint goal in one sentence focused on customer value, (3) list which backlog items directly support this goal, (4) identify what to deprioritise.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I need to set a clear sprint goal for my engineering team. Our current backlog items are: [LIST BACKLOG ITEMS]. Help me: (1) identify the single most important outcome we could achieve this sprint, (2) write it as a sprint goal in one sentence focused on customer value, (3) list which backlog items directly support this goal, (4) identify what to deprioritise."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">05</div>
+  <div class="p-name">Launch Plan Creation</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: Two weeks before any product launch</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I am launching [PRODUCT] in [TIMEFRAME]. Help me create a launch plan covering: (1) rollout strategy with phases and timing, (2) internal communications plan, (3) external announcement messaging, (4) success criteria at 24 hours, 7 days, and 30 days, (5) rollback criteria and process.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I am launching [PRODUCT] in [TIMEFRAME]. Help me create a launch plan covering: (1) rollout strategy with phases and timing, (2) internal communications plan, (3) external announcement messaging, (4) success criteria at 24 hours, 7 days, and 30 days, (5) rollback criteria and process."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">06</div>
+  <div class="p-name">Technical Debt Prioritisation</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: When negotiating with engineering on tech debt</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">My engineering team has a backlog of technical debt. Evaluate each item on: (1) customer impact if not addressed, (2) velocity impact on future development, (3) risk of causing an incident, (4) effort to resolve. Score each 1 to 5 per dimension. Then help me build the business case for the top three items.
+
+Tech debt items: [LIST ITEMS]</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="My engineering team has a backlog of technical debt. Evaluate each item on: (1) customer impact if not addressed, (2) velocity impact on future development, (3) risk of causing an incident, (4) effort to resolve. Score each 1 to 5 per dimension. Then help me build the business case for the top three items.&#10;&#10;Tech debt items: [LIST ITEMS]"
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">07</div>
+  <div class="p-name">A/B Test Design</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: Before running any product experiment</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I want to run an A/B test for [DESCRIBE THE CHANGE]. Help me design a rigorous experiment: (1) write the hypothesis, (2) define the primary metric, (3) identify guardrail metrics, (4) calculate the required sample size at 95% confidence, (5) define exact success criteria before running, (6) identify potential confounding variables.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I want to run an A/B test for [DESCRIBE THE CHANGE]. Help me design a rigorous experiment: (1) write the hypothesis, (2) define the primary metric, (3) identify guardrail metrics, (4) calculate the required sample size at 95% confidence, (5) define exact success criteria before running, (6) identify potential confounding variables."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">08</div>
+  <div class="p-name">Stakeholder Communication Email</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: After making a major product decision</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I need to write an email communicating a significant product decision. The decision is: [DESCRIBE THE DECISION]. The stakeholders are: [LIST STAKEHOLDERS]. Help me write an email that leads with the decision clearly, explains the reasoning, acknowledges trade-offs, states next steps, and ends with a clear ask.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I need to write an email communicating a significant product decision. The decision is: [DESCRIBE THE DECISION]. The stakeholders are: [LIST STAKEHOLDERS]. Help me write an email that leads with the decision clearly, explains the reasoning, acknowledges trade-offs, states next steps, and ends with a clear ask."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">09</div>
+  <div class="p-name">User Persona Development</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: During product discovery</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I am building user personas for [PRODUCT]. For each segment I describe, build a persona with: a name and profile, job title and context, top three goals, top three frustrations, decision-making criteria, and one defining quote.
+
+User segments: [DESCRIBE SEGMENTS]</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I am building user personas for [PRODUCT]. For each segment I describe, build a persona with: a name and profile, job title and context, top three goals, top three frustrations, decision-making criteria, and one defining quote.&#10;&#10;User segments: [DESCRIBE SEGMENTS]"
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">010</div>
+  <div class="p-name">Post-Mortem Facilitation</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: After a failed launch or major incident</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I need to facilitate a blameless post-mortem for [DESCRIBE WHAT HAPPENED]. Help me structure a two-hour session that establishes psychological safety, reconstructs the timeline, identifies systemic issues rather than individual blame, generates specific improvements with owners and deadlines, and closes with clear team commitments. Provide the agenda and key questions for each section.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I need to facilitate a blameless post-mortem for [DESCRIBE WHAT HAPPENED]. Help me structure a two-hour session that establishes psychological safety, reconstructs the timeline, identifies systemic issues rather than individual blame, generates specific improvements with owners and deadlines, and closes with clear team commitments. Provide the agenda and key questions for each section."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+</div></div>
+    </div>
+
+    <!-- ATH prompts -->
+    <div id="ai-ath" style="display:none">
+      <div class="llm-tabs">
+        <button class="lt on" onclick="switchLlm('ath','claude',this)">Claude</button>
+        <button class="lt"    onclick="switchLlm('ath','gpt',this)">ChatGPT</button>
+      </div>
+      <div id="ai-ath-claude"><div class="pgrid">
+<div class="pcard">
+  <div class="p-num">01</div>
+  <div class="p-name">Phase Assessment and Programme Selection</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: At the start of any injury recovery</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I am an injured athlete. I injured my [BODY PART] [TIME AGO]. My pain at rest is [X/10]. My pain during movement is [X/10]. I can [CAN/CANNOT] bear full weight. Swelling is [NONE/MILD/MODERATE/SEVERE]. Based on the Vibemotion Labs five-phase recovery framework, which phase should I begin with and what criteria must I meet before advancing to the next phase?</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I am an injured athlete. I injured my [BODY PART] [TIME AGO]. My pain at rest is [X/10]. My pain during movement is [X/10]. I can [CAN/CANNOT] bear full weight. Swelling is [NONE/MILD/MODERATE/SEVERE]. Based on the Vibemotion Labs five-phase recovery framework, which phase should I begin with and what criteria must I meet before advancing to the next phase?"
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">02</div>
+  <div class="p-name">Daily Exercise Programme Builder</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: At the start of each recovery week</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I am in Phase [NUMBER] of my injury recovery. My injury is [DESCRIBE]. I have access to: [LIST EQUIPMENT]. I can train [NUMBER] days per week. Build me a specific daily exercise programme for this week. For each day, list exercises in order with sets, reps, rest periods, and one coaching cue per exercise.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I am in Phase [NUMBER] of my injury recovery. My injury is [DESCRIBE]. I have access to: [LIST EQUIPMENT]. I can train [NUMBER] days per week. Build me a specific daily exercise programme for this week. For each day, list exercises in order with sets, reps, rest periods, and one coaching cue per exercise."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">03</div>
+  <div class="p-name">Pain Monitoring and Progression Decisions</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: When unsure whether to progress to next phase</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I need help with a progression decision. I am in Phase [NUMBER]. Here is my pain data from the last 7 sessions: [LIST PAIN SCORES BEFORE, DURING, AND AFTER EACH SESSION]. Swelling status: [DESCRIBE]. I can currently perform: [LIST]. Tell me: (1) whether my recovery is progressing as expected, (2) any red flags to address, (3) whether I am ready to advance to the next phase and why.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I need help with a progression decision. I am in Phase [NUMBER]. Here is my pain data from the last 7 sessions: [LIST PAIN SCORES BEFORE, DURING, AND AFTER EACH SESSION]. Swelling status: [DESCRIBE]. I can currently perform: [LIST]. Tell me: (1) whether my recovery is progressing as expected, (2) any red flags to address, (3) whether I am ready to advance to the next phase and why."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">04</div>
+  <div class="p-name">Injury-Specific Exercise Modifications</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: When standard exercises cause pain</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I am following Phase [NUMBER] of the recovery programme but having difficulty with [SPECIFIC EXERCISE]. When I perform it, I feel [DESCRIBE THE PAIN including location, type, and intensity out of 10]. Help me: (1) identify the likely cause, (2) suggest two or three modifications that reduce load while maintaining therapeutic benefit, (3) tell me what I should feel versus what is a warning sign to stop.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I am following Phase [NUMBER] of the recovery programme but having difficulty with [SPECIFIC EXERCISE]. When I perform it, I feel [DESCRIBE THE PAIN including location, type, and intensity out of 10]. Help me: (1) identify the likely cause, (2) suggest two or three modifications that reduce load while maintaining therapeutic benefit, (3) tell me what I should feel versus what is a warning sign to stop."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">05</div>
+  <div class="p-name">Nutrition Plan for Recovery Phase</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: At the start of each recovery phase</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I am in Phase [NUMBER] of recovery from a [INJURY TYPE]. I weigh [WEIGHT] kg. I am [MALE/FEMALE], aged [AGE]. My current activity level is [DESCRIBE]. Calculate my daily protein, carbohydrate, and calorie targets for this phase. Then build me a 3-day sample meal plan that hits these targets and includes Vitamin C, Zinc, Omega-3, and collagen.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I am in Phase [NUMBER] of recovery from a [INJURY TYPE]. I weigh [WEIGHT] kg. I am [MALE/FEMALE], aged [AGE]. My current activity level is [DESCRIBE]. Calculate my daily protein, carbohydrate, and calorie targets for this phase. Then build me a 3-day sample meal plan that hits these targets and includes Vitamin C, Zinc, Omega-3, and collagen."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">06</div>
+  <div class="p-name">Mental Barriers and Fear of Re-injury</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: When motivation drops or fear holds you back</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I am struggling with the mental side of my injury recovery. My injury is [DESCRIBE]. I am in week [NUMBER] of recovery. My main psychological barriers are: [DESCRIBE]. Help me: (1) understand why these feelings are normal, (2) give me three daily practices for each barrier, (3) write a weekly journal prompt I can use in my Mental Performance Journal.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I am struggling with the mental side of my injury recovery. My injury is [DESCRIBE]. I am in week [NUMBER] of recovery. My main psychological barriers are: [DESCRIBE]. Help me: (1) understand why these feelings are normal, (2) give me three daily practices for each barrier, (3) write a weekly journal prompt I can use in my Mental Performance Journal."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">07</div>
+  <div class="p-name">Return-to-Sport Readiness Assessment</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: When approaching sport clearance</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I am preparing to return to [SPORT]. I have completed Phase [NUMBER] of the programme. My current performance data: pain scores [LIST], single-leg balance [DURATION], hop test distances on both legs [LIST], strength test results [LIST]. Tell me: (1) which clearance criteria I meet, (2) which I do not yet meet, (3) exactly what I need to achieve in each incomplete area before I can safely return.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I am preparing to return to [SPORT]. I have completed Phase [NUMBER] of the programme. My current performance data: pain scores [LIST], single-leg balance [DURATION], hop test distances on both legs [LIST], strength test results [LIST]. Tell me: (1) which clearance criteria I meet, (2) which I do not yet meet, (3) exactly what I need to achieve in each incomplete area before I can safely return."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">08</div>
+  <div class="p-name">Long-Term Injury Prevention Planning</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: After returning to full sport</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I have returned to [SPORT] after recovering from [INJURY]. Help me build a permanent prevention programme. Design: (1) a 15-minute pre-training warm-up I can do before every session, (2) a weekly maintenance strength programme under 30 minutes, (3) identify the three highest-risk movements in my sport and specific techniques to perform each one more safely.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I have returned to [SPORT] after recovering from [INJURY]. Help me build a permanent prevention programme. Design: (1) a 15-minute pre-training warm-up I can do before every session, (2) a weekly maintenance strength programme under 30 minutes, (3) identify the three highest-risk movements in my sport and specific techniques to perform each one more safely."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">09</div>
+  <div class="p-name">Sleep Optimisation for Injury Recovery</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: When recovery feels slow</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I am recovering from [INJURY] and want to maximise sleep quality to accelerate tissue repair. I sleep [HOURS] per night. I fall asleep [EASILY/WITH DIFFICULTY]. I wake during the night [NEVER/OCCASIONALLY/FREQUENTLY]. My bedroom: [DESCRIBE]. Pre-bed routine: [DESCRIBE]. Give me a personalised nightly protocol with specific timing, environment changes, and supplement recommendations.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I am recovering from [INJURY] and want to maximise sleep quality to accelerate tissue repair. I sleep [HOURS] per night. I fall asleep [EASILY/WITH DIFFICULTY]. I wake during the night [NEVER/OCCASIONALLY/FREQUENTLY]. My bedroom: [DESCRIBE]. Pre-bed routine: [DESCRIBE]. Give me a personalised nightly protocol with specific timing, environment changes, and supplement recommendations."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">010</div>
+  <div class="p-name">Weekly Recovery Progress Review</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: Every Sunday throughout recovery</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I want to do a structured weekly review of my recovery progress. This is week [NUMBER] from [INJURY]. Help me analyse: (1) my pain score trend this week, (2) which exercises I progressed on and which I struggled with, (3) my nutrition adherence and any gaps, (4) my mental state and any patterns, (5) my specific targets for next week. Then write a one-paragraph summary I can record in my journal.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I want to do a structured weekly review of my recovery progress. This is week [NUMBER] from [INJURY]. Help me analyse: (1) my pain score trend this week, (2) which exercises I progressed on and which I struggled with, (3) my nutrition adherence and any gaps, (4) my mental state and any patterns, (5) my specific targets for next week. Then write a one-paragraph summary I can record in my journal."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+</div></div>
+      <div id="ai-ath-gpt" style="display:none"><div class="pgrid">
+<div class="pcard">
+  <div class="p-num">01</div>
+  <div class="p-name">ACL Recovery Timeline Personalisation</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: After ACL surgery</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I had ACL reconstruction surgery [NUMBER] days ago. My graft type is [PATELLAR TENDON/HAMSTRING/QUADRICEPS/ALLOGRAFT]. My surgeon restrictions are: [LIST]. Build me a personalised week-by-week timeline from now until return to sport. For each phase, give me the specific goals, the exercises to focus on, and the measurable criteria that determine when I advance.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I had ACL reconstruction surgery [NUMBER] days ago. My graft type is [PATELLAR TENDON/HAMSTRING/QUADRICEPS/ALLOGRAFT]. My surgeon restrictions are: [LIST]. Build me a personalised week-by-week timeline from now until return to sport. For each phase, give me the specific goals, the exercises to focus on, and the measurable criteria that determine when I advance."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">02</div>
+  <div class="p-name">Hamstring Strain Grade Assessment</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: Immediately after a hamstring injury</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I think I have pulled my hamstring during [ACTIVITY]. It happened [TIME AGO]. Pain location: [DESCRIBE]. Pain intensity: [X/10]. I [CAN/CANNOT] walk normally. Swelling: [PRESENT/ABSENT]. Bruising: [PRESENT/ABSENT]. Help me assess the likely grade of my strain, what to do in the next 72 hours, and which phase of the Hamstring Recovery Programme to begin.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I think I have pulled my hamstring during [ACTIVITY]. It happened [TIME AGO]. Pain location: [DESCRIBE]. Pain intensity: [X/10]. I [CAN/CANNOT] walk normally. Swelling: [PRESENT/ABSENT]. Bruising: [PRESENT/ABSENT]. Help me assess the likely grade of my strain, what to do in the next 72 hours, and which phase of the Hamstring Recovery Programme to begin."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">03</div>
+  <div class="p-name">Knee Pain Diagnosis and Programme Selection</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: When knee pain begins</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I have been experiencing knee pain for [DURATION]. The pain is located [FRONT/BEHIND/INSIDE/OUTSIDE] of the knee. It is worst when I [DESCRIBE ACTIVITY]. Pain level: [X/10] at worst. I am [AGE] years old and I play [SPORT]. Help me identify whether this is more likely patellofemoral pain or patellar tendinopathy, then guide me to the correct starting point in the Knee Recovery Programme.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I have been experiencing knee pain for [DURATION]. The pain is located [FRONT/BEHIND/INSIDE/OUTSIDE] of the knee. It is worst when I [DESCRIBE ACTIVITY]. Pain level: [X/10] at worst. I am [AGE] years old and I play [SPORT]. Help me identify whether this is more likely patellofemoral pain or patellar tendinopathy, then guide me to the correct starting point in the Knee Recovery Programme."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">04</div>
+  <div class="p-name">Low Back Pain Exercise Safety Check</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: When resuming training with back pain</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I have low back pain and want to know which exercises are safe to continue and which to avoid. My diagnosis is [DESCRIBE]. Pain level: [X/10]. I normally train [DESCRIBE]. For each exercise in my current programme, tell me: safe to continue, modify and continue, or avoid and explain the specific reasoning for each.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I have low back pain and want to know which exercises are safe to continue and which to avoid. My diagnosis is [DESCRIBE]. Pain level: [X/10]. I normally train [DESCRIBE]. For each exercise in my current programme, tell me: safe to continue, modify and continue, or avoid and explain the specific reasoning for each."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">05</div>
+  <div class="p-name">Shoulder Injury Rehab Progression</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: During shoulder rehabilitation</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I am rehabilitating a [ROTATOR CUFF TEAR/SHOULDER IMPINGEMENT/SLAP TEAR]. I am in week [NUMBER] of recovery. Exercises I can perform without pain: [LIST]. Exercises that cause pain: [LIST AND DESCRIBE]. Tell me: (1) which phase I am in, (2) the three exercises to focus on most this week, (3) what I should feel versus when to stop during each exercise.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I am rehabilitating a [ROTATOR CUFF TEAR/SHOULDER IMPINGEMENT/SLAP TEAR]. I am in week [NUMBER] of recovery. Exercises I can perform without pain: [LIST]. Exercises that cause pain: [LIST AND DESCRIBE]. Tell me: (1) which phase I am in, (2) the three exercises to focus on most this week, (3) what I should feel versus when to stop during each exercise."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">06</div>
+  <div class="p-name">Ankle Instability Prevention Protocol</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: After an ankle sprain or with chronic instability</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I have [RECENTLY SPRAINED/CHRONIC INSTABILITY IN] my [LEFT/RIGHT] ankle. This is my [FIRST/SECOND/THIRD OR MORE] significant ankle sprain. I play [SPORT]. Build me a 6-week progressive balance and proprioception programme. For each week, specify the exercises, duration, and how to know I am ready to advance to the next stage.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I have [RECENTLY SPRAINED/CHRONIC INSTABILITY IN] my [LEFT/RIGHT] ankle. This is my [FIRST/SECOND/THIRD OR MORE] significant ankle sprain. I play [SPORT]. Build me a 6-week progressive balance and proprioception programme. For each week, specify the exercises, duration, and how to know I am ready to advance to the next stage."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">07</div>
+  <div class="p-name">Return to Running After Injury</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: When beginning the running phase of recovery</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I am preparing to return to running after recovering from [INJURY]. I have been cleared by my physiotherapist. I can walk for [DURATION] without pain. Pain during fast walking: [X/10]. I have not run for [NUMBER] weeks. Build me a 6-week return-to-running plan with specific session details including warm-up, intervals, duration, pace, and the signs that tell me to stop a session early.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I am preparing to return to running after recovering from [INJURY]. I have been cleared by my physiotherapist. I can walk for [DURATION] without pain. Pain during fast walking: [X/10]. I have not run for [NUMBER] weeks. Build me a 6-week return-to-running plan with specific session details including warm-up, intervals, duration, pace, and the signs that tell me to stop a session early."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">08</div>
+  <div class="p-name">Nordic Hamstring Curl Programme</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: For hamstring injury prevention or rehabilitation</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I want to build up to the full Nordic Hamstring Curl. Currently I [CAN/CANNOT] perform any Nordic curl. My hamstring strength compared to the uninjured side feels [DESCRIBE]. Build me a progressive 8-week Nordic curl programme starting from where I am now. For each week specify the sets, reps, tempo, and what a successful session looks like. Tell me what soreness to expect and how to distinguish normal soreness from a warning sign.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I want to build up to the full Nordic Hamstring Curl. Currently I [CAN/CANNOT] perform any Nordic curl. My hamstring strength compared to the uninjured side feels [DESCRIBE]. Build me a progressive 8-week Nordic curl programme starting from where I am now. For each week specify the sets, reps, tempo, and what a successful session looks like. Tell me what soreness to expect and how to distinguish normal soreness from a warning sign."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">09</div>
+  <div class="p-name">Injury Recovery Nutrition Supplement Stack</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: When optimising nutrition for healing</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I am recovering from [INJURY]. I weigh [WEIGHT] kg. I am [MALE/FEMALE], aged [AGE]. My diet is [OMNIVORE/VEGETARIAN/VEGAN]. Tell me: (1) the exact dose of each healing supplement including Vitamin C, Zinc, Omega-3, Collagen Peptides, and Creatine, (2) best timing relative to meals and sleep, (3) any interactions to be aware of, (4) whole-food sources I can use alongside supplements.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I am recovering from [INJURY]. I weigh [WEIGHT] kg. I am [MALE/FEMALE], aged [AGE]. My diet is [OMNIVORE/VEGETARIAN/VEGAN]. Tell me: (1) the exact dose of each healing supplement including Vitamin C, Zinc, Omega-3, Collagen Peptides, and Creatine, (2) best timing relative to meals and sleep, (3) any interactions to be aware of, (4) whole-food sources I can use alongside supplements."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">010</div>
+  <div class="p-name">Sport-Specific Return to Performance</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: In the final phase of recovery</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I am in the final phase of recovery from [INJURY] and want to return to [SPORT] at the highest level possible. My sport demands: [DESCRIBE KEY PHYSICAL DEMANDS]. Build me a 4-week sport-specific performance programme that bridges my rehab into full training. Include strength benchmarks I should hit before returning to unrestricted competition.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I am in the final phase of recovery from [INJURY] and want to return to [SPORT] at the highest level possible. My sport demands: [DESCRIBE KEY PHYSICAL DEMANDS]. Build me a 4-week sport-specific performance programme that bridges my rehab into full training. Include strength benchmarks I should hit before returning to unrestricted competition."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+</div></div>
+    </div>
+
+    <!-- STK prompts -->
+    <div id="ai-stk" style="display:none">
+      <div class="llm-tabs">
+        <button class="lt on" onclick="switchLlm('stk','claude',this)">Claude</button>
+        <button class="lt"    onclick="switchLlm('stk','gpt',this)">ChatGPT</button>
+      </div>
+      <div id="ai-stk-claude"><div class="pgrid">
+<div class="pcard">
+  <div class="p-num">01</div>
+  <div class="p-name">Company Deep Dive — Full Due Diligence</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: Before investing in any individual stock</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I want to do a thorough fundamental analysis of [COMPANY NAME / TICKER]. Help me work through the Stock Screening Checklist systematically. Ask me one section at a time: first business quality, then financial health, then valuation, then risk. For each section, explain what I should be looking for, where to find the data, and what good versus concerning looks like. At the end, summarise the key green flags and red flags.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I want to do a thorough fundamental analysis of [COMPANY NAME / TICKER]. Help me work through the Stock Screening Checklist systematically. Ask me one section at a time: first business quality, then financial health, then valuation, then risk. For each section, explain what I should be looking for, where to find the data, and what good versus concerning looks like. At the end, summarise the key green flags and red flags."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">02</div>
+  <div class="p-name">Financial Statement Line-by-Line Analysis</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: When reading a company annual report</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I am going to paste the key financial data from [COMPANY] most recent annual report. Help me analyse each statement including the income statement, balance sheet, and cash flow statement. For each line item, tell me: (1) what the number means in plain English, (2) whether it looks healthy or concerning, (3) the trend to compare vs. prior years.
+
+[PASTE FINANCIAL DATA HERE]</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I am going to paste the key financial data from [COMPANY] most recent annual report. Help me analyse each statement including the income statement, balance sheet, and cash flow statement. For each line item, tell me: (1) what the number means in plain English, (2) whether it looks healthy or concerning, (3) the trend to compare vs. prior years.&#10;&#10;[PASTE FINANCIAL DATA HERE]"
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">03</div>
+  <div class="p-name">IPO Red Flag Analysis</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: Before participating in any IPO</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I am considering investing in the upcoming IPO of [COMPANY]. Help me run through the 10-point IPO checklist. Flag every red flag you identify and do not be diplomatic. Assess: business model clarity, revenue growth trend, path to profitability, cash burn runway, use of proceeds, insider selling, competitive moat, customer concentration, valuation versus peers, and management track record.
+
+What I know about the company: [PASTE DETAILS]</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I am considering investing in the upcoming IPO of [COMPANY]. Help me run through the 10-point IPO checklist. Flag every red flag you identify and do not be diplomatic. Assess: business model clarity, revenue growth trend, path to profitability, cash burn runway, use of proceeds, insider selling, competitive moat, customer concentration, valuation versus peers, and management track record.&#10;&#10;What I know about the company: [PASTE DETAILS]"
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">04</div>
+  <div class="p-name">Chart Pattern Identification Practice</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: When developing technical analysis skills</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I want to practise identifying chart patterns. Describe a fictional price action scenario to me and I will try to identify the pattern. Then tell me: (1) whether I identified it correctly, (2) the textbook entry, target, and stop for this pattern, (3) what additional confirmation I should look for. Give me 5 progressively more challenging scenarios.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I want to practise identifying chart patterns. Describe a fictional price action scenario to me and I will try to identify the pattern. Then tell me: (1) whether I identified it correctly, (2) the textbook entry, target, and stop for this pattern, (3) what additional confirmation I should look for. Give me 5 progressively more challenging scenarios."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">05</div>
+  <div class="p-name">Portfolio Position Sizing</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: When deciding how much to invest in a position</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">Help me think through position sizing for a potential investment. My total portfolio is [AMOUNT]. The stock I am considering is [TICKER]. My conviction level is [LOW/MEDIUM/HIGH]. My stop loss would be at [PRICE OR PERCENTAGE BELOW ENTRY]. Calculate: (1) the maximum position size based on risking no more than 1 to 2 percent of portfolio, (2) concentration risk versus other holdings, (3) how to think about adding to the position if it moves in my favour.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="Help me think through position sizing for a potential investment. My total portfolio is [AMOUNT]. The stock I am considering is [TICKER]. My conviction level is [LOW/MEDIUM/HIGH]. My stop loss would be at [PRICE OR PERCENTAGE BELOW ENTRY]. Calculate: (1) the maximum position size based on risking no more than 1 to 2 percent of portfolio, (2) concentration risk versus other holdings, (3) how to think about adding to the position if it moves in my favour."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">06</div>
+  <div class="p-name">Pre-Trade Journal Entry</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: Before placing any trade</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">Help me complete a pre-trade journal entry. I am considering [BUYING/SELLING] [TICKER]. Walk me through each section: (1) my thesis in one clear sentence, (2) the specific entry trigger, (3) my exact stop loss price and why, (4) my profit targets, (5) my risk-reward ratio, (6) my position size as a percentage of portfolio, (7) what would invalidate this trade. Push back if my answers are unclear or emotional.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="Help me complete a pre-trade journal entry. I am considering [BUYING/SELLING] [TICKER]. Walk me through each section: (1) my thesis in one clear sentence, (2) the specific entry trigger, (3) my exact stop loss price and why, (4) my profit targets, (5) my risk-reward ratio, (6) my position size as a percentage of portfolio, (7) what would invalidate this trade. Push back if my answers are unclear or emotional."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">07</div>
+  <div class="p-name">Earnings Analysis Framework</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: Before or after earnings reports</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">[COMPANY] is reporting earnings [IN X DAYS / YESTERDAY]. Help me analyse the report: (1) revenue growth versus consensus and versus prior quarter, (2) gross and operating margin trend, (3) management guidance and tone, (4) free cash flow generation, (5) any balance sheet red flags. Then give me your honest assessment of whether the market reaction is justified.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="[COMPANY] is reporting earnings [IN X DAYS / YESTERDAY]. Help me analyse the report: (1) revenue growth versus consensus and versus prior quarter, (2) gross and operating margin trend, (3) management guidance and tone, (4) free cash flow generation, (5) any balance sheet red flags. Then give me your honest assessment of whether the market reaction is justified."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">08</div>
+  <div class="p-name">Sector Rotation Analysis</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: When macro conditions shift</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">Help me think through sector rotation. Current conditions: interest rates are [RISING/FALLING/FLAT], inflation is [HIGH/MODERATE/LOW AND FALLING], GDP growth is [STRONG/SLOWING/CONTRACTING], the Fed is [TIGHTENING/EASING/HOLDING]. Based on these conditions: (1) which sectors typically outperform and underperform, (2) which sectors in my portfolio might be at risk, (3) which sectors to consider adding, (4) what indicators to watch for when the rotation shifts.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="Help me think through sector rotation. Current conditions: interest rates are [RISING/FALLING/FLAT], inflation is [HIGH/MODERATE/LOW AND FALLING], GDP growth is [STRONG/SLOWING/CONTRACTING], the Fed is [TIGHTENING/EASING/HOLDING]. Based on these conditions: (1) which sectors typically outperform and underperform, (2) which sectors in my portfolio might be at risk, (3) which sectors to consider adding, (4) what indicators to watch for when the rotation shifts."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">09</div>
+  <div class="p-name">Post-Trade Review and Pattern Analysis</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: After closing any position</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I just closed a trade on [TICKER] with a [PROFIT/LOSS] of [AMOUNT/PERCENTAGE]. Here is what happened: [DESCRIBE THE TRADE]. Walk me through: (1) whether I followed my pre-trade plan and if not why, (2) what the outcome would have been if I followed the plan exactly, (3) whether this was good process or bad process regardless of outcome, (4) what specific behaviour to change in my next trade, (5) the grade I should give this trade on process alone.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I just closed a trade on [TICKER] with a [PROFIT/LOSS] of [AMOUNT/PERCENTAGE]. Here is what happened: [DESCRIBE THE TRADE]. Walk me through: (1) whether I followed my pre-trade plan and if not why, (2) what the outcome would have been if I followed the plan exactly, (3) whether this was good process or bad process regardless of outcome, (4) what specific behaviour to change in my next trade, (5) the grade I should give this trade on process alone."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">010</div>
+  <div class="p-name">Building a Dividend Income Strategy</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: When planning long-term income investing</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I want to build a dividend income portfolio. My goals: income target of [AMOUNT] per year in [NUMBER] years. Current portfolio: [AMOUNT]. Monthly investment: [AMOUNT]. Help me: (1) calculate the portfolio size and average yield needed, (2) identify characteristics of sustainable dividend payers versus dividend traps, (3) suggest sector diversification approach, (4) build a reinvestment plan, (5) identify tax considerations I should research for my situation.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I want to build a dividend income portfolio. My goals: income target of [AMOUNT] per year in [NUMBER] years. Current portfolio: [AMOUNT]. Monthly investment: [AMOUNT]. Help me: (1) calculate the portfolio size and average yield needed, (2) identify characteristics of sustainable dividend payers versus dividend traps, (3) suggest sector diversification approach, (4) build a reinvestment plan, (5) identify tax considerations I should research for my situation."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+</div></div>
+      <div id="ai-stk-gpt" style="display:none"><div class="pgrid">
+<div class="pcard">
+  <div class="p-num">01</div>
+  <div class="p-name">Stock Valuation — DCF Analysis</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: When trying to estimate intrinsic value</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">Help me build a discounted cash flow valuation for [COMPANY / TICKER]. Walk me through each step: (1) estimating free cash flow for the next 5 years based on historical growth rates, (2) choosing an appropriate discount rate, (3) calculating the terminal value, (4) arriving at an intrinsic value per share, (5) comparing it to the current price to calculate the margin of safety. Use conservative assumptions and show me how the valuation changes if growth is 50 percent lower than expected.
+
+Financial inputs: [PASTE REVENUE, FCF, DEBT, SHARES OUTSTANDING]</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="Help me build a discounted cash flow valuation for [COMPANY / TICKER]. Walk me through each step: (1) estimating free cash flow for the next 5 years based on historical growth rates, (2) choosing an appropriate discount rate, (3) calculating the terminal value, (4) arriving at an intrinsic value per share, (5) comparing it to the current price to calculate the margin of safety. Use conservative assumptions and show me how the valuation changes if growth is 50 percent lower than expected.&#10;&#10;Financial inputs: [PASTE REVENUE, FCF, DEBT, SHARES OUTSTANDING]"
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">02</div>
+  <div class="p-name">Competitor Comparison Analysis</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: When evaluating a company against its peers</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I am evaluating [COMPANY] against its main competitors. Build a structured comparison for each company on: revenue growth rate, gross margin, operating margin, return on equity, debt-to-equity ratio, P/E ratio, and EV/EBITDA. Then tell me: (1) which company has the strongest financial profile, (2) which is the most attractively valued relative to its quality, (3) which has the clearest competitive moat, (4) the risks I should weight most heavily.
+
+Companies: [LIST COMPANIES]</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I am evaluating [COMPANY] against its main competitors. Build a structured comparison for each company on: revenue growth rate, gross margin, operating margin, return on equity, debt-to-equity ratio, P/E ratio, and EV/EBITDA. Then tell me: (1) which company has the strongest financial profile, (2) which is the most attractively valued relative to its quality, (3) which has the clearest competitive moat, (4) the risks I should weight most heavily.&#10;&#10;Companies: [LIST COMPANIES]"
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">03</div>
+  <div class="p-name">Reading an Annual Report — 10-K Analysis</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: When starting fundamental research on a company</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I want to read [COMPANY] most recent 10-K annual report like a professional analyst. Guide me through it section by section. Tell me: (1) which sections to read in full versus skim, (2) the three most important things to look for in the Business Description, (3) specific risk factors to take seriously versus boilerplate language, (4) what the MD and A section reveals that the financials alone do not, (5) the five numbers I must extract before forming any opinion.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I want to read [COMPANY] most recent 10-K annual report like a professional analyst. Guide me through it section by section. Tell me: (1) which sections to read in full versus skim, (2) the three most important things to look for in the Business Description, (3) specific risk factors to take seriously versus boilerplate language, (4) what the MD and A section reveals that the financials alone do not, (5) the five numbers I must extract before forming any opinion."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">04</div>
+  <div class="p-name">Technical Chart Setup Identification</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: When building a trading watchlist</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I am building a watchlist of stocks with strong technical setups. For each ticker I give you, describe: (1) the primary chart pattern forming and its implications, (2) the key price levels including support, resistance, and the line in the sand, (3) the volume pattern and what it suggests about institutional interest, (4) whether the setup favours a long or short trade and why, (5) the ideal entry, target, and stop loss levels with risk-reward ratio.
+
+Tickers: [LIST TICKERS WITH ANY CONTEXT]</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I am building a watchlist of stocks with strong technical setups. For each ticker I give you, describe: (1) the primary chart pattern forming and its implications, (2) the key price levels including support, resistance, and the line in the sand, (3) the volume pattern and what it suggests about institutional interest, (4) whether the setup favours a long or short trade and why, (5) the ideal entry, target, and stop loss levels with risk-reward ratio.&#10;&#10;Tickers: [LIST TICKERS WITH ANY CONTEXT]"
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">05</div>
+  <div class="p-name">Options Strategy Selection</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: When exploring options as a strategy</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I want to understand which options strategy is appropriate for my view on [TICKER]. My view: I think the stock will [GO UP/GO DOWN/STAY FLAT] over the next [TIMEFRAME]. My conviction level is [LOW/MEDIUM/HIGH]. Help me: (1) identify the two or three most appropriate options strategies, (2) explain the maximum gain, maximum loss, and break-even for each, (3) tell me the key variables to monitor during the trade.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I want to understand which options strategy is appropriate for my view on [TICKER]. My view: I think the stock will [GO UP/GO DOWN/STAY FLAT] over the next [TIMEFRAME]. My conviction level is [LOW/MEDIUM/HIGH]. Help me: (1) identify the two or three most appropriate options strategies, (2) explain the maximum gain, maximum loss, and break-even for each, (3) tell me the key variables to monitor during the trade."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">06</div>
+  <div class="p-name">Portfolio Rebalancing Analysis</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: Quarterly portfolio review</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I need to rebalance my investment portfolio. Current holdings with percentages: [LIST HOLDINGS AND PERCENTAGES]. My target allocation: [DESCRIBE TARGET]. Help me: (1) identify which positions are most overweight and underweight, (2) calculate the specific trades needed to rebalance, (3) consider tax implications of selling overweight positions, (4) suggest whether current conditions argue for staying overweight anywhere before rebalancing, (5) set a rebalancing threshold for future reviews.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I need to rebalance my investment portfolio. Current holdings with percentages: [LIST HOLDINGS AND PERCENTAGES]. My target allocation: [DESCRIBE TARGET]. Help me: (1) identify which positions are most overweight and underweight, (2) calculate the specific trades needed to rebalance, (3) consider tax implications of selling overweight positions, (4) suggest whether current conditions argue for staying overweight anywhere before rebalancing, (5) set a rebalancing threshold for future reviews."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">07</div>
+  <div class="p-name">IPO Lock-Up Expiry Strategy</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: When an IPO lock-up is expiring</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">The lock-up period for [COMPANY] IPO expires in [NUMBER] days. This means [NUMBER OF SHARES / ESTIMATED VALUE] in insider shares will become eligible for sale. Help me think through: (1) the typical price pattern around lock-up expiries, (2) how to estimate the selling pressure, (3) whether the company recent earnings change the calculus, (4) how I should position given my current conviction, (5) what price levels to watch as triggers.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="The lock-up period for [COMPANY] IPO expires in [NUMBER] days. This means [NUMBER OF SHARES / ESTIMATED VALUE] in insider shares will become eligible for sale. Help me think through: (1) the typical price pattern around lock-up expiries, (2) how to estimate the selling pressure, (3) whether the company recent earnings change the calculus, (4) how I should position given my current conviction, (5) what price levels to watch as triggers."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">08</div>
+  <div class="p-name">Macro Impact on Portfolio</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: When major economic events occur</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">A major macro event has just occurred: [DESCRIBE EVENT]. Help me analyse the likely second and third-order effects on my portfolio. My holdings are: [LIST SECTORS OR SPECIFIC HOLDINGS]. For each holding, tell me: (1) the direct impact on the company fundamentals, (2) the likely market reaction over the next 1 to 3 months, (3) whether this changes my long-term thesis, (4) any position adjustments to consider.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="A major macro event has just occurred: [DESCRIBE EVENT]. Help me analyse the likely second and third-order effects on my portfolio. My holdings are: [LIST SECTORS OR SPECIFIC HOLDINGS]. For each holding, tell me: (1) the direct impact on the company fundamentals, (2) the likely market reaction over the next 1 to 3 months, (3) whether this changes my long-term thesis, (4) any position adjustments to consider."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">09</div>
+  <div class="p-name">Earnings Season Preparation</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: Before each earnings season</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">Earnings season is approaching. I hold positions in: [LIST TICKERS AND EARNINGS DATES]. For each company, help me prepare by: (1) identifying the single most important metric the market will focus on, (2) setting my expectations versus analyst consensus, (3) identifying the two or three questions from the earnings call that will most determine the stock reaction, (4) deciding in advance how I will respond if earnings beat, meet, or miss so I am not making emotional decisions in the moment.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="Earnings season is approaching. I hold positions in: [LIST TICKERS AND EARNINGS DATES]. For each company, help me prepare by: (1) identifying the single most important metric the market will focus on, (2) setting my expectations versus analyst consensus, (3) identifying the two or three questions from the earnings call that will most determine the stock reaction, (4) deciding in advance how I will respond if earnings beat, meet, or miss so I am not making emotional decisions in the moment."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+<div class="pcard">
+  <div class="p-num">010</div>
+  <div class="p-name">Risk Management and Stop Loss Strategy</div>
+  <div class="p-hook" style="margin:.5rem 0">Best used: When building a trade management system</div>
+  <div class="p-desc" style="white-space:pre-wrap;background:var(--sur2);padding:12px;border-left:2px solid var(--rulem);border-radius:1px;font-size:12px">I need to build a disciplined risk management system for my portfolio. Total account size: [AMOUNT]. Help me establish: (1) the maximum I should risk on any single trade as a percentage of portfolio, (2) how to set technically meaningful stop losses rather than arbitrary round numbers, (3) how to use trailing stops versus fixed stops for different position types, (4) the maximum drawdown level at which I should stop trading and reassess, (5) a rules-based process to follow my risk rules consistently.</div>
+  <button class="dl" style="border:none;cursor:pointer;margin-top:.75rem;width:100%;justify-content:center"
+    data-text="I need to build a disciplined risk management system for my portfolio. Total account size: [AMOUNT]. Help me establish: (1) the maximum I should risk on any single trade as a percentage of portfolio, (2) how to set technically meaningful stop losses rather than arbitrary round numbers, (3) how to use trailing stops versus fixed stops for different position types, (4) the maximum drawdown level at which I should stop trading and reassess, (5) a rules-based process to follow my risk rules consistently."
+    onclick="doCopy(this)">Copy Prompt</button>
+</div>
+</div></div>
+    </div>
+  </div>
+
+</div><!-- end gwrap -->
 
 <footer>
   <div class="f-logo">Vibemotion Labs</div>
   <div class="f-links">
     <a href="https://github.com/herominutes/vibemotion-labs" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://herominutes.github.io/vibemotion-labs/LICENSE">MIT Licence</a>
+    <a href="https://herominutes.github.io/vibemotion-labs/LICENSE" target="_blank" rel="noopener">MIT Licence</a>
   </div>
-  <div class="f-copy">© 2025 Vibemotion Labs · Open source · Free forever</div>
+  <div class="f-copy">&copy; 2025 Vibemotion Labs &middot; Open source &middot; Free forever &middot; Zero tracking</div>
 </footer>
 
 <script>
-'use strict';
-
-// ── THEME ──────────────────────────────────────────────────────────
-var isDark = true;
-function toggleTheme() {
-  isDark = !isDark;
-  document.body.classList.toggle('light');
-}
-
-// ── TAB LABELS ────────────────────────────────────────────────────
+// ── ALL LABELS ──────────────────────────────────────────────────────
 var LABELS = {
-  pm:  'Product Management \u2014 8 Guides',
-  ath: 'Athlete Recovery \u2014 8 Guides',
-  inj: 'Injury Programmes \u2014 6 Guides',
-  stk: 'Stock Market \u2014 5 Guides',
-  ai:  'AI Prompts \u2014 60 Prompts Across 3 Disciplines'
+  pm:  'Product Management — 8 Guides',
+  ath: 'Athlete Recovery — 8 Guides',
+  inj: 'Injury Programmes — 6 Guides',
+  stk: 'Stock Market — 5 Guides',
+  ai:  'AI Prompts — 60 Prompts · 3 Disciplines · 2 AI Tools'
 };
 
-// ── MAIN TAB SWITCHING ────────────────────────────────────────────
-function show(niche, btn) {
+// ── MAIN TAB SWITCH ─────────────────────────────────────────────────
+function switchTab(niche, btn) {
   var panels = document.querySelectorAll('.panel');
   for (var i = 0; i < panels.length; i++) { panels[i].classList.remove('on'); }
   var tabs = document.querySelectorAll('.tab');
   for (var j = 0; j < tabs.length; j++) { tabs[j].classList.remove('on'); }
-  var p = document.getElementById('panel-' + niche);
-  if (p) p.classList.add('on');
+  document.getElementById('panel-' + niche).classList.add('on');
   btn.classList.add('on');
-  var lbl = document.getElementById('glabel');
-  if (lbl) lbl.textContent = LABELS[niche] || '';
-  var ai = document.getElementById('ai-section');
-  if (ai) ai.style.display = (niche === 'ai') ? 'block' : 'none';
+  document.getElementById('glabel').textContent = LABELS[niche];
 }
 
-// ── BASE URL ──────────────────────────────────────────────────────
-var BASE = 'https://herominutes.github.io/vibemotion-labs/pdfs/';
-
-// ── PRODUCT DATA ──────────────────────────────────────────────────
-var DATA = {
-  pm: [
-    {n:'01',name:'Amazon Working Backwards Toolkit',file:BASE+'pm/PM_Amazon_Working_Backwards.pdf',desc:'PRFAQ, 6-Pager Narrative, Tenets framework, and Working Backwards checklist \u2014 fully templated with guidance for every section.',prob:'Teams build before they understand the customer',use:'Before any planning session or new initiative',hook:'\u201cStart with the customer. Work backwards. Ship only what is truly needed.\u201d'},
-    {n:'02',name:'Apple: Insanely Simple Toolkit',file:BASE+'pm/PM_Apple_Frameworks.pdf',desc:'10-to-3-to-1 ideation funnel, Jobs Narrative, Simplicity Audit, and Apple review simulation \u2014 for PMs who want products people love.',prob:'Products become bloated with features nobody uses',use:'When your roadmap feels overcrowded',hook:'\u201cThe best product does less \u2014 but does it perfectly.\u201d'},
-    {n:'03',name:'Role-Based PM Toolkit',file:BASE+'pm/PM_Role_Based_Toolkit.pdf',desc:'Five complete role profiles \u2014 Analyst through AI PM \u2014 with responsibilities, core artifacts, success metrics, and level-specific frameworks.',prob:'Career progression feels opaque without a clear map',use:'Before a performance review or promotion conversation',hook:'\u201cFrom Product Analyst to AI PM \u2014 a complete career framework.\u201d'},
-    {n:'04',name:'PRD One-Pager Template Pack',file:BASE+'pm/PM_01_PRD_Template_Pack.pdf',desc:'Three production-ready formats \u2014 the one-pager, the full PRD, and the spike doc \u2014 for writing clear product requirements fast.',prob:'Writing PRDs from scratch wastes hours every sprint',use:'Before sprint planning or any feature kick-off',hook:'\u201cStop staring at a blank document \u2014 ship your PRD in thirty minutes.\u201d'},
-    {n:'05',name:'Prioritization Framework Cheat Sheet',file:BASE+'pm/PM_02_Prioritization_Framework_Cheat_Sheet.pdf',desc:'RICE, ICE, MoSCoW, Kano, and Opportunity Scoring \u2014 all five frameworks with formulas, worked examples, and benchmarks.',prob:'Stakeholders argue over every roadmap item',use:'Before quarterly planning or roadmap reviews',hook:'\u201cFive frameworks that end every roadmap argument \u2014 permanently.\u201d'},
-    {n:'06',name:'PM Interview Answer Script',file:BASE+'pm/PM_03_Interview_Answer_Script.pdf',desc:'Word-for-word answer frameworks for the twenty hardest PM interview questions across product sense, analytical, execution, and strategy.',prob:'Failing interviews despite strong real-world experience',use:'One week before any PM interview',hook:'\u201cAnswers to the twenty hardest PM interview questions.\u201d'},
-    {n:'07',name:'User Research Script + Synthesis Guide',file:BASE+'pm/PM_04_User_Research_Interview_Script.pdf',desc:'Consent language, a forty-five-minute interview script by phase, and the full affinity mapping synthesis method.',prob:'Discovery interviews produce unusable unstructured output',use:'Before scheduling any user research sessions',hook:'\u201cAsk better questions. Spot patterns faster. Build what users want.\u201d'},
-    {n:'08',name:'90-Day PM Onboarding Checklist',file:BASE+'pm/PM_05_90Day_Onboarding_Checklist.pdf',desc:'Three phases \u2014 Listen and Learn, Build Credibility, Lead and Drive \u2014 with structured actions and a ninety-day success benchmark.',prob:'New PMs flounder without a structured first-90-days plan',use:'Day one at any new PM role',hook:'\u201cMake your mark in ninety days \u2014 the playbook senior PMs wish they had.\u201d'}
-  ],
-  ath: [
-    {n:'01',name:'Phase 1 \u2014 Pain Control and Protection',file:BASE+'athlete/ATH_PHASE1_Pain_Control.pdf',desc:'Days 0\u201314. Ice, compression, elevation protocol plus 6 guided exercises with full how-to steps, coaching cues, sets, reps, and progression criteria.',prob:'No structure for the critical first two weeks post-injury',use:'Immediately after any lower limb injury',hook:'\u201cControl the pain. Protect the tissue. Start healing today.\u201d'},
-    {n:'02',name:'Phase 2 \u2014 Mobility and Early Strength',file:BASE+'athlete/ATH_PHASE2_Mobility_Strength.pdf',desc:'Weeks 2\u20135. Seven guided exercises with calf raises, band dorsiflexion, hamstring stretches, hip abduction, wall squats, clam shells, and ankle alphabet.',prob:'Stiffness and weakness set in without structured early loading',use:'Once resting pain is below 2 out of 10 consistently',hook:'\u201cMove better. Get stronger. Give your body a reason to heal faster.\u201d'},
-    {n:'03',name:'Phase 3 \u2014 Strength and Stability',file:BASE+'athlete/ATH_PHASE3_Strength_Stability.pdf',desc:'Weeks 4\u20138. Goblet squat, Romanian deadlift, step-ups, single-leg balance, Nordic hamstring curl, and lateral band walks with sets, reps, load, and full how-to.',prob:'Returning to sport weak creates a high re-injury risk',use:'When Phase 2 exercises are pain-free for 5 sessions',hook:'\u201cBuild the strength that makes re-injury far less likely.\u201d'},
-    {n:'04',name:'Phase 4 \u2014 Power and Plyometrics',file:BASE+'athlete/ATH_PHASE4_Power_Plyometrics.pdf',desc:'Weeks 7\u201312. Box jumps, single-leg hop and stick, depth drops, lateral bounds, progressive running protocol, and triple hop LSI testing.',prob:'Athletes return to sport without rebuilding explosive power',use:'When Phase 3 strength benchmarks are met',hook:'\u201cRebuild the power that got you onto the field in the first place.\u201d'},
-    {n:'05',name:'Phase 5 \u2014 Return to Athletic Performance',file:BASE+'athlete/ATH_PHASE5_Return_To_Performance.pdf',desc:'Weeks 10\u201316+. Barbell squat, trap bar deadlift, agility drills, sprint mechanics, and a permanent prehab programme plus the full return-to-sport clearance checklist.',prob:'Athletes return to competition without hitting pre-injury benchmarks',use:'When LSI reaches 90% on hop testing',hook:'\u201cNot just back to sport. Back to your best \u2014 and beyond.\u201d'},
-    {n:'06',name:'Return-to-Sport Clearance Checklist',file:BASE+'athlete/ATH_01_Return_To_Sport_Checklist.pdf',desc:'A five-phase milestone tracker from pain control to full competition clearance with date fields, clinical notes, and phase-by-phase benchmarks.',prob:'Athletes re-injure by returning to sport too soon',use:'Before any return to training or competition',hook:'\u201cThe clearance checklist your physiotherapist will not always give you.\u201d'},
-    {n:'07',name:'Injury Recovery Nutrition Guide',file:BASE+'athlete/ATH_02_Injury_Recovery_Nutrition_Guide.pdf',desc:'Phase-specific macros, six key healing nutrients with clinical dosages, and a complete seven-day sample meal plan for the acute recovery phase.',prob:'Poor nutrition measurably slows tissue repair',use:'From day one of any injury recovery',hook:'\u201cEat to heal faster \u2014 the exact macros sports dietitians prescribe.\u201d'},
-    {n:'08',name:'Mental Performance Journal',file:BASE+'athlete/ATH_03_Mental_Performance_Journal.pdf',desc:'Daily check-ins and weekly reviews with prompts for athletic identity, fear of re-injury, and performance confidence for the full recovery arc.',prob:'Fear and identity loss are the hidden barriers to full recovery',use:'Every day throughout the recovery programme',hook:'\u201cStay mentally in the game while your body heals.\u201d'}
-  ],
-  inj: [
-    {n:'01',name:'ACL Reconstruction Recovery',file:BASE+'athlete/ATH_ACL_Recovery_Programme.pdf',desc:'Complete 9\u201312 month programme from surgery to elite performance. All 5 phases with every exercise, set, rep, load, how-to instruction, and return-to-sport clearance checklist.',prob:'ACL re-injury rate without structured rehab is 20\u201325%',use:'From day one post-surgery through return to full competition',hook:'\u201c9 months done right. A career protected.\u201d'},
-    {n:'02',name:'Knee Injury Recovery',file:BASE+'athlete/ATH_Knee_Recovery_Programme.pdf',desc:'Full programme for patellofemoral pain and patellar tendinopathy. VMO isometrics, Spanish squat, eccentric step-downs, heavy slow resistance, and plyometric reintroduction.',prob:'Knee pain is the most undertreated barrier to athletic performance',use:'From first session of knee pain through elite sport return',hook:'\u201cPain-free knees are not luck \u2014 they are built.\u201d'},
-    {n:'03',name:'Low Back Injury Recovery',file:BASE+'athlete/ATH_Low_Back_Recovery_Programme.pdf',desc:'Complete programme for athletic low back pain. McKenzie extension, deep core reactivation, dead bug, bird dog, hip hinge restoration, and trap bar deadlift progression.',prob:'Low back pain is the leading cause of early career end in athletes',use:'From acute episode through full return to loaded sport',hook:'\u201cA strong back is the foundation of every athletic movement.\u201d'},
-    {n:'04',name:'Shoulder Injury Recovery',file:BASE+'athlete/ATH_Shoulder_Recovery_Programme.pdf',desc:'Full programme for rotator cuff injuries, impingement, and SLAP tears. Pendulum mobility, infraspinatus strengthening, scapular control, face pulls, and interval throwing programme.',prob:'Shoulder injuries end more athletic careers than almost any other injury',use:'From acute post-injury through return to overhead and throwing sport',hook:'\u201cHealthy shoulders throw harder, lift more, and last longer.\u201d'},
-    {n:'05',name:'Hamstring Strain Recovery',file:BASE+'athlete/ATH_Hamstring_Recovery_Programme.pdf',desc:'Programme for Grade I\u2013III hamstring strains with full Nordic Hamstring Curl protocol and progressive sprint programme. Reduces re-injury rate from 40% to under 10%.',prob:'Hamstring strains re-occur in 30\u201340% of athletes without eccentric training',use:'From day of injury through full sprint speed and sport return',hook:'\u201cThe hamstring injury that never comes back.\u201d'},
-    {n:'06',name:'Ankle Sprain Recovery',file:BASE+'athlete/ATH_Ankle_Sprain_Recovery_Programme.pdf',desc:'Comprehensive programme for Grade I\u2013III ankle sprains. PEACE and LOVE acute care, 360-degree strengthening, progressive balance training, and lateral hop protocol.',prob:'70% of ankle sprains re-occur without complete rehabilitation',use:'From day of injury through full agility and sport return',hook:'\u201cRehabilitation done fully. Never roll the same ankle twice.\u201d'}
-  ],
-  stk: [
-    {n:'01',name:'Stock Screening Checklist',file:BASE+'stock/STK_01_Stock_Screening_Checklist.pdf',desc:'A twelve-point due diligence filter covering business quality, financial health, valuation, and risk with a final decision and position-sizing template.',prob:'Most retail investors buy stocks on emotion not process',use:'Before placing any buy order',hook:'\u201cNever buy a stock without running it through this twelve-point filter.\u201d'},
-    {n:'02',name:'Technical Analysis Pattern Guide',file:BASE+'stock/STK_02_Technical_Analysis_Pattern_Guide.pdf',desc:'Fifteen chart patterns \u2014 reversals, continuations, and candlestick formations \u2014 with plain-language descriptions, exact trade setups, and key observations.',prob:'Charts feel unreadable without a pattern recognition system',use:'Before reviewing any watchlist or entering a trade',hook:'\u201cSpot the fifteen patterns professional traders watch every day.\u201d'},
-    {n:'03',name:'Trading Journal Template',file:BASE+'stock/STK_03_Stock_Market_Trading_Journal.pdf',desc:'Pre-trade plan and post-trade review covering thesis, risk-reward ratio, position size, emotional state, and a graded execution score for every trade.',prob:'Without journaling the same mistakes repeat indefinitely',use:'Before and after every single trade',hook:'\u201cThe journal that converts your losses into your most valuable education.\u201d'},
-    {n:'04',name:'IPO Research Checklist',file:BASE+'stock/STK_04_IPO_Research_Checklist.pdf',desc:'A ten-point framework covering business model, cash burn, insider selling, peer valuation, and management track record with a full scoring summary.',prob:'IPO hype consistently leads retail investors to overpay',use:'Before participating in any new public offering',hook:'\u201cBefore you chase the next IPO, run it through this filter first.\u201d'},
-    {n:'05',name:'Financial Statement Analysis Guide',file:BASE+'stock/STK_05_Financial_Statement_Analysis_Guide.pdf',desc:'A plain-language breakdown of the income statement, balance sheet, and cash flow statement with key ratios, formulas, and benchmarks for every line item.',prob:'Most investors cannot read the financials they invest based on',use:'When researching any company before investing',hook:'\u201cRead any company\u2019s financials like a Wall Street analyst.\u201d'}
-  ]
-};
-
-// ── BUILD PRODUCT GRID ───────────────────────────────────────────
-var built = {};
-function buildGrid(niche) {
-  if (built[niche]) return;
-  built[niche] = true;
-  var panel = document.getElementById('panel-' + niche);
-  var grid = document.createElement('div');
-  grid.className = 'pgrid';
-  var items = DATA[niche];
-  for (var i = 0; i < items.length; i++) {
-    var p = items[i];
-    var card = document.createElement('div');
-    card.className = 'pcard';
-    card.innerHTML =
-      '<div class="p-num">' + p.n + '</div>' +
-      '<div class="p-name">' + p.name + '</div>' +
-      '<div class="p-desc">' + p.desc + '</div>' +
-      '<div class="p-div"></div>' +
-      '<div class="p-row"><span class="p-key">Problem</span><span class="p-val">' + p.prob + '</span></div>' +
-      '<div class="p-row"><span class="p-key">Use when</span><span class="p-val">' + p.use + '</span></div>' +
-      '<div class="p-hook">' + p.hook + '</div>' +
-      '<a class="dl" href="' + p.file + '" target="_blank" rel="noopener">' +
-        '<span>Open Free PDF</span><span class="dl-arr">\u2197</span>' +
-      '</a>';
-    grid.appendChild(card);
+// ── AI STREAM SWITCH ────────────────────────────────────────────────
+function switchAi(stream, btn) {
+  var divs = ['ai-pm','ai-ath','ai-stk'];
+  for (var i = 0; i < divs.length; i++) {
+    document.getElementById(divs[i]).style.display = 'none';
   }
-  panel.appendChild(grid);
-}
-
-buildGrid('pm');
-buildGrid('ath');
-buildGrid('inj');
-buildGrid('stk');
-
-// ── AI PROMPTS DATA ───────────────────────────────────────────────
-// Stored as array elements — no inline onclick quoting issues
-var PROMPTS = {
-  pm: {
-    claude: [
-      {title:'Working Backwards from the Customer',use:'Before starting any new product initiative',text:'I am a product manager starting a new initiative. Help me apply Amazon\u2019s Working Backwards framework. Ask me questions one at a time to help me write a PRFAQ: first the customer problem, then the proposed solution, then the success metrics, then the risks. Be rigorous \u2014 push back if my answers are vague or solution-first rather than customer-first.'},
-      {title:'PRD Review and Strengthening',use:'After writing a first draft PRD',text:'I am going to paste my PRD draft below. Please review it as a senior PM would. Identify: (1) any sections where the customer problem is unclear, (2) success metrics that are not measurable, (3) risks I have not addressed, (4) scope that seems too large for one release. Be direct and specific. Then suggest the three most important improvements.\n\n[PASTE YOUR PRD HERE]'},
-      {title:'Roadmap Prioritisation Using RICE',use:'Before quarterly planning sessions',text:'I need to prioritise my product roadmap using RICE scoring. I will give you a list of features. For each one, help me estimate Reach, Impact, Confidence, and Effort. Then calculate the RICE score and rank them. Challenge any estimates that seem unrealistic.\n\nFeatures to score:\n[LIST YOUR FEATURES HERE]'},
-      {title:'Stakeholder Disagreement Resolution',use:'When roadmap conflicts arise',text:'I am a product manager facing a roadmap disagreement. Engineering wants to prioritise technical debt. Marketing wants a new user-facing feature. My CEO wants faster growth metrics. Help me: (1) map each stakeholder\u2019s underlying goal, (2) find where their goals overlap, (3) draft a proposal that addresses all three perspectives, (4) write the specific talking points for each 1:1.'},
-      {title:'User Research Synthesis',use:'After completing user interviews',text:'I have just completed [NUMBER] user interviews about [TOPIC]. I will paste my raw notes below. Help me: (1) identify the top 5 recurring themes, (2) write an insight statement for each in the format \u201cUsers struggle to [X] because [Y] which causes [Z]\u201d, (3) rank them by frequency and emotional intensity, (4) identify the highest-value product opportunity.\n\n[PASTE YOUR NOTES HERE]'},
-      {title:'PM Interview Preparation',use:'One week before a PM interview',text:'I have a product manager interview at [COMPANY] for a [ROLE] position. Help me practise product sense questions. Ask me one question at a time. After each answer, give me specific feedback on: what I did well, what was missing, and how a top PM candidate would have answered differently.'},
-      {title:'Jobs to Be Done Analysis',use:'When designing or improving a product',text:'Help me apply the Jobs to Be Done framework to [PRODUCT OR FEATURE]. Walk me through: (1) the functional job, (2) the emotional job, (3) the social job, (4) the circumstances that trigger the job, (5) the current alternatives and why they fall short. Then identify the most underserved part of the job.'},
-      {title:'Metrics Dashboard Design',use:'When setting up product KPIs',text:'I am building a metrics dashboard for [PRODUCT]. Help me define: (1) one north star metric, (2) three primary KPIs that drive it, (3) two guardrail metrics I must not let regress, (4) the leading indicators that predict each KPI. Explain the reasoning behind each choice.'},
-      {title:'Feature Scoping and Scope Creep Defence',use:'During sprint planning',text:'I need to scope a feature for [DESCRIPTION]. Help me apply a strict MoSCoW method. For each item I describe, classify it as Must Have, Should Have, Could Have, or Won\u2019t Have \u2014 and explain the reasoning. Then tell me what to cut to make this shippable in [TIMEFRAME].\n\nFeature scope:\n[DESCRIBE YOUR FEATURE]'},
-      {title:'90-Day Onboarding Strategy',use:'First week at a new PM role',text:'I just started a new product manager role at [COMPANY TYPE]. It is day [X] of my role. Help me build a structured 90-day plan. For each phase \u2014 Listen and Learn (days 1\u201330), Build Credibility (days 31\u201360), and Lead and Drive (days 61\u201390) \u2014 give me specific weekly actions, key questions to ask, and relationships to build.'}
-    ],
-    gpt: [
-      {title:'Six-Pager Narrative Writing',use:'Before executive or board-level product reviews',text:'Act as a senior Amazon product leader. Help me write a six-pager narrative for this initiative: [DESCRIBE YOUR INITIATIVE]. Structure it with: Executive Summary, The Problem, The Proposed Solution, Goals and Tenets, Risks and Mitigations, and an Appendix. Write in Amazon\u2019s clear, direct narrative style \u2014 no bullet points in the main sections, no jargon, no passive voice.'},
-      {title:'Competitive Analysis Framework',use:'Before entering a new market or launching a feature',text:'I am a product manager analysing the competitive landscape for [PRODUCT CATEGORY]. For each competitor I name, evaluate: (1) their primary customer segment, (2) their core value proposition, (3) their three strongest features, (4) their most significant weaknesses, (5) their likely strategic direction. Then identify the clearest gap in the market.\n\nCompetitors: [LIST COMPETITORS]'},
-      {title:'OKR Writing and Alignment',use:'During quarterly planning',text:'Help me write strong OKRs for my product team. Our company objective is [COMPANY OBJECTIVE]. My team is responsible for [TEAM FOCUS AREA]. For each objective I draft, help me write three to five key results that are specific and measurable, outcome-focused, ambitious but achievable, and clearly linked to the company objective.'},
-      {title:'Sprint Goal Setting',use:'Before each sprint planning session',text:'I need to set a clear sprint goal for my engineering team. Our current backlog items are: [LIST BACKLOG ITEMS]. Help me: (1) identify the single most important outcome we could achieve this sprint, (2) write it as a sprint goal in one sentence focused on customer value, (3) list which backlog items directly support this goal, (4) identify what to deprioritise.'},
-      {title:'Launch Plan Creation',use:'Two weeks before any product launch',text:'I am launching [PRODUCT] in [TIMEFRAME]. Help me create a launch plan covering: (1) rollout strategy with phases and timing, (2) internal communications plan, (3) external announcement messaging, (4) success criteria at 24 hours, 7 days, and 30 days, (5) rollback criteria and process.'},
-      {title:'Technical Debt Prioritisation',use:'When negotiating with engineering on tech debt',text:'My engineering team has a backlog of technical debt. Evaluate each item on: (1) customer impact if not addressed, (2) velocity impact on future development, (3) risk of causing an incident, (4) effort to resolve. Score each 1\u20135 per dimension. Then help me build the business case for the top three items.\n\nTech debt items: [LIST ITEMS]'},
-      {title:'A/B Test Design',use:'Before running any product experiment',text:'I want to run an A/B test for [DESCRIBE THE CHANGE]. Help me design a rigorous experiment: (1) write the hypothesis, (2) define the primary metric, (3) identify guardrail metrics, (4) calculate the required sample size at 95% confidence, (5) define exact success criteria before running, (6) identify potential confounding variables.'},
-      {title:'Stakeholder Communication Email',use:'After making a major product decision',text:'I need to write an email communicating a significant product decision. The decision is: [DESCRIBE THE DECISION]. The stakeholders are: [LIST STAKEHOLDERS]. Help me write an email that leads with the decision clearly, explains the reasoning, acknowledges trade-offs, states next steps, and ends with a clear ask.'},
-      {title:'User Persona Development',use:'During product discovery',text:'I am building user personas for [PRODUCT]. For each segment I describe, build a persona with: name and profile, job title and context, top three goals, top three frustrations, decision-making criteria, and one defining quote.\n\nUser segments: [DESCRIBE SEGMENTS]'},
-      {title:'Post-Mortem Facilitation',use:'After a failed launch or major incident',text:'I need to facilitate a blameless post-mortem for [DESCRIBE WHAT HAPPENED]. Help me structure a two-hour session that: establishes psychological safety, reconstructs the timeline, identifies systemic issues, generates specific improvements with owners, and closes with team commitments. Provide the agenda and key questions for each section.'}
-    ]
-  },
-  ath: {
-    claude: [
-      {title:'Phase Assessment and Programme Selection',use:'At the start of any injury recovery',text:'I am an injured athlete. I injured my [BODY PART] [TIME AGO]. My pain at rest is [X/10]. My pain during movement is [X/10]. I can [CAN/CANNOT] bear full weight. Swelling is [NONE/MILD/MODERATE/SEVERE]. Based on the Vibemotion Labs five-phase recovery framework, which phase should I begin with and what criteria must I meet before advancing?'},
-      {title:'Daily Exercise Programme Builder',use:'At the start of each recovery week',text:'I am in Phase [NUMBER] of my injury recovery. My injury is [DESCRIBE]. I have access to: [LIST EQUIPMENT]. I can train [NUMBER] days per week. Build me a specific daily exercise programme for this week using the Vibemotion Labs Phase [NUMBER] exercises. For each day, list exercises in order with sets, reps, rest periods, and one coaching cue per exercise.'},
-      {title:'Pain Monitoring and Progression Decisions',use:'When unsure whether to progress to next phase',text:'I need help with a progression decision. I am in Phase [NUMBER]. Here is my pain data from the last 7 sessions: [LIST PAIN SCORES BEFORE, DURING, AND AFTER EACH SESSION]. Swelling status: [DESCRIBE]. I can currently perform: [LIST]. Tell me: (1) whether my recovery is progressing as expected, (2) any red flags to address, (3) whether I am ready to advance to Phase [NEXT] and why.'},
-      {title:'Injury-Specific Exercise Modifications',use:'When standard exercises cause pain',text:'I am following Phase [NUMBER] of the Vibemotion Labs recovery programme but having difficulty with [SPECIFIC EXERCISE]. When I perform it, I feel [DESCRIBE THE PAIN \u2014 location, type, intensity out of 10]. Help me: (1) identify the likely cause, (2) suggest two or three modifications that reduce load while maintaining therapeutic benefit, (3) tell me what I should feel vs. what is a warning sign.'},
-      {title:'Nutrition Plan for Recovery Phase',use:'At the start of each recovery phase',text:'I am in Phase [NUMBER] of recovery from a [INJURY TYPE]. I weigh [WEIGHT] kg. I am [MALE/FEMALE], aged [AGE]. My current activity level is [DESCRIBE]. Using the Vibemotion Labs nutrition framework, calculate my daily protein, carbohydrate, and calorie targets. Then build me a 3-day sample meal plan that hits these targets and includes Vitamin C, Zinc, Omega-3, and collagen.'},
-      {title:'Mental Barriers and Fear of Re-injury',use:'When motivation drops or fear holds you back',text:'I am struggling with the mental side of my injury recovery. My injury is [DESCRIBE]. I am in week [NUMBER] of recovery. My main psychological barriers are: [DESCRIBE \u2014 e.g. fear of re-injury, loss of athletic identity, frustration with slow progress]. Help me: (1) understand why these feelings are normal, (2) give me three daily practices for each barrier, (3) write a weekly journal prompt for the Vibemotion Labs Mental Performance Journal.'},
-      {title:'Return-to-Sport Readiness Assessment',use:'When approaching sport clearance',text:'I am preparing to return to [SPORT]. I have completed Phase [NUMBER] of the Vibemotion Labs programme. My current performance data: pain scores [LIST], single-leg balance [DURATION], hop test distances on both legs [LIST], strength test results [LIST]. Tell me: (1) which clearance criteria I meet, (2) which I do not yet meet, (3) exactly what I need to achieve in each incomplete area.'},
-      {title:'Long-Term Injury Prevention Planning',use:'After returning to full sport',text:'I have returned to [SPORT] after recovering from a [INJURY]. Based on the Vibemotion Labs Phase 5 prehab protocol, help me: (1) design a 15-minute pre-training warm-up I can do before every session, (2) design a weekly maintenance strength programme under 30 minutes, (3) identify the three highest-risk movements in my sport and specific techniques to perform each one more safely.'},
-      {title:'Sleep Optimisation for Injury Recovery',use:'When recovery feels slow',text:'I am recovering from a [INJURY] and want to maximise sleep quality to accelerate tissue repair. I sleep [HOURS] per night. I fall asleep [EASILY/WITH DIFFICULTY]. I wake during the night [NEVER/OCCASIONALLY/FREQUENTLY]. My bedroom: [DESCRIBE]. Pre-bed routine: [DESCRIBE]. Using the Vibemotion Labs sleep framework, give me a personalised nightly protocol with specific timing, environment changes, and supplement recommendations.'},
-      {title:'Weekly Recovery Progress Review',use:'Every Sunday throughout recovery',text:'I want to do a structured weekly review of my recovery progress. This is week [NUMBER] from [INJURY]. Help me analyse: (1) my pain score trend this week, (2) which exercises I progressed on and which I struggled with, (3) my nutrition adherence and any gaps, (4) my mental state and any fear or frustration patterns, (5) my specific targets for next week. Then write a one-paragraph summary for my Mental Performance Journal.'}
-    ],
-    gpt: [
-      {title:'ACL Recovery Timeline Personalisation',use:'After ACL surgery',text:'I had ACL reconstruction surgery [NUMBER] days ago. My graft type is [PATELLAR TENDON/HAMSTRING/QUADRICEPS/ALLOGRAFT]. My surgeon\u2019s restrictions are: [LIST]. Using the Vibemotion Labs ACL Recovery Programme, build me a personalised week-by-week timeline from now until return to sport. For each phase, give me the specific goals, the exercises to focus on, and the measurable criteria that determine when I advance.'},
-      {title:'Hamstring Strain Grade Assessment',use:'Immediately after a hamstring injury',text:'I think I have pulled my hamstring during [ACTIVITY]. It happened [TIME AGO]. Pain location: [DESCRIBE]. Pain intensity: [X/10]. I [CAN/CANNOT] walk normally. Swelling: [PRESENT/ABSENT]. Bruising: [PRESENT/ABSENT]. Help me assess the likely grade of my strain, what to do in the next 72 hours, and which phase of the Vibemotion Labs Hamstring Recovery Programme to begin.'},
-      {title:'Knee Pain Diagnosis and Programme Selection',use:'When knee pain begins',text:'I have been experiencing knee pain for [DURATION]. The pain is located [FRONT/BEHIND/INSIDE/OUTSIDE] of the knee. It is worst when I [DESCRIBE ACTIVITY]. Pain level: [X/10] at worst. I am [AGE] years old and I play [SPORT]. Help me identify whether this is more likely patellofemoral pain or patellar tendinopathy, then guide me to the correct starting point in the Vibemotion Labs Knee Recovery Programme.'},
-      {title:'Low Back Pain Exercise Safety Check',use:'When resuming training with back pain',text:'I have low back pain and want to know which exercises are safe to continue and which to avoid. My diagnosis is [DESCRIBE]. Pain level: [X/10]. I normally train [DESCRIBE]. For each exercise in my current programme, tell me: safe to continue, modify and continue, or avoid \u2014 with the specific reasoning for each.'},
-      {title:'Shoulder Injury Rehab Progression',use:'During shoulder rehabilitation',text:'I am rehabilitating a [ROTATOR CUFF TEAR/SHOULDER IMPINGEMENT/SLAP TEAR]. I am in week [NUMBER] of recovery. Exercises I can perform without pain: [LIST]. Exercises that cause pain: [LIST AND DESCRIBE]. Using the Vibemotion Labs Shoulder Recovery Programme, tell me: (1) which phase I am in, (2) the three exercises to focus on most this week, (3) what I should feel vs. when to stop during each exercise.'},
-      {title:'Ankle Instability Prevention Protocol',use:'After an ankle sprain or with chronic instability',text:'I have [RECENTLY SPRAINED/CHRONIC INSTABILITY IN] my [LEFT/RIGHT] ankle. This is my [FIRST/SECOND/THIRD OR MORE] significant ankle sprain. I play [SPORT]. Build me a 6-week progressive balance and proprioception programme based on the Vibemotion Labs five-stage balance progression. For each week, specify the exercises, duration, and how to know I am ready to advance.'},
-      {title:'Return to Running After Injury',use:'When beginning the running phase of recovery',text:'I am preparing to return to running after recovering from [INJURY]. I have been cleared by my physiotherapist. I can walk for [DURATION] without pain. Pain during fast walking: [X/10]. I have not run for [NUMBER] weeks. Using the Vibemotion Labs progressive running protocol, build me a 6-week return-to-running plan with specific session details \u2014 warm-up, intervals, duration, pace, and the signs that tell me to stop a session early.'},
-      {title:'Nordic Hamstring Curl Programme',use:'For hamstring injury prevention or rehabilitation',text:'I want to build up to the full Nordic Hamstring Curl. Currently I [CAN/CANNOT] perform any Nordic curl. My hamstring strength compared to the uninjured side feels [DESCRIBE]. Build me a progressive 8-week Nordic curl programme starting from where I am now. For each week, specify the sets, reps, tempo, and what a successful session looks like. Tell me what DOMS to expect and how to distinguish normal soreness from a warning sign.'},
-      {title:'Injury Recovery Nutrition Supplement Stack',use:'When optimising nutrition for healing',text:'I am recovering from [INJURY]. I weigh [WEIGHT] kg. I am [MALE/FEMALE], aged [AGE]. My diet is [OMNIVORE/VEGETARIAN/VEGAN]. Based on the Vibemotion Labs nutrition framework, tell me: (1) the exact dose of each healing supplement \u2014 Vitamin C, Zinc, Omega-3, Collagen Peptides, and Creatine, (2) best timing relative to meals and sleep, (3) any interactions to be aware of, (4) whole-food sources I can use alongside supplements.'},
-      {title:'Sport-Specific Return to Performance',use:'In the final phase of recovery',text:'I am in the final phase of recovery from [INJURY] and want to return to [SPORT] at the highest level possible. My sport demands: [DESCRIBE KEY PHYSICAL DEMANDS]. Using Phase 5 of the Vibemotion Labs programme, build me a 4-week sport-specific performance programme that bridges my rehab into full training. Include strength benchmarks I should hit before returning to unrestricted competition.'}
-    ]
-  },
-  stk: {
-    claude: [
-      {title:'Company Deep Dive \u2014 Full Due Diligence',use:'Before investing in any individual stock',text:'I want to do a thorough fundamental analysis of [COMPANY NAME / TICKER]. Help me work through the Vibemotion Labs Stock Screening Checklist systematically. Ask me one section at a time: first business quality, then financial health, then valuation, then risk. For each section, explain what I should be looking for, where to find the data, and what good vs. concerning looks like. At the end, summarise the key green flags and red flags.'},
-      {title:'Financial Statement Line-by-Line Analysis',use:'When reading a company annual report',text:'I am going to paste the key financial data from [COMPANY]\u2019s most recent annual report. Help me analyse each statement \u2014 income statement, balance sheet, and cash flow statement \u2014 using the Vibemotion Labs framework. For each line item, tell me: (1) what the number means in plain English, (2) whether it looks healthy or concerning, (3) the trend to look up vs. prior years.\n\n[PASTE FINANCIAL DATA HERE]'},
-      {title:'IPO Red Flag Analysis',use:'Before participating in any IPO',text:'I am considering investing in the upcoming IPO of [COMPANY]. Help me run through the Vibemotion Labs 10-point IPO checklist. Flag every red flag you identify \u2014 do not be diplomatic. Assess: business model clarity, revenue growth trend, path to profitability, cash burn runway, use of proceeds, insider selling, competitive moat, customer concentration, valuation vs. peers, and management track record.\n\nWhat I know about the company: [PASTE DETAILS]'},
-      {title:'Chart Pattern Identification Practice',use:'When developing technical analysis skills',text:'I want to practise identifying chart patterns from the Vibemotion Labs Technical Analysis guide. Describe a fictional price action scenario to me, and I will try to identify the pattern. Then tell me: (1) whether I identified it correctly, (2) the textbook entry, target, and stop for this pattern, (3) what additional confirmation I should look for. Give me 5 progressively more challenging scenarios.'},
-      {title:'Portfolio Position Sizing',use:'When deciding how much to invest in a position',text:'Help me think through position sizing for a potential investment. My total portfolio is [AMOUNT]. The stock I am considering is [TICKER]. My conviction level is [LOW/MEDIUM/HIGH]. My stop loss would be at [PRICE OR % BELOW ENTRY]. Calculate: (1) the maximum position size based on risking no more than 1\u20132% of portfolio on this trade, (2) concentration risk vs. other holdings, (3) how to think about adding to the position if it moves in my favour.'},
-      {title:'Pre-Trade Journal Entry',use:'Before placing any trade',text:'Help me complete a pre-trade journal entry using the Vibemotion Labs Trading Journal format. I am considering [BUYING/SELLING] [TICKER]. Walk me through each section: (1) my thesis in one clear sentence, (2) the specific entry trigger, (3) my exact stop loss price and why, (4) my profit targets, (5) my risk-reward ratio, (6) my position size as a percentage of portfolio, (7) what would invalidate this trade. Push back if my answers are unclear or emotional.'},
-      {title:'Earnings Analysis Framework',use:'Before or after earnings reports',text:'[COMPANY] is reporting earnings [IN X DAYS / YESTERDAY]. Help me analyse the report: (1) revenue growth vs. consensus and vs. prior quarter \u2014 is the trend accelerating or decelerating, (2) gross and operating margin trend, (3) management guidance and tone, (4) free cash flow generation, (5) any balance sheet red flags. Then give me your honest assessment of whether the market reaction is justified.'},
-      {title:'Sector Rotation Analysis',use:'When macro conditions shift',text:'Help me think through sector rotation. Current conditions: interest rates are [RISING/FALLING/FLAT], inflation is [HIGH/MODERATE/LOW AND FALLING], GDP growth is [STRONG/SLOWING/CONTRACTING], the Fed is [TIGHTENING/EASING/HOLDING]. Based on these conditions: (1) which sectors typically outperform and underperform, (2) which sectors in my portfolio might be at risk, (3) which sectors to consider adding, (4) what indicators to watch for when the rotation shifts.'},
-      {title:'Post-Trade Review and Pattern Analysis',use:'After closing any position',text:'I just closed a trade on [TICKER] with a [PROFIT/LOSS] of [AMOUNT/%]. Here is what happened: [DESCRIBE THE TRADE]. Walk me through: (1) whether I followed my pre-trade plan and if not why, (2) what the outcome would have been if I followed the plan exactly, (3) whether this was good process or bad process regardless of outcome, (4) what specific behaviour to change in my next trade, (5) the grade I should give this trade on process alone.'},
-      {title:'Building a Dividend Income Strategy',use:'When planning long-term income investing',text:'I want to build a dividend income portfolio. My goals: income target of [AMOUNT] per year in [NUMBER] years. Current portfolio: [AMOUNT]. Monthly investment: [AMOUNT]. Help me: (1) calculate the portfolio size and average yield needed, (2) identify characteristics of sustainable dividend payers vs. dividend traps, (3) suggest sector diversification approach, (4) build a reinvestment plan, (5) identify tax considerations I should research.'}
-    ],
-    gpt: [
-      {title:'Stock Valuation \u2014 DCF Analysis',use:'When trying to estimate intrinsic value',text:'Help me build a discounted cash flow valuation for [COMPANY / TICKER]. Walk me through each step: (1) estimating free cash flow for the next 5 years based on historical growth rates, (2) choosing an appropriate discount rate, (3) calculating the terminal value, (4) arriving at an intrinsic value per share, (5) comparing it to the current price to calculate the margin of safety. Use conservative assumptions and show me how the valuation changes if growth is 50% lower than expected.\n\nFinancial inputs: [PASTE REVENUE, FCF, DEBT, SHARES OUTSTANDING]'},
-      {title:'Competitor Comparison Analysis',use:'When evaluating a company against its peers',text:'I am evaluating [COMPANY] against its main competitors. Build a structured comparison for each company on: revenue growth rate (3-year CAGR), gross margin, operating margin, return on equity, debt-to-equity ratio, P/E ratio, and EV/EBITDA. Then tell me: (1) which company has the strongest financial profile, (2) which is the most attractively valued relative to its quality, (3) which has the clearest competitive moat, (4) the risks I should weight most heavily.\n\nCompanies: [LIST COMPANIES]'},
-      {title:'Reading an Annual Report \u2014 10-K Analysis',use:'When starting fundamental research on a company',text:'I want to read [COMPANY]\u2019s most recent 10-K annual report like a professional analyst. Guide me through it section by section. Tell me: (1) which sections to read in full vs. skim, (2) the three most important things to look for in the Business Description, (3) specific risk factors to take seriously vs. boilerplate language, (4) what the MD&A reveals that the financials alone do not, (5) the five numbers I must extract before forming any opinion.'},
-      {title:'Technical Chart Setup Identification',use:'When building a trading watchlist',text:'I am building a watchlist of stocks with strong technical setups. For each ticker I give you, describe: (1) the primary chart pattern forming and its implications, (2) the key price levels \u2014 support, resistance, and the line in the sand, (3) the volume pattern and what it suggests about institutional interest, (4) whether the setup favours a long or short trade and why, (5) the ideal entry, target, and stop loss levels with risk-reward ratio.\n\nTickers: [LIST TICKERS WITH ANY CONTEXT]'},
-      {title:'Options Strategy Selection',use:'When exploring options as a strategy',text:'I want to understand which options strategy is appropriate for my view on [TICKER]. My view: I think the stock will [GO UP/GO DOWN/STAY FLAT] over the next [TIMEFRAME]. My conviction level is [LOW/MEDIUM/HIGH]. I am [COMFORTABLE/NOT COMFORTABLE] with the potential to lose my entire premium. Help me: (1) identify the two or three most appropriate options strategies, (2) explain the maximum gain, maximum loss, and break-even for each, (3) tell me the key variables to monitor.'},
-      {title:'Portfolio Rebalancing Analysis',use:'Quarterly portfolio review',text:'I need to rebalance my investment portfolio. Current holdings with percentages: [LIST HOLDINGS AND PERCENTAGES]. My target allocation: [DESCRIBE TARGET]. Help me: (1) identify which positions are most overweight and underweight, (2) calculate the specific trades needed to rebalance, (3) consider tax implications of selling overweight positions, (4) suggest whether current market conditions argue for staying overweight anywhere before rebalancing, (5) set a rebalancing threshold for future reviews.'},
-      {title:'IPO Lock-Up Expiry Strategy',use:'When an IPO lock-up is expiring',text:'The lock-up period for [COMPANY] IPO expires in [NUMBER] days. This means [NUMBER OF SHARES / ESTIMATED VALUE] in insider shares will become eligible for sale. Help me think through: (1) the typical price pattern around lock-up expiries, (2) how to estimate the selling pressure, (3) whether the company\u2019s recent earnings change the calculus, (4) how I should position given my current conviction, (5) what price levels to watch as triggers.'},
-      {title:'Macro Impact on Portfolio',use:'When major economic events occur',text:'A major macro event has just occurred: [DESCRIBE EVENT]. Help me analyse the likely second and third-order effects on my portfolio. My holdings are: [LIST SECTORS OR SPECIFIC HOLDINGS]. For each holding, tell me: (1) the direct impact on the company\u2019s fundamentals, (2) the likely market reaction over the next 1\u20133 months, (3) whether this changes my long-term thesis, (4) any position adjustments to consider.'},
-      {title:'Earnings Season Preparation',use:'Before each earnings season',text:'Earnings season is approaching. I hold positions in: [LIST TICKERS AND EARNINGS DATES]. For each company, help me prepare by: (1) identifying the single most important metric the market will focus on, (2) setting my expectations vs. analyst consensus, (3) identifying the two or three questions from the earnings call that will most determine the stock reaction, (4) deciding in advance how I will respond if earnings beat, meet, or miss \u2014 so I am not making emotional decisions in the moment.'},
-      {title:'Risk Management and Stop Loss Strategy',use:'When building a trade management system',text:'I need to build a disciplined risk management system for my portfolio. Total account size: [AMOUNT]. Help me establish: (1) the maximum I should risk on any single trade as a percentage of portfolio, (2) how to set technically meaningful stop losses rather than arbitrary round numbers, (3) how to use trailing stops vs. fixed stops for different position types, (4) the maximum drawdown level at which I should stop trading and reassess, (5) a rules-based process using the Vibemotion Labs Trading Journal to follow my risk rules consistently.'}
-    ]
-  }
-};
-
-// ── AI PROMPT UI ───────────────────────────────────────────────────
-function showAiStream(stream, btn) {
-  var panels = document.querySelectorAll('.ai-panel');
-  for (var i = 0; i < panels.length; i++) { panels[i].classList.remove('on'); }
   var btns = document.querySelectorAll('.ast');
   for (var j = 0; j < btns.length; j++) { btns[j].classList.remove('on'); }
-  document.getElementById('ai-' + stream).classList.add('on');
+  document.getElementById('ai-' + stream).style.display = 'block';
   btn.classList.add('on');
 }
 
-function showLlm(stream, llm, btn) {
+// ── LLM SWITCH ──────────────────────────────────────────────────────
+function switchLlm(stream, llm, btn) {
+  var claude = document.getElementById('ai-' + stream + '-claude');
+  var gpt    = document.getElementById('ai-' + stream + '-gpt');
   var parent = document.getElementById('ai-' + stream);
-  var panels = parent.querySelectorAll('.llm-panel');
-  for (var i = 0; i < panels.length; i++) { panels[i].classList.remove('on'); }
-  var btns = parent.querySelectorAll('.lt');
-  for (var j = 0; j < btns.length; j++) { btns[j].classList.remove('on'); }
-  document.getElementById('llm-' + stream + '-' + llm).classList.add('on');
+  var ltBtns = parent.querySelectorAll('.lt');
+  for (var i = 0; i < ltBtns.length; i++) { ltBtns[i].classList.remove('on'); }
+  claude.style.display = (llm === 'claude') ? 'block' : 'none';
+  gpt.style.display    = (llm === 'gpt')    ? 'block' : 'none';
   btn.classList.add('on');
 }
 
-// Store prompt texts in a lookup so copy buttons reference by index — no escaping issues
-var PROMPT_TEXTS = {};
-function storePromptTexts() {
-  var streams = ['pm','ath','stk'];
-  var llms = ['claude','gpt'];
-  for (var s = 0; s < streams.length; s++) {
-    for (var l = 0; l < llms.length; l++) {
-      var key = streams[s] + '_' + llms[l];
-      PROMPT_TEXTS[key] = [];
-      var arr = PROMPTS[streams[s]][llms[l]];
-      for (var i = 0; i < arr.length; i++) {
-        PROMPT_TEXTS[key].push(arr[i].text);
-      }
-    }
-  }
-}
-storePromptTexts();
-
-function copyPrompt(stream, llm, idx) {
-  var text = PROMPT_TEXTS[stream + '_' + llm][idx];
-  var btn = document.getElementById('cpbtn-' + stream + '-' + llm + '-' + idx);
+// ── COPY PROMPT ─────────────────────────────────────────────────────
+function doCopy(btn) {
+  var text = btn.getAttribute('data-text')
+    .replace(/&amp;/g,'&')
+    .replace(/&quot;/g,'"')
+    .replace(/&#10;/g,'\n');
+  var orig = btn.textContent;
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(text).then(function() {
       btn.textContent = 'Copied!';
-      btn.classList.add('copied');
-      setTimeout(function() { btn.textContent = 'Copy Prompt'; btn.classList.remove('copied'); }, 1800);
+      setTimeout(function() { btn.textContent = orig; }, 1800);
     });
   } else {
     var ta = document.createElement('textarea');
     ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
-    document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
-    btn.textContent = 'Copied!'; btn.classList.add('copied');
-    setTimeout(function() { btn.textContent = 'Copy Prompt'; btn.classList.remove('copied'); }, 1800);
+    document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta);
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = orig; }, 1800);
   }
 }
-
-function buildPromptGrid(stream, llm) {
-  var grid = document.getElementById('pg-' + stream + '-' + llm);
-  if (!grid || grid.children.length > 0) return;
-  var prompts = PROMPTS[stream][llm];
-  for (var i = 0; i < prompts.length; i++) {
-    var p = prompts[i];
-    var card = document.createElement('div');
-    card.className = 'prompt-card';
-    var displayText = p.text.replace(/\n/g, '<br>');
-    card.innerHTML =
-      '<div class="prompt-n">0' + (i + 1) + '</div>' +
-      '<div class="prompt-title">' + p.title + '</div>' +
-      '<div class="prompt-use">Best used: ' + p.use + '</div>' +
-      '<div class="prompt-text">' + displayText + '</div>' +
-      '<button class="copy-btn" id="cpbtn-' + stream + '-' + llm + '-' + i + '" ' +
-        'onclick="copyPrompt(\'' + stream + '\',\'' + llm + '\',' + i + ')">' +
-        'Copy Prompt</button>';
-    grid.appendChild(card);
-  }
-}
-
-buildPromptGrid('pm','claude'); buildPromptGrid('pm','gpt');
-buildPromptGrid('ath','claude'); buildPromptGrid('ath','gpt');
-buildPromptGrid('stk','claude'); buildPromptGrid('stk','gpt');
-
-// Hide AI section initially — show when AI tab clicked
-var aiSec = document.getElementById('ai-section');
-if (aiSec) aiSec.style.display = 'none';
 </script>
 </body>
 </html>
