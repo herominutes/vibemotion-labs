@@ -4,237 +4,174 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vibemotion Labs — Free Resource Library</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  --bg:       #0e0d0b;
-  --surface:  #1a1917;
-  --surface2: #222120;
-  --ink:      #f2efe8;
-  --ink2:     #d4d0c8;
-  --ink3:     #9c9890;
-  --ink4:     #5c5a54;
-  --rule:     rgba(242,239,232,0.10);
-  --rulem:    rgba(242,239,232,0.18);
-  --pm:       #b39dfa;
-  --ath:      #52e88a;
-  --stk:      #fdc840;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  --bg:#0e0d0b;--sur:#1a1917;--sur2:#222120;
+  --ink:#f2efe8;--ink2:#d4d0c8;--ink3:#9c9890;--ink4:#5c5a54;
+  --rule:rgba(242,239,232,.10);--rulem:rgba(242,239,232,.18);
+  --pm:#b39dfa;--ath:#52e88a;--stk:#fdc840;--inj:#f87171;
+  font-family:'Jost',sans-serif;background:var(--bg);color:var(--ink);
+  font-weight:300;line-height:1.6;transition:background .35s,color .35s;
 }
-body.light {
-  --bg:       #fdfcfa;
-  --surface:  #f5f2eb;
-  --surface2: #ece9e1;
-  --ink:      #18170f;
-  --ink2:     #343228;
-  --ink3:     #6a6860;
-  --ink4:     #aaa89f;
-  --rule:     rgba(24,23,15,0.10);
-  --rulem:    rgba(24,23,15,0.20);
-  --pm:       #5a4d9a;
-  --ath:      #2a6e44;
-  --stk:      #8a5c10;
+body.light{
+  --bg:#fdfcfa;--sur:#f5f2eb;--sur2:#ece9e1;
+  --ink:#18170f;--ink2:#343228;--ink3:#6a6860;--ink4:#aaa89f;
+  --rule:rgba(24,23,15,.10);--rulem:rgba(24,23,15,.20);
+  --pm:#5a4d9a;--ath:#2a6e44;--stk:#8a5c10;--inj:#9a3a3a;
 }
-
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'Jost', sans-serif;
-  background: var(--bg); color: var(--ink);
-  font-weight: 300; line-height: 1.6;
-  transition: background .35s, color .35s;
-}
+html{scroll-behavior:smooth}
 
 /* NAV */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 999;
-  height: 62px; display: flex; align-items: center;
-  justify-content: space-between; padding: 0 2.5rem;
-  background: var(--bg); border-bottom: 1px solid var(--rule);
-  transition: background .35s;
-}
-.logo {
-  font-family: 'Cormorant Garamond', serif; font-size: 20px;
-  font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--ink); text-decoration: none;
-}
-.nav-r { display: flex; align-items: center; gap: 1.4rem; }
-.free-pill {
-  font-size: 10px; font-weight: 500; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--ath);
-  border: 1px solid var(--ath); padding: 4px 11px; border-radius: 2px;
-}
-.tog {
-  width: 44px; height: 24px; border-radius: 12px;
-  background: var(--surface2); border: 1px solid var(--rulem);
-  cursor: pointer; position: relative; flex-shrink: 0; transition: background .3s;
-}
-.tog-k {
-  position: absolute; top: 4px; left: 4px; width: 14px; height: 14px;
-  border-radius: 50%; background: var(--ink); transition: transform .3s;
-}
-body.light .tog-k { transform: translateX(20px); }
+nav{position:fixed;top:0;left:0;right:0;z-index:999;height:62px;
+  display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;
+  background:var(--bg);border-bottom:1px solid var(--rule);transition:background .35s}
+.logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--ink);text-decoration:none}
+.nav-r{display:flex;align-items:center;gap:1.4rem}
+.free-pill{font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ath);border:1px solid var(--ath);padding:4px 11px;border-radius:2px}
+.tog{width:44px;height:24px;border-radius:12px;background:var(--sur2);
+  border:1px solid var(--rulem);cursor:pointer;position:relative;transition:background .3s}
+.tok{position:absolute;top:4px;left:4px;width:14px;height:14px;border-radius:50%;
+  background:var(--ink);transition:transform .3s}
+body.light .tok{transform:translateX(20px)}
 
 /* HERO */
-.hero {
-  padding-top: 62px; min-height: 100vh;
-  display: flex; flex-direction: column; justify-content: flex-end;
-  background: var(--surface); border-bottom: 1px solid var(--rule);
-  transition: background .35s;
-}
-.hero-in { padding: 3rem 2.5rem 4rem; }
-.hero-tag { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink3); margin-bottom: 2rem; }
-.hero-h1 {
-  font-family: 'Cormorant Garamond', serif; font-weight: 300;
-  font-size: clamp(3rem, 8vw, 7rem); line-height: 0.93;
-  letter-spacing: -0.025em; color: var(--ink); margin-bottom: 2.5rem;
-}
-.hero-h1 em { font-style: italic; color: var(--ink3); }
-.hero-bot { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
-.hero-desc { font-size: 14px; color: var(--ink2); line-height: 1.85; max-width: 380px; }
-.stats { display: flex; gap: 2.5rem; }
-.stat-n { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 300; line-height: 1; color: var(--ink); }
-.stat-l { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink4); margin-top: 3px; }
+.hero{padding-top:62px;min-height:100vh;display:flex;flex-direction:column;
+  justify-content:flex-end;background:var(--sur);border-bottom:1px solid var(--rule);
+  transition:background .35s}
+.hero-in{padding:3rem 2.5rem 4rem}
+.hero-tag{font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:2rem}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(3rem,8vw,7rem);line-height:.93;letter-spacing:-.025em;
+  color:var(--ink);margin-bottom:2.5rem}
+.hero-h1 em{font-style:italic;color:var(--ink3)}
+.hero-bot{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.hero-desc{font-size:14px;color:var(--ink2);line-height:1.85;max-width:380px}
+.stats{display:flex;gap:2.5rem}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:300;
+  line-height:1;color:var(--ink)}
+.stat-l{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink4);margin-top:3px}
 
 /* TICKER */
-.ticker { overflow: hidden; border-bottom: 1px solid var(--rule); padding: 12px 0; background: var(--bg); }
-.ticker-t { display: flex; white-space: nowrap; animation: tick 28s linear infinite; }
-.ticker-t span { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink4); padding: 0 2rem; }
-.ticker-t .dot { color: var(--ink3); padding: 0; }
-@keyframes tick { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.ticker{overflow:hidden;border-bottom:1px solid var(--rule);padding:12px 0;background:var(--bg)}
+.ticker-t{display:flex;white-space:nowrap;animation:tick 30s linear infinite}
+.ticker-t span{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink4);padding:0 2rem}
+.ticker-t .dot{color:var(--ink3);padding:0}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* TABS */
-.tabs {
-  position: sticky; top: 62px; z-index: 100;
-  display: flex; background: var(--bg);
-  border-bottom: 1px solid var(--rule); padding: 0 2.5rem;
-  transition: background .35s;
-}
-.tab {
-  padding: 16px 0; margin-right: 2.5rem;
-  font-size: 11px; font-weight: 400; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--ink4);
-  background: none; border: none; cursor: pointer;
-  position: relative; transition: color .2s; white-space: nowrap;
-}
-.tab::after {
-  content: ''; position: absolute; bottom: -1px; left: 0; right: 0;
-  height: 2px; background: var(--ink); transform: scaleX(0); transition: transform .25s;
-}
-.tab:hover { color: var(--ink2); }
-.tab.on { color: var(--ink); }
-.tab.on::after { transform: scaleX(1); }
+.tabs{position:sticky;top:62px;z-index:100;display:flex;background:var(--bg);
+  border-bottom:1px solid var(--rule);padding:0 2.5rem;transition:background .35s;
+  overflow-x:auto}
+.tab{padding:16px 0;margin-right:2rem;font-size:11px;font-weight:400;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink4);background:none;border:none;cursor:pointer;
+  position:relative;transition:color .2s;white-space:nowrap;flex-shrink:0}
+.tab::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:2px;
+  background:var(--ink);transform:scaleX(0);transition:transform .25s}
+.tab:hover{color:var(--ink2)}
+.tab.on{color:var(--ink)}
+.tab.on::after{transform:scaleX(1)}
 
 /* GRID WRAP */
-.gwrap { padding: 3.5rem 2.5rem; background: var(--bg); transition: background .35s; }
-.ghead { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 2.5rem; }
-.ghead-line { flex: 1; height: 1px; background: var(--rule); }
-.ghead-lbl { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink4); white-space: nowrap; }
+.gwrap{padding:3.5rem 2.5rem;background:var(--bg);transition:background .35s}
+.ghead{display:flex;align-items:center;gap:1.2rem;margin-bottom:2.5rem}
+.gline{flex:1;height:1px;background:var(--rule)}
+.glbl{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink4);white-space:nowrap}
 
 /* PANELS */
-.panel { display: none; }
-.panel.on { display: block; }
+.panel{display:none}
+.panel.on{display:block}
 
 /* PRODUCT GRID */
-.pgrid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--rule); border-left: 1px solid var(--rule);
-}
-.pcard {
-  border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
-  padding: 2rem; display: flex; flex-direction: column;
-  background: var(--bg); transition: background .2s;
-  animation: fadeup .4s ease both;
-}
-.pcard:hover { background: var(--surface); }
-@keyframes fadeup { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
-.p-num { font-family:'Cormorant Garamond',serif; font-size:12px; font-weight:300; color:var(--ink4); letter-spacing:.1em; margin-bottom:.75rem; }
-.p-name { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:400; line-height:1.25; color:var(--ink); margin-bottom:.75rem; }
-.p-desc { font-size:12.5px; color:var(--ink2); line-height:1.75; margin-bottom:1.2rem; flex:1; }
-.p-div { height:1px; background:var(--rule); margin-bottom:1.2rem; }
-.p-row { display:flex; gap:8px; margin-bottom:5px; }
-.p-key { font-size:10px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:var(--ink4); min-width:80px; flex-shrink:0; }
-.p-val { font-size:11.5px; color:var(--ink2); line-height:1.55; }
-.p-hook { font-family:'Cormorant Garamond',serif; font-size:13.5px; font-style:italic; color:var(--ink3); line-height:1.6; margin:1rem 0 1.4rem; }
-.dl {
-  display:flex; align-items:center; justify-content:space-between;
-  padding:11px 15px; margin-top:auto;
-  background:var(--surface2); border:1px solid var(--rulem);
-  font-size:11px; font-weight:500; letter-spacing:.12em; text-transform:uppercase;
-  color:var(--ink); text-decoration:none; border-radius:2px;
-  transition:background .2s, border-color .2s;
-}
-.dl:hover { background:var(--surface); border-color:var(--ink); }
-.dl-arrow { font-size:16px; font-weight:300; }
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+.pcard{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  padding:2rem;display:flex;flex-direction:column;background:var(--bg);
+  transition:background .2s;animation:fadeup .4s ease both}
+.pcard:hover{background:var(--sur)}
+@keyframes fadeup{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.p-num{font-family:'Cormorant Garamond',serif;font-size:12px;font-weight:300;
+  color:var(--ink4);letter-spacing:.1em;margin-bottom:.75rem}
+.p-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;
+  line-height:1.25;color:var(--ink);margin-bottom:.75rem}
+.p-desc{font-size:12.5px;color:var(--ink2);line-height:1.75;margin-bottom:1.2rem;flex:1}
+.p-div{height:1px;background:var(--rule);margin-bottom:1.2rem}
+.p-row{display:flex;gap:8px;margin-bottom:5px}
+.p-key{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink4);min-width:80px;flex-shrink:0}
+.p-val{font-size:11.5px;color:var(--ink2);line-height:1.55}
+.p-hook{font-family:'Cormorant Garamond',serif;font-size:13.5px;font-style:italic;
+  color:var(--ink3);line-height:1.6;margin:1rem 0 1.4rem}
+.dl{display:flex;align-items:center;justify-content:space-between;
+  padding:11px 15px;margin-top:auto;background:var(--sur2);border:1px solid var(--rulem);
+  font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink);text-decoration:none;border-radius:2px;transition:background .2s,border-color .2s}
+.dl:hover{background:var(--sur);border-color:var(--ink)}
+.dl-arr{font-size:16px;font-weight:300}
 
 /* COLLECTIONS */
-.cwrap {
-  padding:3.5rem 2.5rem; background:var(--surface);
-  border-top:1px solid var(--rule); transition:background .35s;
-}
-.cgrid {
-  display:grid; grid-template-columns:repeat(3,1fr);
-  border-top:1px solid var(--rule); border-left:1px solid var(--rule);
-}
-.ccard {
-  border-right:1px solid var(--rule); border-bottom:1px solid var(--rule);
-  padding:2rem; transition:background .2s;
-}
-.ccard:hover { background:var(--surface2); }
-.c-tag { font-size:10px; font-weight:500; letter-spacing:.18em; text-transform:uppercase; margin-bottom:1.1rem; display:flex; align-items:center; gap:10px; }
-.c-tag::before { content:''; width:20px; height:1px; display:block; }
-.t-pm { color:var(--pm); } .t-pm::before { background:var(--pm); }
-.t-ath { color:var(--ath); } .t-ath::before { background:var(--ath); }
-.t-stk { color:var(--stk); } .t-stk::before { background:var(--stk); }
-.c-name { font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:300; line-height:1.2; color:var(--ink); margin-bottom:.75rem; }
-.c-desc { font-size:12.5px; color:var(--ink2); line-height:1.75; margin-bottom:1.4rem; }
-.c-list { list-style:none; display:flex; flex-direction:column; gap:5px; margin-bottom:1.5rem; padding-bottom:1.5rem; border-bottom:1px solid var(--rule); }
-.c-list li { font-size:11.5px; color:var(--ink2); font-weight:300; display:flex; align-items:center; gap:9px; }
-.c-list li::before { content:''; width:14px; height:1px; background:var(--ink4); flex-shrink:0; display:block; }
-.c-free { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:300; color:var(--ath); margin-bottom:1.2rem; }
-.c-dl {
-  display:flex; align-items:center; justify-content:space-between;
-  padding:11px 15px; width:100%;
-  background:var(--bg); border:1px solid var(--rulem);
-  font-size:11px; font-weight:500; letter-spacing:.12em; text-transform:uppercase;
-  color:var(--ink); text-decoration:none; border-radius:2px;
-  transition:background .2s, border-color .2s;
-}
-.c-dl:hover { border-color:var(--ink); }
+.cwrap{padding:3.5rem 2.5rem;background:var(--sur);border-top:1px solid var(--rule);transition:background .35s}
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+.ccard{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  padding:2rem;transition:background .2s}
+.ccard:hover{background:var(--sur2)}
+.c-tag{font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
+  margin-bottom:1.1rem;display:flex;align-items:center;gap:10px}
+.c-tag::before{content:'';width:20px;height:1px;display:block}
+.t-pm{color:var(--pm)}.t-pm::before{background:var(--pm)}
+.t-ath{color:var(--ath)}.t-ath::before{background:var(--ath)}
+.t-stk{color:var(--stk)}.t-stk::before{background:var(--stk)}
+.t-inj{color:var(--inj)}.t-inj::before{background:var(--inj)}
+.c-name{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;
+  line-height:1.2;color:var(--ink);margin-bottom:.75rem}
+.c-desc{font-size:12.5px;color:var(--ink2);line-height:1.75;margin-bottom:1.4rem}
+.c-list{list-style:none;display:flex;flex-direction:column;gap:5px;margin-bottom:1.5rem;
+  padding-bottom:1.5rem;border-bottom:1px solid var(--rule)}
+.c-list li{font-size:11.5px;color:var(--ink2);font-weight:300;display:flex;align-items:center;gap:9px}
+.c-list li::before{content:'';width:14px;height:1px;background:var(--ink4);flex-shrink:0;display:block}
+.c-free{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;
+  color:var(--ath);margin-bottom:1.2rem}
+.c-dl{display:flex;align-items:center;justify-content:space-between;
+  padding:11px 15px;width:100%;background:var(--bg);border:1px solid var(--rulem);
+  font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink);text-decoration:none;border-radius:2px;transition:background .2s,border-color .2s}
+.c-dl:hover{border-color:var(--ink);background:var(--sur2)}
 
 /* HOW */
-.hwrap { padding:3.5rem 2.5rem; border-top:1px solid var(--rule); background:var(--bg); transition:background .35s; }
-.hgrid {
-  display:grid; grid-template-columns:repeat(4,1fr);
-  border-top:1px solid var(--rule); border-left:1px solid var(--rule);
-}
-.hstep { border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:2rem; }
-.h-n { font-family:'Cormorant Garamond',serif; font-size:44px; font-weight:300; color:var(--ink4); line-height:1; margin-bottom:1rem; }
-.h-t { font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:400; color:var(--ink); margin-bottom:.6rem; }
-.h-d { font-size:12.5px; color:var(--ink2); line-height:1.75; }
+.hwrap{padding:3.5rem 2.5rem;border-top:1px solid var(--rule);background:var(--bg);transition:background .35s}
+.hgrid{display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+.hstep{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:2rem}
+.h-n{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:300;
+  color:var(--ink4);line-height:1;margin-bottom:1rem}
+.h-t{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;
+  color:var(--ink);margin-bottom:.6rem}
+.h-d{font-size:12.5px;color:var(--ink2);line-height:1.75}
 
 /* FOOTER */
-footer {
-  border-top:1px solid var(--rule); padding:2rem 2.5rem;
-  display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;
-  background:var(--surface); transition:background .35s;
-}
-.f-logo { font-family:'Cormorant Garamond',serif; font-size:16px; font-weight:400; letter-spacing:.18em; text-transform:uppercase; color:var(--ink); }
-.f-links { display:flex; gap:1.8rem; flex-wrap:wrap; }
-.f-links a { font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink4); text-decoration:none; transition:color .2s; }
-.f-links a:hover { color:var(--ink); }
-.f-copy { font-size:10px; color:var(--ink4); }
+footer{border-top:1px solid var(--rule);padding:2rem 2.5rem;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+  background:var(--sur);transition:background .35s}
+.f-logo{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:400;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
+.f-links{display:flex;gap:1.8rem;flex-wrap:wrap}
+.f-links a{font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink4);text-decoration:none;transition:color .2s}
+.f-links a:hover{color:var(--ink)}
+.f-copy{font-size:10px;color:var(--ink4)}
 
 /* RESPONSIVE */
-@media (max-width:960px) {
-  .pgrid,.cgrid { grid-template-columns:repeat(2,1fr); }
-  .hgrid { grid-template-columns:repeat(2,1fr); }
-}
-@media (max-width:580px) {
-  nav,.hero-in,.tabs,.gwrap,.cwrap,.hwrap,footer { padding-left:1.25rem; padding-right:1.25rem; }
-  .pgrid,.cgrid,.hgrid { grid-template-columns:1fr; }
-  .hero-bot { flex-direction:column; align-items:flex-start; }
-  footer { flex-direction:column; }
+@media(max-width:960px){.pgrid,.cgrid{grid-template-columns:repeat(2,1fr)}.hgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:580px){
+  nav,.hero-in,.tabs,.gwrap,.cwrap,.hwrap,footer{padding-left:1.25rem;padding-right:1.25rem}
+  .pgrid,.cgrid,.hgrid{grid-template-columns:1fr}
+  .hero-bot{flex-direction:column;align-items:flex-start}
+  footer{flex-direction:column}
 }
 </style>
 </head>
@@ -245,7 +182,7 @@ footer {
   <div class="nav-r">
     <span class="free-pill">100% Free</span>
     <button class="tog" onclick="toggleTheme()" aria-label="Toggle theme">
-      <div class="tog-k"></div>
+      <div class="tok"></div>
     </button>
   </div>
 </nav>
@@ -257,7 +194,7 @@ footer {
     <div class="hero-bot">
       <p class="hero-desc">Free open-source templates, guides, and frameworks for product managers, athletes recovering from injury, and serious investors. No sign-up. No payment. Click download and use it today.</p>
       <div class="stats">
-        <div><div class="stat-n">23</div><div class="stat-l">Resources</div></div>
+        <div><div class="stat-n">29</div><div class="stat-l">Resources</div></div>
         <div><div class="stat-n">3</div><div class="stat-l">Disciplines</div></div>
         <div><div class="stat-n" style="font-style:italic;color:var(--ath)">Free</div><div class="stat-l">Always</div></div>
       </div>
@@ -267,40 +204,40 @@ footer {
 
 <div class="ticker">
   <div class="ticker-t">
-    <span>Product Management</span><span class="dot">·</span><span>Athlete Recovery</span><span class="dot">·</span><span>Stock Market</span><span class="dot">·</span><span>Amazon Frameworks</span><span class="dot">·</span><span>Apple Frameworks</span><span class="dot">·</span><span>Free Download</span><span class="dot">·</span><span>Open Source</span><span class="dot">·</span><span>No Sign-Up</span><span class="dot">·</span><span>Product Management</span><span class="dot">·</span><span>Athlete Recovery</span><span class="dot">·</span><span>Stock Market</span><span class="dot">·</span><span>Amazon Frameworks</span><span class="dot">·</span><span>Apple Frameworks</span><span class="dot">·</span><span>Free Download</span><span class="dot">·</span><span>Open Source</span><span class="dot">·</span><span>No Sign-Up</span><span class="dot">·</span>
+    <span>Product Management</span><span class="dot">·</span><span>Athlete Recovery</span><span class="dot">·</span><span>Injury Programmes</span><span class="dot">·</span><span>Stock Market</span><span class="dot">·</span><span>Amazon Frameworks</span><span class="dot">·</span><span>Apple Frameworks</span><span class="dot">·</span><span>Free Download</span><span class="dot">·</span><span>Open Source</span><span class="dot">·</span><span>Product Management</span><span class="dot">·</span><span>Athlete Recovery</span><span class="dot">·</span><span>Injury Programmes</span><span class="dot">·</span><span>Stock Market</span><span class="dot">·</span><span>Amazon Frameworks</span><span class="dot">·</span><span>Apple Frameworks</span><span class="dot">·</span><span>Free Download</span><span class="dot">·</span><span>Open Source</span><span class="dot">·</span>
   </div>
 </div>
 
 <div class="tabs" id="resources">
-  <button class="tab on" onclick="show('pm',this)">Product Management</button>
-  <button class="tab" onclick="show('ath',this)">Athlete Recovery</button>
-  <button class="tab" onclick="show('inj',this)">Injury Programmes</button>
-  <button class="tab" onclick="show('stk',this)">Stock Market</button>
+  <button class="tab on"  id="tab-pm"  onclick="show('pm',this)">Product Management</button>
+  <button class="tab"     id="tab-ath" onclick="show('ath',this)">Athlete Recovery</button>
+  <button class="tab"     id="tab-inj" onclick="show('inj',this)">Injury Programmes</button>
+  <button class="tab"     id="tab-stk" onclick="show('stk',this)">Stock Market</button>
 </div>
 
 <div class="gwrap">
   <div class="ghead">
-    <span class="ghead-lbl">Free Guides</span>
-    <div class="ghead-line"></div>
-    <span class="ghead-lbl" id="glabel">Product Management — 8 Guides</span>
+    <span class="glbl">Free Guides</span>
+    <div class="gline"></div>
+    <span class="glbl" id="glabel">Product Management — 8 Guides</span>
   </div>
-  <div class="panel on" id="panel-pm"><div class="pgrid" id="grid-pm"></div></div>
-  <div class="panel" id="panel-ath"><div class="pgrid" id="grid-ath"></div></div>
-  <div class="panel" id="panel-inj"><div class="pgrid" id="grid-inj"></div></div>
-  <div class="panel" id="panel-stk"><div class="pgrid" id="grid-stk"></div></div>
+  <div class="panel on" id="panel-pm"></div>
+  <div class="panel"    id="panel-ath"></div>
+  <div class="panel"    id="panel-inj"></div>
+  <div class="panel"    id="panel-stk"></div>
 </div>
 
 <div class="cwrap" id="collections">
   <div class="ghead">
-    <span class="ghead-lbl">Full Collections</span>
-    <div class="ghead-line"></div>
-    <span class="ghead-lbl">All Free · PDF Download</span>
+    <span class="glbl">Full Collections</span>
+    <div class="gline"></div>
+    <span class="glbl">All Free · PDF Download</span>
   </div>
   <div class="cgrid">
     <div class="ccard">
       <div class="c-tag t-pm">Product Management</div>
       <div class="c-name">The Complete<br>PM Toolkit</div>
-      <div class="c-desc">Every PM framework in one place — Amazon, Apple, role-based guides, PRD templates, interview scripts, and research tools.</div>
+      <div class="c-desc">Amazon, Apple, role-based guides, PRD templates, interview scripts, and research tools.</div>
       <ul class="c-list">
         <li>Amazon Working Backwards Toolkit</li>
         <li>Apple: Insanely Simple Toolkit</li>
@@ -309,12 +246,12 @@ footer {
         <li>Prioritization Cheat Sheet + Interview Script</li>
       </ul>
       <div class="c-free">Free</div>
-      <a class="c-dl" href="/vibemotion-labs/pdfs/pm/PM_Amazon_Working_Backwards.pdf" download><span>Download PM Guides</span><span>↓</span></a>
+      <a class="c-dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/pm/PM_Amazon_Working_Backwards.pdf" download><span>Download PM Guides</span><span>↓</span></a>
     </div>
     <div class="ccard">
       <div class="c-tag t-ath">Athlete Recovery</div>
       <div class="c-name">The Complete<br>Recovery System</div>
-      <div class="c-desc">All five phases of injury recovery — from pain control on day one through return to full athletic performance.</div>
+      <div class="c-desc">All five phases from pain control on day one through return to full athletic performance.</div>
       <ul class="c-list">
         <li>Phase 1 — Pain Control &amp; Protection</li>
         <li>Phase 2 — Mobility &amp; Early Strength</li>
@@ -323,12 +260,12 @@ footer {
         <li>Phase 5 — Return to Athletic Performance</li>
       </ul>
       <div class="c-free">Free</div>
-      <a class="c-dl" href="/vibemotion-labs/pdfs/athlete/ATH_PHASE1_Pain_Control.pdf" download><span>Download Recovery Guides</span><span>↓</span></a>
+      <a class="c-dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_PHASE1_Pain_Control.pdf" download><span>Download Recovery Guides</span><span>↓</span></a>
     </div>
     <div class="ccard">
       <div class="c-tag t-stk">Stock Market</div>
       <div class="c-name">The Complete<br>Investor Toolkit</div>
-      <div class="c-desc">Stock screening, technical analysis patterns, trade journaling, IPO research, and financial statement mastery.</div>
+      <div class="c-desc">Stock screening, chart patterns, trade journaling, IPO research, and financial statement mastery.</div>
       <ul class="c-list">
         <li>Stock Screening Checklist</li>
         <li>Technical Analysis Pattern Guide</li>
@@ -337,114 +274,133 @@ footer {
         <li>Financial Statement Analysis Guide</li>
       </ul>
       <div class="c-free">Free</div>
-      <a class="c-dl" href="/vibemotion-labs/pdfs/stock/STK_01_Stock_Screening_Checklist.pdf" download><span>Download Investor Guides</span><span>↓</span></a>
+      <a class="c-dl" href="https://herominutes.github.io/vibemotion-labs/pdfs/stock/STK_01_Stock_Screening_Checklist.pdf" download><span>Download Investor Guides</span><span>↓</span></a>
     </div>
   </div>
 </div>
 
 <div class="hwrap" id="how">
   <div class="ghead">
-    <span class="ghead-lbl">How It Works</span>
-    <div class="ghead-line"></div>
-    <span class="ghead-lbl">Four Steps</span>
+    <span class="glbl">How It Works</span>
+    <div class="gline"></div>
+    <span class="glbl">Four Steps</span>
   </div>
   <div class="hgrid">
     <div class="hstep"><div class="h-n">01</div><div class="h-t">Browse</div><div class="h-d">Pick your discipline. Each guide solves one specific problem clearly and immediately.</div></div>
     <div class="hstep"><div class="h-n">02</div><div class="h-t">Click download</div><div class="h-d">No sign-up. No email. No payment. The PDF saves directly to your device.</div></div>
-    <div class="hstep"><div class="h-n">03</div><div class="h-t">Use it today</div><div class="h-d">Every resource is built for immediate use. Fill in the template, follow the protocol, apply the framework — right now.</div></div>
-    <div class="hstep"><div class="h-n">04</div><div class="h-t">Share freely</div><div class="h-d">Everything here is MIT licenced. Share with your team, your community, or anyone who needs it.</div></div>
+    <div class="hstep"><div class="h-n">03</div><div class="h-t">Use it today</div><div class="h-d">Every resource is built for immediate use. Fill in the template, follow the protocol, apply the framework right now.</div></div>
+    <div class="hstep"><div class="h-n">04</div><div class="h-t">Share freely</div><div class="h-d">Everything here is MIT licensed. Share with your team, your community, or anyone who needs it.</div></div>
   </div>
 </div>
 
 <footer>
   <div class="f-logo">Vibemotion Labs</div>
   <div class="f-links">
-    <a href="https://github.com" target="_blank">GitHub</a>
-    <a href="/vibemotion-labs/LICENSE">MIT Licence</a>
-    <a href="/cdn-cgi/l/email-protection#4f272a2323200f39262d2a22203b262021232e2d3c612c2022">Contact</a>
+    <a href="https://github.com/herominutes/vibemotion-labs" target="_blank">GitHub</a>
+    <a href="https://herominutes.github.io/vibemotion-labs/LICENSE">MIT Licence</a>
   </div>
   <div class="f-copy">© 2025 Vibemotion Labs · Open source · Free forever</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function toggleTheme() {
+<script>
+// THEME
+function toggleTheme(){
   document.body.classList.toggle('light');
-  localStorage.setItem('vml-theme', document.body.classList.contains('light') ? 'light' : 'dark');
+  localStorage.setItem('vml-theme', document.body.classList.contains('light')?'light':'dark');
 }
-(function() {
-  if (localStorage.getItem('vml-theme') === 'light') document.body.classList.add('light');
-})();
+(function(){if(localStorage.getItem('vml-theme')==='light')document.body.classList.add('light');})();
 
-const LABELS = {
+// TAB LABELS
+var LABELS = {
   pm:  'Product Management — 8 Guides',
   ath: 'Athlete Recovery — 8 Guides',
-  inj: 'Specific Injury Programmes — 6 Guides',
+  inj: 'Injury Programmes — 6 Guides',
   stk: 'Stock Market — 5 Guides'
 };
 
-function show(niche, btn) {
-  document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('on'); });
-  document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('on'); });
-  document.getElementById('panel-' + niche).classList.add('on');
+// TAB SWITCHING
+function show(niche, btn){
+  document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('on');});
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on');});
+  document.getElementById('panel-'+niche).classList.add('on');
   btn.classList.add('on');
   document.getElementById('glabel').textContent = LABELS[niche];
   buildGrid(niche);
 }
 
+// ALL PRODUCT DATA
 var DATA = {
-  pm: [
-    { n:'01', name:'Amazon Working Backwards Toolkit', file:'/vibemotion-labs/pdfs/pm/PM_Amazon_Working_Backwards.pdf', desc:'PRFAQ, 6-Pager Narrative, Tenets framework, and the Working Backwards checklist — fully templated with guidance for every section.', prob:'Teams build before they understand the customer', use:'Run before any planning session or new initiative', hook:'"Start with the customer. Work backwards. Ship only what is truly needed."' },
-    { n:'02', name:'Apple: Insanely Simple Toolkit', file:'/vibemotion-labs/pdfs/pm/PM_Apple_Frameworks.pdf', desc:'10-to-3-to-1 ideation funnel, Jobs Narrative, Simplicity Audit, and the Apple review simulation — for PMs who want products people love.', prob:'Products become bloated with features nobody uses', use:'Use when your roadmap feels overcrowded', hook:'"The best product does less — but does it perfectly."' },
-    { n:'03', name:'Role-Based PM Toolkit', file:'/vibemotion-labs/pdfs/pm/PM_Role_Based_Toolkit.pdf', desc:'Five complete role profiles — Analyst through AI PM — with responsibilities, core artifacts, success metrics, and level-specific frameworks.', prob:'Career progression feels opaque without a clear map', use:'Before a performance review or promotion conversation', hook:'"From Product Analyst to AI PM — a complete career framework."' },
-    { n:'04', name:'PRD One-Pager Template Pack', file:'/vibemotion-labs/pdfs/pm/PM_01_PRD_Template_Pack.pdf', desc:'Three production-ready formats — the one-pager, the full PRD, and the spike doc — for writing clear product requirements fast.', prob:'Writing PRDs from scratch wastes hours every sprint', use:'Before sprint planning or any feature kick-off', hook:'"Stop staring at a blank document — ship your PRD in thirty minutes."' },
-    { n:'05', name:'Prioritization Framework Cheat Sheet', file:'/vibemotion-labs/pdfs/pm/PM_02_Prioritization_Framework_Cheat_Sheet.pdf', desc:'RICE, ICE, MoSCoW, Kano, and Opportunity Scoring — all five frameworks with formulas, worked examples, and benchmarks.', prob:'Stakeholders argue over every roadmap item', use:'Before quarterly planning or roadmap reviews', hook:'"Five frameworks that end every roadmap argument — permanently."' },
-    { n:'06', name:'PM Interview Answer Script', file:'/vibemotion-labs/pdfs/pm/PM_03_Interview_Answer_Script.pdf', desc:'Word-for-word answer frameworks for the twenty hardest PM interview questions — product sense, analytical, execution, and strategy.', prob:'Failing interviews despite strong real-world experience', use:'One week before any PM interview', hook:'"Answers to the twenty hardest PM interview questions."' },
-    { n:'07', name:'User Research Script + Synthesis Guide', file:'/vibemotion-labs/pdfs/pm/PM_04_User_Research_Interview_Script.pdf', desc:'Consent language, a complete forty-five-minute interview script by phase, and the full affinity mapping synthesis method.', prob:'Discovery interviews produce unusable unstructured output', use:'Before scheduling any user research sessions', hook:'"Ask better questions. Spot patterns faster. Build what users want."' },
-    { n:'08', name:'90-Day PM Onboarding Checklist', file:'/vibemotion-labs/pdfs/pm/PM_05_90Day_Onboarding_Checklist.pdf', desc:'Three phases — Listen and Learn, Build Credibility, Lead and Drive — with structured actions and a ninety-day success benchmark.', prob:'New PMs flounder without a structured first-90-days plan', use:'Day one at any new PM role', hook:'"Make your mark in ninety days — the playbook senior PMs wish they had."' }
+  pm:[
+    {n:'01',name:'Amazon Working Backwards Toolkit',file:'https://herominutes.github.io/vibemotion-labs/pdfs/pm/PM_Amazon_Working_Backwards.pdf',desc:'PRFAQ, 6-Pager Narrative, Tenets framework, and Working Backwards checklist — fully templated with guidance for every section.',prob:'Teams build before they understand the customer',use:'Before any planning session or new initiative',hook:'"Start with the customer. Work backwards. Ship only what is truly needed."'},
+    {n:'02',name:'Apple: Insanely Simple Toolkit',file:'https://herominutes.github.io/vibemotion-labs/pdfs/pm/PM_Apple_Frameworks.pdf',desc:'10-to-3-to-1 ideation funnel, Jobs Narrative, Simplicity Audit, and Apple review simulation — for PMs who want products people love.',prob:'Products become bloated with features nobody uses',use:'When your roadmap feels overcrowded',hook:'"The best product does less — but does it perfectly."'},
+    {n:'03',name:'Role-Based PM Toolkit',file:'https://herominutes.github.io/vibemotion-labs/pdfs/pm/PM_Role_Based_Toolkit.pdf',desc:'Five complete role profiles — Analyst through AI PM — with responsibilities, core artifacts, success metrics, and level-specific frameworks.',prob:'Career progression feels opaque without a clear map',use:'Before a performance review or promotion conversation',hook:'"From Product Analyst to AI PM — a complete career framework."'},
+    {n:'04',name:'PRD One-Pager Template Pack',file:'https://herominutes.github.io/vibemotion-labs/pdfs/pm/PM_01_PRD_Template_Pack.pdf',desc:'Three production-ready formats — the one-pager, the full PRD, and the spike doc — for writing clear product requirements fast.',prob:'Writing PRDs from scratch wastes hours every sprint',use:'Before sprint planning or any feature kick-off',hook:'"Stop staring at a blank document — ship your PRD in thirty minutes."'},
+    {n:'05',name:'Prioritization Framework Cheat Sheet',file:'https://herominutes.github.io/vibemotion-labs/pdfs/pm/PM_02_Prioritization_Framework_Cheat_Sheet.pdf',desc:'RICE, ICE, MoSCoW, Kano, and Opportunity Scoring — all five frameworks with formulas, worked examples, and benchmarks.',prob:'Stakeholders argue over every roadmap item',use:'Before quarterly planning or roadmap reviews',hook:'"Five frameworks that end every roadmap argument — permanently."'},
+    {n:'06',name:'PM Interview Answer Script',file:'https://herominutes.github.io/vibemotion-labs/pdfs/pm/PM_03_Interview_Answer_Script.pdf',desc:'Word-for-word answer frameworks for the twenty hardest PM interview questions across product sense, analytical, execution, and strategy.',prob:'Failing interviews despite strong real-world experience',use:'One week before any PM interview',hook:'"Answers to the twenty hardest PM interview questions."'},
+    {n:'07',name:'User Research Script + Synthesis Guide',file:'https://herominutes.github.io/vibemotion-labs/pdfs/pm/PM_04_User_Research_Interview_Script.pdf',desc:'Consent language, a forty-five-minute interview script by phase, and the full affinity mapping synthesis method.',prob:'Discovery interviews produce unusable unstructured output',use:'Before scheduling any user research sessions',hook:'"Ask better questions. Spot patterns faster. Build what users want."'},
+    {n:'08',name:'90-Day PM Onboarding Checklist',file:'https://herominutes.github.io/vibemotion-labs/pdfs/pm/PM_05_90Day_Onboarding_Checklist.pdf',desc:'Three phases — Listen and Learn, Build Credibility, Lead and Drive — with structured actions and a ninety-day success benchmark.',prob:'New PMs flounder without a structured first-90-days plan',use:'Day one at any new PM role',hook:'"Make your mark in ninety days — the playbook senior PMs wish they had."'}
   ],
-  ath: [
-    { n:'01', name:'Phase 1 — Pain Control and Protection', file:'/vibemotion-labs/pdfs/athlete/ATH_PHASE1_Pain_Control.pdf', desc:'Days 0 to 14. Ice, compression, and elevation protocol plus 6 guided exercises with full how-to steps, coaching cues, sets, reps, and progression criteria.', prob:'No structure for the critical first two weeks post-injury', use:'Immediately after any lower limb injury', hook:'"Control the pain. Protect the tissue. Start healing today."' },
-    { n:'02', name:'Phase 2 — Mobility and Early Strength', file:'/vibemotion-labs/pdfs/athlete/ATH_PHASE2_Mobility_Strength.pdf', desc:'Weeks 2 to 5. Seven guided exercises — calf raises, band dorsiflexion, hamstring stretches, hip abduction, wall squats, clam shells, ankle alphabet — with full instructions.', prob:'Stiffness and weakness set in without structured early loading', use:'Once resting pain is below 2 out of 10 consistently', hook:'"Move better. Get stronger. Give your body a reason to heal faster."' },
-    { n:'03', name:'Phase 3 — Strength and Stability', file:'/vibemotion-labs/pdfs/athlete/ATH_PHASE3_Strength_Stability.pdf', desc:'Weeks 4 to 8. Goblet squat, Romanian deadlift, step-ups, single-leg balance, Nordic hamstring curl, and lateral band walks — with sets, reps, load, and full how-to.', prob:'Returning to sport weak creates a high re-injury risk', use:'When Phase 2 exercises are pain-free for 5 sessions', hook:'"Build the strength that makes re-injury far less likely."' },
-    { n:'04', name:'Phase 4 — Power and Plyometrics', file:'/vibemotion-labs/pdfs/athlete/ATH_PHASE4_Power_Plyometrics.pdf', desc:'Weeks 7 to 12. Box jumps, single-leg hop and stick, depth drops, lateral bounds, progressive running protocol, and triple hop LSI testing — with full instructions.', prob:'Athletes return to sport without rebuilding explosive power', use:'When Phase 3 strength benchmarks are met', hook:'"Rebuild the power that got you onto the field in the first place."' },
-    { n:'05', name:'Phase 5 — Return to Athletic Performance', file:'/vibemotion-labs/pdfs/athlete/ATH_PHASE5_Return_To_Performance.pdf', desc:'Weeks 10 to 16 plus. Barbell squat, trap bar deadlift, agility drills, sprint mechanics, and a permanent prehab programme — plus the full return-to-sport clearance checklist.', prob:'Athletes return to competition without hitting pre-injury benchmarks', use:'When LSI reaches 90% on hop testing', hook:'"Not just back to sport. Back to your best — and beyond."' },
-    { n:'06', name:'Return-to-Sport Clearance Checklist', file:'/vibemotion-labs/pdfs/athlete/ATH_01_Return_To_Sport_Checklist.pdf', desc:'A five-phase milestone tracker from pain control to full competition clearance — with date fields, clinical notes, and phase-by-phase benchmarks.', prob:'Athletes re-injure by returning to sport too soon', use:'Before any return to training or competition', hook:'"The clearance checklist your physiotherapist will not always give you."' },
-    { n:'07', name:'Injury Recovery Nutrition Guide', file:'/vibemotion-labs/pdfs/athlete/ATH_02_Injury_Recovery_Nutrition_Guide.pdf', desc:'Phase-specific macros, six key healing nutrients with clinical dosages, and a complete seven-day sample meal plan for the acute recovery phase.', prob:'Poor nutrition measurably slows tissue repair', use:'From day one of any injury recovery', hook:'"Eat to heal faster — the exact macros sports dietitians prescribe."' },
-    { n:'08', name:'Mental Performance Journal', file:'/vibemotion-labs/pdfs/athlete/ATH_03_Mental_Performance_Journal.pdf', desc:'Daily check-ins and weekly reviews with prompts for athletic identity, fear of re-injury, and performance confidence — designed for the full recovery arc.', prob:'Fear and identity loss are the hidden barriers to full recovery', use:'Every day throughout the recovery programme', hook:'"Stay mentally in the game while your body heals."' }
+  ath:[
+    {n:'01',name:'Phase 1 — Pain Control and Protection',file:'https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_PHASE1_Pain_Control.pdf',desc:'Days 0-14. Ice, compression, elevation protocol plus 6 guided exercises with full how-to steps, coaching cues, sets, reps, and progression criteria.',prob:'No structure for the critical first two weeks post-injury',use:'Immediately after any lower limb injury',hook:'"Control the pain. Protect the tissue. Start healing today."'},
+    {n:'02',name:'Phase 2 — Mobility and Early Strength',file:'https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_PHASE2_Mobility_Strength.pdf',desc:'Weeks 2-5. Seven guided exercises — calf raises, band dorsiflexion, hamstring stretches, hip abduction, wall squats, clam shells, ankle alphabet — with full instructions.',prob:'Stiffness and weakness set in without structured early loading',use:'Once resting pain is below 2/10 consistently',hook:'"Move better. Get stronger. Give your body a reason to heal faster."'},
+    {n:'03',name:'Phase 3 — Strength and Stability',file:'https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_PHASE3_Strength_Stability.pdf',desc:'Weeks 4-8. Goblet squat, Romanian deadlift, step-ups, single-leg balance, Nordic hamstring curl, and lateral band walks — with sets, reps, load, and full how-to.',prob:'Returning to sport weak creates a high re-injury risk',use:'When Phase 2 exercises are pain-free for 5 sessions',hook:'"Build the strength that makes re-injury far less likely."'},
+    {n:'04',name:'Phase 4 — Power and Plyometrics',file:'https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_PHASE4_Power_Plyometrics.pdf',desc:'Weeks 7-12. Box jumps, single-leg hop and stick, depth drops, lateral bounds, progressive running protocol, and triple hop LSI testing — with full instructions.',prob:'Athletes return to sport without rebuilding explosive power',use:'When Phase 3 strength benchmarks are met',hook:'"Rebuild the power that got you onto the field in the first place."'},
+    {n:'05',name:'Phase 5 — Return to Athletic Performance',file:'https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_PHASE5_Return_To_Performance.pdf',desc:'Weeks 10-16+. Barbell squat, trap bar deadlift, agility drills, sprint mechanics, and a permanent prehab programme — plus the full return-to-sport clearance checklist.',prob:'Athletes return to competition without hitting pre-injury benchmarks',use:'When LSI reaches 90% on hop testing',hook:'"Not just back to sport. Back to your best — and beyond."'},
+    {n:'06',name:'Return-to-Sport Clearance Checklist',file:'https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_01_Return_To_Sport_Checklist.pdf',desc:'A five-phase milestone tracker from pain control to full competition clearance — with date fields, clinical notes, and phase-by-phase benchmarks.',prob:'Athletes re-injure by returning to sport too soon',use:'Before any return to training or competition',hook:'"The clearance checklist your physiotherapist will not always give you."'},
+    {n:'07',name:'Injury Recovery Nutrition Guide',file:'https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_02_Injury_Recovery_Nutrition_Guide.pdf',desc:'Phase-specific macros, six key healing nutrients with clinical dosages, and a complete seven-day sample meal plan for the acute recovery phase.',prob:'Poor nutrition measurably slows tissue repair',use:'From day one of any injury recovery',hook:'"Eat to heal faster — the exact macros sports dietitians prescribe."'},
+    {n:'08',name:'Mental Performance Journal',file:'https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_03_Mental_Performance_Journal.pdf',desc:'Daily check-ins and weekly reviews with prompts for athletic identity, fear of re-injury, and performance confidence — for the full recovery arc.',prob:'Fear and identity loss are the hidden barriers to full recovery',use:'Every day throughout the recovery programme',hook:'"Stay mentally in the game while your body heals."'}
   ],
-  inj: [
-    { n:'01', name:'ACL Reconstruction Recovery', file:'/vibemotion-labs/pdfs/athlete/ATH_ACL_Recovery_Programme.pdf', desc:'Complete 9-12 month programme from surgery to elite performance. All 5 phases with every exercise, set, rep, load, how-to, and return-to-sport clearance checklist.', prob:'ACL re-injury rate without structured rehab is 20-25%', use:'From day one post-surgery through return to full competition', hook:'"9 months done right. A career protected."' },
-    { n:'02', name:'Knee Injury Recovery', file:'/vibemotion-labs/pdfs/athlete/ATH_Knee_Recovery_Programme.pdf', desc:'Full programme for patellofemoral pain and patellar tendinopathy. VMO isometrics, Spanish squat protocol, eccentric step-downs, heavy slow resistance, and plyometric reintroduction.', prob:'Knee pain is the most undertreated barrier to athletic performance', use:'From first session of knee pain through elite sport return', hook:'"Pain-free knees are not luck — they are built."' },
-    { n:'03', name:'Low Back Injury Recovery', file:'/vibemotion-labs/pdfs/athlete/ATH_Low_Back_Recovery_Programme.pdf', desc:'Complete programme for athletic low back pain. McKenzie extension, deep core reactivation, dead bug, bird dog, hip hinge restoration, and trap bar deadlift progression.', prob:'Low back pain is the leading cause of early career end in athletes', use:'From acute episode through full return to loaded sport', hook:'"A strong back is the foundation of every athletic movement."' },
-    { n:'04', name:'Shoulder Injury Recovery', file:'/vibemotion-labs/pdfs/athlete/ATH_Shoulder_Recovery_Programme.pdf', desc:'Full programme for rotator cuff injuries, impingement, and SLAP tears. Pendulum mobility, infraspinatus strengthening, scapular control, Y-T-W, face pulls, and interval throwing programme.', prob:'Shoulder injuries end more athletic careers than almost any other injury', use:'From acute post-injury through return to overhead and throwing sport', hook:'"Healthy shoulders throw harder, lift more, and last longer."' },
-    { n:'05', name:'Hamstring Strain Recovery', file:'/vibemotion-labs/pdfs/athlete/ATH_Hamstring_Recovery_Programme.pdf', desc:'Programme for Grade I-III hamstring strains with full Nordic Hamstring Curl protocol and progressive sprint programme. Reduces re-injury rate from 40% to under 10%.', prob:'Hamstring strains re-occur in 30-40% of athletes without structured eccentric training', use:'From day of injury through full sprint speed and sport return', hook:'"The hamstring injury that never comes back."' },
-    { n:'06', name:'Ankle Sprain Recovery', file:'/vibemotion-labs/pdfs/athlete/ATH_Ankle_Sprain_Recovery_Programme.pdf', desc:'Comprehensive programme for Grade I-III ankle sprains. PEACE and LOVE acute care, 360-degree strengthening, progressive balance training, and lateral hop protocol to break the 70% recurrence cycle.', prob:'70% of ankle sprains re-occur without complete proprioceptive rehabilitation', use:'From day of injury through full agility and sport return', hook:'"Rehabilitation done fully. Never roll the same ankle twice."' }
+  inj:[
+    {n:'01',name:'ACL Reconstruction Recovery',file:'https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_ACL_Recovery_Programme.pdf',desc:'Complete 9-12 month programme from surgery to elite performance. All 5 phases with every exercise, set, rep, load, how-to instruction, and return-to-sport clearance checklist.',prob:'ACL re-injury rate without structured rehab is 20-25%',use:'From day one post-surgery through return to full competition',hook:'"9 months done right. A career protected."'},
+    {n:'02',name:'Knee Injury Recovery',file:'https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_Knee_Recovery_Programme.pdf',desc:'Full programme for patellofemoral pain and patellar tendinopathy. VMO isometrics, Spanish squat, eccentric step-downs, heavy slow resistance, and plyometric reintroduction.',prob:'Knee pain is the most undertreated barrier to athletic performance',use:'From first session of knee pain through elite sport return',hook:'"Pain-free knees are not luck — they are built."'},
+    {n:'03',name:'Low Back Injury Recovery',file:'https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_Low_Back_Recovery_Programme.pdf',desc:'Complete programme for athletic low back pain. McKenzie extension, deep core reactivation, dead bug, bird dog, hip hinge restoration, and trap bar deadlift progression.',prob:'Low back pain is the leading cause of early career end in athletes',use:'From acute episode through full return to loaded sport',hook:'"A strong back is the foundation of every athletic movement."'},
+    {n:'04',name:'Shoulder Injury Recovery',file:'https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_Shoulder_Recovery_Programme.pdf',desc:'Full programme for rotator cuff injuries, impingement, and SLAP tears. Pendulum mobility, infraspinatus strengthening, scapular control, Y-T-W, face pulls, and interval throwing programme.',prob:'Shoulder injuries end more athletic careers than almost any other injury',use:'From acute post-injury through return to overhead and throwing sport',hook:'"Healthy shoulders throw harder, lift more, and last longer."'},
+    {n:'05',name:'Hamstring Strain Recovery',file:'https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_Hamstring_Recovery_Programme.pdf',desc:'Programme for Grade I-III hamstring strains with full Nordic Hamstring Curl protocol and progressive sprint programme. Reduces re-injury rate from 40% to under 10%.',prob:'Hamstring strains re-occur in 30-40% of athletes without eccentric training',use:'From day of injury through full sprint speed and sport return',hook:'"The hamstring injury that never comes back."'},
+    {n:'06',name:'Ankle Sprain Recovery',file:'https://herominutes.github.io/vibemotion-labs/pdfs/athlete/ATH_Ankle_Sprain_Recovery_Programme.pdf',desc:'Comprehensive programme for Grade I-III ankle sprains. PEACE and LOVE acute care, 360-degree strengthening, progressive balance training, and lateral hop protocol to break the 70% recurrence cycle.',prob:'70% of ankle sprains re-occur without complete rehabilitation',use:'From day of injury through full agility and sport return',hook:'"Rehabilitation done fully. Never roll the same ankle twice."'}
   ],
-  stk: [
-    { n:'01', name:'Stock Screening Checklist', file:'/vibemotion-labs/pdfs/stock/STK_01_Stock_Screening_Checklist.pdf', desc:'A twelve-point due diligence filter covering business quality, financial health, valuation, and risk — with a final decision and position-sizing template.', prob:'Most retail investors buy stocks on emotion not process', use:'Before placing any buy order', hook:'"Never buy a stock without running it through this twelve-point filter."' },
-    { n:'02', name:'Technical Analysis Pattern Guide', file:'/vibemotion-labs/pdfs/stock/STK_02_Technical_Analysis_Pattern_Guide.pdf', desc:'Fifteen chart patterns — reversals, continuations, and candlestick formations — with plain-language descriptions, exact trade setups, and key observations.', prob:'Charts feel unreadable without a pattern recognition system', use:'Before reviewing any watchlist or entering a trade', hook:'"Spot the fifteen patterns professional traders watch every day."' },
-    { n:'03', name:'Trading Journal Template', file:'/vibemotion-labs/pdfs/stock/STK_03_Stock_Market_Trading_Journal.pdf', desc:'Pre-trade plan and post-trade review covering thesis, risk-reward ratio, position size, emotional state, and a graded execution score for every trade.', prob:'Without journaling the same mistakes repeat indefinitely', use:'Before and after every single trade', hook:'"The journal that converts your losses into your most valuable education."' },
-    { n:'04', name:'IPO Research Checklist', file:'/vibemotion-labs/pdfs/stock/STK_04_IPO_Research_Checklist.pdf', desc:'A ten-point framework covering business model, cash burn, insider selling, peer valuation, and management track record — with a full scoring summary.', prob:'IPO hype consistently leads retail investors to overpay', use:'Before participating in any new public offering', hook:'"Before you chase the next IPO, run it through this filter first."' },
-    { n:'05', name:'Financial Statement Analysis Guide', file:'/vibemotion-labs/pdfs/stock/STK_05_Financial_Statement_Analysis_Guide.pdf', desc:'A plain-language breakdown of the income statement, balance sheet, and cash flow statement — with key ratios, formulas, and benchmarks for every line item.', prob:'Most investors cannot read the financials they invest based on', use:'When researching any company before investing', hook:'"Read any company\'s financials like a Wall Street analyst."' }
+  stk:[
+    {n:'01',name:'Stock Screening Checklist',file:'https://herominutes.github.io/vibemotion-labs/pdfs/stock/STK_01_Stock_Screening_Checklist.pdf',desc:'A twelve-point due diligence filter covering business quality, financial health, valuation, and risk — with a final decision and position-sizing template.',prob:'Most retail investors buy stocks on emotion not process',use:'Before placing any buy order',hook:'"Never buy a stock without running it through this twelve-point filter."'},
+    {n:'02',name:'Technical Analysis Pattern Guide',file:'https://herominutes.github.io/vibemotion-labs/pdfs/stock/STK_02_Technical_Analysis_Pattern_Guide.pdf',desc:'Fifteen chart patterns — reversals, continuations, and candlestick formations — with plain-language descriptions, exact trade setups, and key observations.',prob:'Charts feel unreadable without a pattern recognition system',use:'Before reviewing any watchlist or entering a trade',hook:'"Spot the fifteen patterns professional traders watch every day."'},
+    {n:'03',name:'Trading Journal Template',file:'https://herominutes.github.io/vibemotion-labs/pdfs/stock/STK_03_Stock_Market_Trading_Journal.pdf',desc:'Pre-trade plan and post-trade review covering thesis, risk-reward ratio, position size, emotional state, and a graded execution score for every trade.',prob:'Without journaling the same mistakes repeat indefinitely',use:'Before and after every single trade',hook:'"The journal that converts your losses into your most valuable education."'},
+    {n:'04',name:'IPO Research Checklist',file:'https://herominutes.github.io/vibemotion-labs/pdfs/stock/STK_04_IPO_Research_Checklist.pdf',desc:'A ten-point framework covering business model, cash burn, insider selling, peer valuation, and management track record — with a full scoring summary.',prob:'IPO hype consistently leads retail investors to overpay',use:'Before participating in any new public offering',hook:'"Before you chase the next IPO, run it through this filter first."'},
+    {n:'05',name:'Financial Statement Analysis Guide',file:'https://herominutes.github.io/vibemotion-labs/pdfs/stock/STK_05_Financial_Statement_Analysis_Guide.pdf',desc:'A plain-language breakdown of the income statement, balance sheet, and cash flow statement — with key ratios, formulas, and benchmarks for every line item.',prob:'Most investors cannot read the financials they invest based on',use:'When researching any company before investing',hook:'"Read any company\'s financials like a Wall Street analyst."'}
   ]
 };
 
+// BUILD GRID — creates all cards and appends to panel
 var built = {};
-function buildGrid(niche) {
-  if (built[niche]) return;
+function buildGrid(niche){
+  if(built[niche]) return;
   built[niche] = true;
-  var grid = document.getElementById('grid-' + niche);
-  DATA[niche].forEach(function(p, i) {
+  var panel = document.getElementById('panel-'+niche);
+  var grid = document.createElement('div');
+  grid.className = 'pgrid';
+  DATA[niche].forEach(function(p, i){
     var card = document.createElement('div');
     card.className = 'pcard';
-    card.style.animationDelay = (i * 0.055) + 's';
+    card.style.animationDelay = (i * 0.055)+'s';
     card.innerHTML =
-      '<div class="p-num">' + p.n + '</div>' +
-      '<div class="p-name">' + p.name + '</div>' +
-      '<div class="p-desc">' + p.desc + '</div>' +
-      '<div class="p-div"></div>' +
-      '<div class="p-row"><span class="p-key">Problem</span><span class="p-val">' + p.prob + '</span></div>' +
-      '<div class="p-row"><span class="p-key">Use when</span><span class="p-val">' + p.use + '</span></div>' +
-      '<div class="p-hook">' + p.hook + '</div>' +
-      '<a class="dl" href="' + p.file + '" download>' +
-        '<span>Download Free
+      '<div class="p-num">'+p.n+'</div>'+
+      '<div class="p-name">'+p.name+'</div>'+
+      '<div class="p-desc">'+p.desc+'</div>'+
+      '<div class="p-div"></div>'+
+      '<div class="p-row"><span class="p-key">Problem</span><span class="p-val">'+p.prob+'</span></div>'+
+      '<div class="p-row"><span class="p-key">Use when</span><span class="p-val">'+p.use+'</span></div>'+
+      '<div class="p-hook">'+p.hook+'</div>'+
+      '<a class="dl" href="'+p.file+'" download>'+
+        '<span>Download Free PDF</span>'+
+        '<span class="dl-arr">↓</span>'+
+      '</a>';
+    grid.appendChild(card);
+  });
+  panel.appendChild(grid);
+}
+
+// BUILD ALL GRIDS ON PAGE LOAD — no lazy loading, everything ready immediately
+buildGrid('pm');
+buildGrid('ath');
+buildGrid('inj');
+buildGrid('stk');
+</script>
+</body>
+</html>
