@@ -409,267 +409,199 @@ footer{border-top:1px solid var(--rule);padding:2rem 2.5rem;
 </footer>
 
 <script>
-// THEME
-function toggleTheme(){
+'use strict';
+
+// ── THEME ──────────────────────────────────────────────────────────
+var isDark = true;
+function toggleTheme() {
+  isDark = !isDark;
   document.body.classList.toggle('light');
-  
 }
 
+// ── TAB LABELS ────────────────────────────────────────────────────
+var LABELS = {
+  pm:  'Product Management \u2014 8 Guides',
+  ath: 'Athlete Recovery \u2014 8 Guides',
+  inj: 'Injury Programmes \u2014 6 Guides',
+  stk: 'Stock Market \u2014 5 Guides',
+  ai:  'AI Prompts \u2014 60 Prompts Across 3 Disciplines'
+};
 
-var LABELS={pm:'Product Management — 8 Guides',ath:'Athlete Recovery — 8 Guides',inj:'Injury Programmes — 6 Guides',stk:'Stock Market — 5 Guides',ai:'AI Prompts — 60 Prompts Across 3 Disciplines'};
-
-function show(niche,btn){
-  document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('on');});
-  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on');});
-  document.getElementById('panel-'+niche).classList.add('on');
+// ── MAIN TAB SWITCHING ────────────────────────────────────────────
+function show(niche, btn) {
+  var panels = document.querySelectorAll('.panel');
+  for (var i = 0; i < panels.length; i++) { panels[i].classList.remove('on'); }
+  var tabs = document.querySelectorAll('.tab');
+  for (var j = 0; j < tabs.length; j++) { tabs[j].classList.remove('on'); }
+  var p = document.getElementById('panel-' + niche);
+  if (p) p.classList.add('on');
   btn.classList.add('on');
-  document.getElementById('glabel').textContent=LABELS[niche];
+  var lbl = document.getElementById('glabel');
+  if (lbl) lbl.textContent = LABELS[niche] || '';
+  var ai = document.getElementById('ai-section');
+  if (ai) ai.style.display = (niche === 'ai') ? 'block' : 'none';
 }
 
-// BASE URL — all PDFs live here
-var BASE='https://herominutes.github.io/vibemotion-labs/pdfs/';
+// ── BASE URL ──────────────────────────────────────────────────────
+var BASE = 'https://herominutes.github.io/vibemotion-labs/pdfs/';
 
-var DATA={
-  pm:[
-    {n:'01',name:'Amazon Working Backwards Toolkit',file:BASE+'pm/PM_Amazon_Working_Backwards.pdf',desc:'PRFAQ, 6-Pager Narrative, Tenets framework, and Working Backwards checklist — fully templated with guidance for every section.',prob:'Teams build before they understand the customer',use:'Before any planning session or new initiative',hook:'"Start with the customer. Work backwards. Ship only what is truly needed."'},
-    {n:'02',name:'Apple: Insanely Simple Toolkit',file:BASE+'pm/PM_Apple_Frameworks.pdf',desc:'10-to-3-to-1 ideation funnel, Jobs Narrative, Simplicity Audit, and Apple review simulation — for PMs who want products people love.',prob:'Products become bloated with features nobody uses',use:'When your roadmap feels overcrowded',hook:'"The best product does less — but does it perfectly."'},
-    {n:'03',name:'Role-Based PM Toolkit',file:BASE+'pm/PM_Role_Based_Toolkit.pdf',desc:'Five complete role profiles — Analyst through AI PM — with responsibilities, core artifacts, success metrics, and level-specific frameworks.',prob:'Career progression feels opaque without a clear map',use:'Before a performance review or promotion conversation',hook:'"From Product Analyst to AI PM — a complete career framework."'},
-    {n:'04',name:'PRD One-Pager Template Pack',file:BASE+'pm/PM_01_PRD_Template_Pack.pdf',desc:'Three production-ready formats — the one-pager, the full PRD, and the spike doc — for writing clear product requirements fast.',prob:'Writing PRDs from scratch wastes hours every sprint',use:'Before sprint planning or any feature kick-off',hook:'"Stop staring at a blank document — ship your PRD in thirty minutes."'},
-    {n:'05',name:'Prioritization Framework Cheat Sheet',file:BASE+'pm/PM_02_Prioritization_Framework_Cheat_Sheet.pdf',desc:'RICE, ICE, MoSCoW, Kano, and Opportunity Scoring — all five frameworks with formulas, worked examples, and benchmarks.',prob:'Stakeholders argue over every roadmap item',use:'Before quarterly planning or roadmap reviews',hook:'"Five frameworks that end every roadmap argument — permanently."'},
-    {n:'06',name:'PM Interview Answer Script',file:BASE+'pm/PM_03_Interview_Answer_Script.pdf',desc:'Word-for-word answer frameworks for the twenty hardest PM interview questions across product sense, analytical, execution, and strategy.',prob:'Failing interviews despite strong real-world experience',use:'One week before any PM interview',hook:'"Answers to the twenty hardest PM interview questions."'},
-    {n:'07',name:'User Research Script + Synthesis Guide',file:BASE+'pm/PM_04_User_Research_Interview_Script.pdf',desc:'Consent language, a forty-five-minute interview script by phase, and the full affinity mapping synthesis method.',prob:'Discovery interviews produce unusable unstructured output',use:'Before scheduling any user research sessions',hook:'"Ask better questions. Spot patterns faster. Build what users want."'},
-    {n:'08',name:'90-Day PM Onboarding Checklist',file:BASE+'pm/PM_05_90Day_Onboarding_Checklist.pdf',desc:'Three phases — Listen and Learn, Build Credibility, Lead and Drive — with structured actions and a ninety-day success benchmark.',prob:'New PMs flounder without a structured first-90-days plan',use:'Day one at any new PM role',hook:'"Make your mark in ninety days — the playbook senior PMs wish they had."'}
+// ── PRODUCT DATA ──────────────────────────────────────────────────
+var DATA = {
+  pm: [
+    {n:'01',name:'Amazon Working Backwards Toolkit',file:BASE+'pm/PM_Amazon_Working_Backwards.pdf',desc:'PRFAQ, 6-Pager Narrative, Tenets framework, and Working Backwards checklist \u2014 fully templated with guidance for every section.',prob:'Teams build before they understand the customer',use:'Before any planning session or new initiative',hook:'\u201cStart with the customer. Work backwards. Ship only what is truly needed.\u201d'},
+    {n:'02',name:'Apple: Insanely Simple Toolkit',file:BASE+'pm/PM_Apple_Frameworks.pdf',desc:'10-to-3-to-1 ideation funnel, Jobs Narrative, Simplicity Audit, and Apple review simulation \u2014 for PMs who want products people love.',prob:'Products become bloated with features nobody uses',use:'When your roadmap feels overcrowded',hook:'\u201cThe best product does less \u2014 but does it perfectly.\u201d'},
+    {n:'03',name:'Role-Based PM Toolkit',file:BASE+'pm/PM_Role_Based_Toolkit.pdf',desc:'Five complete role profiles \u2014 Analyst through AI PM \u2014 with responsibilities, core artifacts, success metrics, and level-specific frameworks.',prob:'Career progression feels opaque without a clear map',use:'Before a performance review or promotion conversation',hook:'\u201cFrom Product Analyst to AI PM \u2014 a complete career framework.\u201d'},
+    {n:'04',name:'PRD One-Pager Template Pack',file:BASE+'pm/PM_01_PRD_Template_Pack.pdf',desc:'Three production-ready formats \u2014 the one-pager, the full PRD, and the spike doc \u2014 for writing clear product requirements fast.',prob:'Writing PRDs from scratch wastes hours every sprint',use:'Before sprint planning or any feature kick-off',hook:'\u201cStop staring at a blank document \u2014 ship your PRD in thirty minutes.\u201d'},
+    {n:'05',name:'Prioritization Framework Cheat Sheet',file:BASE+'pm/PM_02_Prioritization_Framework_Cheat_Sheet.pdf',desc:'RICE, ICE, MoSCoW, Kano, and Opportunity Scoring \u2014 all five frameworks with formulas, worked examples, and benchmarks.',prob:'Stakeholders argue over every roadmap item',use:'Before quarterly planning or roadmap reviews',hook:'\u201cFive frameworks that end every roadmap argument \u2014 permanently.\u201d'},
+    {n:'06',name:'PM Interview Answer Script',file:BASE+'pm/PM_03_Interview_Answer_Script.pdf',desc:'Word-for-word answer frameworks for the twenty hardest PM interview questions across product sense, analytical, execution, and strategy.',prob:'Failing interviews despite strong real-world experience',use:'One week before any PM interview',hook:'\u201cAnswers to the twenty hardest PM interview questions.\u201d'},
+    {n:'07',name:'User Research Script + Synthesis Guide',file:BASE+'pm/PM_04_User_Research_Interview_Script.pdf',desc:'Consent language, a forty-five-minute interview script by phase, and the full affinity mapping synthesis method.',prob:'Discovery interviews produce unusable unstructured output',use:'Before scheduling any user research sessions',hook:'\u201cAsk better questions. Spot patterns faster. Build what users want.\u201d'},
+    {n:'08',name:'90-Day PM Onboarding Checklist',file:BASE+'pm/PM_05_90Day_Onboarding_Checklist.pdf',desc:'Three phases \u2014 Listen and Learn, Build Credibility, Lead and Drive \u2014 with structured actions and a ninety-day success benchmark.',prob:'New PMs flounder without a structured first-90-days plan',use:'Day one at any new PM role',hook:'\u201cMake your mark in ninety days \u2014 the playbook senior PMs wish they had.\u201d'}
   ],
-  ath:[
-    {n:'01',name:'Phase 1 — Pain Control and Protection',file:BASE+'athlete/ATH_PHASE1_Pain_Control.pdf',desc:'Days 0-14. Ice, compression, elevation protocol plus 6 guided exercises with full how-to steps, coaching cues, sets, reps, and progression criteria.',prob:'No structure for the critical first two weeks post-injury',use:'Immediately after any lower limb injury',hook:'"Control the pain. Protect the tissue. Start healing today."'},
-    {n:'02',name:'Phase 2 — Mobility and Early Strength',file:BASE+'athlete/ATH_PHASE2_Mobility_Strength.pdf',desc:'Weeks 2-5. Seven guided exercises with calf raises, band dorsiflexion, hamstring stretches, hip abduction, wall squats, clam shells, and ankle alphabet.',prob:'Stiffness and weakness set in without structured early loading',use:'Once resting pain is below 2/10 consistently',hook:'"Move better. Get stronger. Give your body a reason to heal faster."'},
-    {n:'03',name:'Phase 3 — Strength and Stability',file:BASE+'athlete/ATH_PHASE3_Strength_Stability.pdf',desc:'Weeks 4-8. Goblet squat, Romanian deadlift, step-ups, single-leg balance, Nordic hamstring curl, and lateral band walks — with sets, reps, load, and full how-to.',prob:'Returning to sport weak creates a high re-injury risk',use:'When Phase 2 exercises are pain-free for 5 sessions',hook:'"Build the strength that makes re-injury far less likely."'},
-    {n:'04',name:'Phase 4 — Power and Plyometrics',file:BASE+'athlete/ATH_PHASE4_Power_Plyometrics.pdf',desc:'Weeks 7-12. Box jumps, single-leg hop and stick, depth drops, lateral bounds, progressive running protocol, and triple hop LSI testing.',prob:'Athletes return to sport without rebuilding explosive power',use:'When Phase 3 strength benchmarks are met',hook:'"Rebuild the power that got you onto the field in the first place."'},
-    {n:'05',name:'Phase 5 — Return to Athletic Performance',file:BASE+'athlete/ATH_PHASE5_Return_To_Performance.pdf',desc:'Weeks 10-16+. Barbell squat, trap bar deadlift, agility drills, sprint mechanics, and a permanent prehab programme plus the full return-to-sport clearance checklist.',prob:'Athletes return to competition without hitting pre-injury benchmarks',use:'When LSI reaches 90% on hop testing',hook:'"Not just back to sport. Back to your best — and beyond."'},
-    {n:'06',name:'Return-to-Sport Clearance Checklist',file:BASE+'athlete/ATH_01_Return_To_Sport_Checklist.pdf',desc:'A five-phase milestone tracker from pain control to full competition clearance — with date fields, clinical notes, and phase-by-phase benchmarks.',prob:'Athletes re-injure by returning to sport too soon',use:'Before any return to training or competition',hook:'"The clearance checklist your physiotherapist will not always give you."'},
-    {n:'07',name:'Injury Recovery Nutrition Guide',file:BASE+'athlete/ATH_02_Injury_Recovery_Nutrition_Guide.pdf',desc:'Phase-specific macros, six key healing nutrients with clinical dosages, and a complete seven-day sample meal plan for the acute recovery phase.',prob:'Poor nutrition measurably slows tissue repair',use:'From day one of any injury recovery',hook:'"Eat to heal faster — the exact macros sports dietitians prescribe."'},
-    {n:'08',name:'Mental Performance Journal',file:BASE+'athlete/ATH_03_Mental_Performance_Journal.pdf',desc:'Daily check-ins and weekly reviews with prompts for athletic identity, fear of re-injury, and performance confidence for the full recovery arc.',prob:'Fear and identity loss are the hidden barriers to full recovery',use:'Every day throughout the recovery programme',hook:'"Stay mentally in the game while your body heals."'}
+  ath: [
+    {n:'01',name:'Phase 1 \u2014 Pain Control and Protection',file:BASE+'athlete/ATH_PHASE1_Pain_Control.pdf',desc:'Days 0\u201314. Ice, compression, elevation protocol plus 6 guided exercises with full how-to steps, coaching cues, sets, reps, and progression criteria.',prob:'No structure for the critical first two weeks post-injury',use:'Immediately after any lower limb injury',hook:'\u201cControl the pain. Protect the tissue. Start healing today.\u201d'},
+    {n:'02',name:'Phase 2 \u2014 Mobility and Early Strength',file:BASE+'athlete/ATH_PHASE2_Mobility_Strength.pdf',desc:'Weeks 2\u20135. Seven guided exercises with calf raises, band dorsiflexion, hamstring stretches, hip abduction, wall squats, clam shells, and ankle alphabet.',prob:'Stiffness and weakness set in without structured early loading',use:'Once resting pain is below 2 out of 10 consistently',hook:'\u201cMove better. Get stronger. Give your body a reason to heal faster.\u201d'},
+    {n:'03',name:'Phase 3 \u2014 Strength and Stability',file:BASE+'athlete/ATH_PHASE3_Strength_Stability.pdf',desc:'Weeks 4\u20138. Goblet squat, Romanian deadlift, step-ups, single-leg balance, Nordic hamstring curl, and lateral band walks with sets, reps, load, and full how-to.',prob:'Returning to sport weak creates a high re-injury risk',use:'When Phase 2 exercises are pain-free for 5 sessions',hook:'\u201cBuild the strength that makes re-injury far less likely.\u201d'},
+    {n:'04',name:'Phase 4 \u2014 Power and Plyometrics',file:BASE+'athlete/ATH_PHASE4_Power_Plyometrics.pdf',desc:'Weeks 7\u201312. Box jumps, single-leg hop and stick, depth drops, lateral bounds, progressive running protocol, and triple hop LSI testing.',prob:'Athletes return to sport without rebuilding explosive power',use:'When Phase 3 strength benchmarks are met',hook:'\u201cRebuild the power that got you onto the field in the first place.\u201d'},
+    {n:'05',name:'Phase 5 \u2014 Return to Athletic Performance',file:BASE+'athlete/ATH_PHASE5_Return_To_Performance.pdf',desc:'Weeks 10\u201316+. Barbell squat, trap bar deadlift, agility drills, sprint mechanics, and a permanent prehab programme plus the full return-to-sport clearance checklist.',prob:'Athletes return to competition without hitting pre-injury benchmarks',use:'When LSI reaches 90% on hop testing',hook:'\u201cNot just back to sport. Back to your best \u2014 and beyond.\u201d'},
+    {n:'06',name:'Return-to-Sport Clearance Checklist',file:BASE+'athlete/ATH_01_Return_To_Sport_Checklist.pdf',desc:'A five-phase milestone tracker from pain control to full competition clearance with date fields, clinical notes, and phase-by-phase benchmarks.',prob:'Athletes re-injure by returning to sport too soon',use:'Before any return to training or competition',hook:'\u201cThe clearance checklist your physiotherapist will not always give you.\u201d'},
+    {n:'07',name:'Injury Recovery Nutrition Guide',file:BASE+'athlete/ATH_02_Injury_Recovery_Nutrition_Guide.pdf',desc:'Phase-specific macros, six key healing nutrients with clinical dosages, and a complete seven-day sample meal plan for the acute recovery phase.',prob:'Poor nutrition measurably slows tissue repair',use:'From day one of any injury recovery',hook:'\u201cEat to heal faster \u2014 the exact macros sports dietitians prescribe.\u201d'},
+    {n:'08',name:'Mental Performance Journal',file:BASE+'athlete/ATH_03_Mental_Performance_Journal.pdf',desc:'Daily check-ins and weekly reviews with prompts for athletic identity, fear of re-injury, and performance confidence for the full recovery arc.',prob:'Fear and identity loss are the hidden barriers to full recovery',use:'Every day throughout the recovery programme',hook:'\u201cStay mentally in the game while your body heals.\u201d'}
   ],
-  inj:[
-    {n:'01',name:'ACL Reconstruction Recovery',file:BASE+'athlete/ATH_ACL_Recovery_Programme.pdf',desc:'Complete 9-12 month programme from surgery to elite performance. All 5 phases with every exercise, set, rep, load, how-to instruction, and return-to-sport clearance checklist.',prob:'ACL re-injury rate without structured rehab is 20-25%',use:'From day one post-surgery through return to full competition',hook:'"9 months done right. A career protected."'},
-    {n:'02',name:'Knee Injury Recovery',file:BASE+'athlete/ATH_Knee_Recovery_Programme.pdf',desc:'Full programme for patellofemoral pain and patellar tendinopathy. VMO isometrics, Spanish squat, eccentric step-downs, heavy slow resistance, and plyometric reintroduction.',prob:'Knee pain is the most undertreated barrier to athletic performance',use:'From first session of knee pain through elite sport return',hook:'"Pain-free knees are not luck — they are built."'},
-    {n:'03',name:'Low Back Injury Recovery',file:BASE+'athlete/ATH_Low_Back_Recovery_Programme.pdf',desc:'Complete programme for athletic low back pain. McKenzie extension, deep core reactivation, dead bug, bird dog, hip hinge restoration, and trap bar deadlift progression.',prob:'Low back pain is the leading cause of early career end in athletes',use:'From acute episode through full return to loaded sport',hook:'"A strong back is the foundation of every athletic movement."'},
-    {n:'04',name:'Shoulder Injury Recovery',file:BASE+'athlete/ATH_Shoulder_Recovery_Programme.pdf',desc:'Full programme for rotator cuff injuries, impingement, and SLAP tears. Pendulum mobility, infraspinatus strengthening, scapular control, face pulls, and interval throwing programme.',prob:'Shoulder injuries end more athletic careers than almost any other injury',use:'From acute post-injury through return to overhead and throwing sport',hook:'"Healthy shoulders throw harder, lift more, and last longer."'},
-    {n:'05',name:'Hamstring Strain Recovery',file:BASE+'athlete/ATH_Hamstring_Recovery_Programme.pdf',desc:'Programme for Grade I-III hamstring strains with full Nordic Hamstring Curl protocol and progressive sprint programme. Reduces re-injury rate from 40% to under 10%.',prob:'Hamstring strains re-occur in 30-40% of athletes without eccentric training',use:'From day of injury through full sprint speed and sport return',hook:'"The hamstring injury that never comes back."'},
-    {n:'06',name:'Ankle Sprain Recovery',file:BASE+'athlete/ATH_Ankle_Sprain_Recovery_Programme.pdf',desc:'Comprehensive programme for Grade I-III ankle sprains. PEACE and LOVE acute care, 360-degree strengthening, progressive balance training, and lateral hop protocol.',prob:'70% of ankle sprains re-occur without complete rehabilitation',use:'From day of injury through full agility and sport return',hook:'"Rehabilitation done fully. Never roll the same ankle twice."'}
+  inj: [
+    {n:'01',name:'ACL Reconstruction Recovery',file:BASE+'athlete/ATH_ACL_Recovery_Programme.pdf',desc:'Complete 9\u201312 month programme from surgery to elite performance. All 5 phases with every exercise, set, rep, load, how-to instruction, and return-to-sport clearance checklist.',prob:'ACL re-injury rate without structured rehab is 20\u201325%',use:'From day one post-surgery through return to full competition',hook:'\u201c9 months done right. A career protected.\u201d'},
+    {n:'02',name:'Knee Injury Recovery',file:BASE+'athlete/ATH_Knee_Recovery_Programme.pdf',desc:'Full programme for patellofemoral pain and patellar tendinopathy. VMO isometrics, Spanish squat, eccentric step-downs, heavy slow resistance, and plyometric reintroduction.',prob:'Knee pain is the most undertreated barrier to athletic performance',use:'From first session of knee pain through elite sport return',hook:'\u201cPain-free knees are not luck \u2014 they are built.\u201d'},
+    {n:'03',name:'Low Back Injury Recovery',file:BASE+'athlete/ATH_Low_Back_Recovery_Programme.pdf',desc:'Complete programme for athletic low back pain. McKenzie extension, deep core reactivation, dead bug, bird dog, hip hinge restoration, and trap bar deadlift progression.',prob:'Low back pain is the leading cause of early career end in athletes',use:'From acute episode through full return to loaded sport',hook:'\u201cA strong back is the foundation of every athletic movement.\u201d'},
+    {n:'04',name:'Shoulder Injury Recovery',file:BASE+'athlete/ATH_Shoulder_Recovery_Programme.pdf',desc:'Full programme for rotator cuff injuries, impingement, and SLAP tears. Pendulum mobility, infraspinatus strengthening, scapular control, face pulls, and interval throwing programme.',prob:'Shoulder injuries end more athletic careers than almost any other injury',use:'From acute post-injury through return to overhead and throwing sport',hook:'\u201cHealthy shoulders throw harder, lift more, and last longer.\u201d'},
+    {n:'05',name:'Hamstring Strain Recovery',file:BASE+'athlete/ATH_Hamstring_Recovery_Programme.pdf',desc:'Programme for Grade I\u2013III hamstring strains with full Nordic Hamstring Curl protocol and progressive sprint programme. Reduces re-injury rate from 40% to under 10%.',prob:'Hamstring strains re-occur in 30\u201340% of athletes without eccentric training',use:'From day of injury through full sprint speed and sport return',hook:'\u201cThe hamstring injury that never comes back.\u201d'},
+    {n:'06',name:'Ankle Sprain Recovery',file:BASE+'athlete/ATH_Ankle_Sprain_Recovery_Programme.pdf',desc:'Comprehensive programme for Grade I\u2013III ankle sprains. PEACE and LOVE acute care, 360-degree strengthening, progressive balance training, and lateral hop protocol.',prob:'70% of ankle sprains re-occur without complete rehabilitation',use:'From day of injury through full agility and sport return',hook:'\u201cRehabilitation done fully. Never roll the same ankle twice.\u201d'}
   ],
-  stk:[
-    {n:'01',name:'Stock Screening Checklist',file:BASE+'stock/STK_01_Stock_Screening_Checklist.pdf',desc:'A twelve-point due diligence filter covering business quality, financial health, valuation, and risk — with a final decision and position-sizing template.',prob:'Most retail investors buy stocks on emotion not process',use:'Before placing any buy order',hook:'"Never buy a stock without running it through this twelve-point filter."'},
-    {n:'02',name:'Technical Analysis Pattern Guide',file:BASE+'stock/STK_02_Technical_Analysis_Pattern_Guide.pdf',desc:'Fifteen chart patterns — reversals, continuations, and candlestick formations — with plain-language descriptions, exact trade setups, and key observations.',prob:'Charts feel unreadable without a pattern recognition system',use:'Before reviewing any watchlist or entering a trade',hook:'"Spot the fifteen patterns professional traders watch every day."'},
-    {n:'03',name:'Trading Journal Template',file:BASE+'stock/STK_03_Stock_Market_Trading_Journal.pdf',desc:'Pre-trade plan and post-trade review covering thesis, risk-reward ratio, position size, emotional state, and a graded execution score for every trade.',prob:'Without journaling the same mistakes repeat indefinitely',use:'Before and after every single trade',hook:'"The journal that converts your losses into your most valuable education."'},
-    {n:'04',name:'IPO Research Checklist',file:BASE+'stock/STK_04_IPO_Research_Checklist.pdf',desc:'A ten-point framework covering business model, cash burn, insider selling, peer valuation, and management track record — with a full scoring summary.',prob:'IPO hype consistently leads retail investors to overpay',use:'Before participating in any new public offering',hook:'"Before you chase the next IPO, run it through this filter first."'},
-    {n:'05',name:'Financial Statement Analysis Guide',file:BASE+'stock/STK_05_Financial_Statement_Analysis_Guide.pdf',desc:'A plain-language breakdown of the income statement, balance sheet, and cash flow statement — with key ratios, formulas, and benchmarks for every line item.',prob:'Most investors cannot read the financials they invest based on',use:'When researching any company before investing',hook:'"Read any company\'s financials like a Wall Street analyst."'}
+  stk: [
+    {n:'01',name:'Stock Screening Checklist',file:BASE+'stock/STK_01_Stock_Screening_Checklist.pdf',desc:'A twelve-point due diligence filter covering business quality, financial health, valuation, and risk with a final decision and position-sizing template.',prob:'Most retail investors buy stocks on emotion not process',use:'Before placing any buy order',hook:'\u201cNever buy a stock without running it through this twelve-point filter.\u201d'},
+    {n:'02',name:'Technical Analysis Pattern Guide',file:BASE+'stock/STK_02_Technical_Analysis_Pattern_Guide.pdf',desc:'Fifteen chart patterns \u2014 reversals, continuations, and candlestick formations \u2014 with plain-language descriptions, exact trade setups, and key observations.',prob:'Charts feel unreadable without a pattern recognition system',use:'Before reviewing any watchlist or entering a trade',hook:'\u201cSpot the fifteen patterns professional traders watch every day.\u201d'},
+    {n:'03',name:'Trading Journal Template',file:BASE+'stock/STK_03_Stock_Market_Trading_Journal.pdf',desc:'Pre-trade plan and post-trade review covering thesis, risk-reward ratio, position size, emotional state, and a graded execution score for every trade.',prob:'Without journaling the same mistakes repeat indefinitely',use:'Before and after every single trade',hook:'\u201cThe journal that converts your losses into your most valuable education.\u201d'},
+    {n:'04',name:'IPO Research Checklist',file:BASE+'stock/STK_04_IPO_Research_Checklist.pdf',desc:'A ten-point framework covering business model, cash burn, insider selling, peer valuation, and management track record with a full scoring summary.',prob:'IPO hype consistently leads retail investors to overpay',use:'Before participating in any new public offering',hook:'\u201cBefore you chase the next IPO, run it through this filter first.\u201d'},
+    {n:'05',name:'Financial Statement Analysis Guide',file:BASE+'stock/STK_05_Financial_Statement_Analysis_Guide.pdf',desc:'A plain-language breakdown of the income statement, balance sheet, and cash flow statement with key ratios, formulas, and benchmarks for every line item.',prob:'Most investors cannot read the financials they invest based on',use:'When researching any company before investing',hook:'\u201cRead any company\u2019s financials like a Wall Street analyst.\u201d'}
   ]
 };
 
-// BUILD GRID — called once per niche, appends pgrid div to panel
-var built={};
-function buildGrid(niche){
-  if(built[niche])return;
-  built[niche]=true;
-  var panel=document.getElementById('panel-'+niche);
-  var grid=document.createElement('div');
-  grid.className='pgrid';
-  DATA[niche].forEach(function(p,i){
-    var card=document.createElement('div');
-    card.className='pcard';
-    card.innerHTML=
-      '<div class="p-num">'+p.n+'</div>'+
-      '<div class="p-name">'+p.name+'</div>'+
-      '<div class="p-desc">'+p.desc+'</div>'+
-      '<div class="p-div"></div>'+
-      '<div class="p-row"><span class="p-key">Problem</span><span class="p-val">'+p.prob+'</span></div>'+
-      '<div class="p-row"><span class="p-key">Use when</span><span class="p-val">'+p.use+'</span></div>'+
-      '<div class="p-hook">'+p.hook+'</div>'+
-      '<a class="dl" href="'+p.file+'" target="_blank" rel="noopener">'+
-        '<span>Open Free PDF</span>'+
-        '<span class="dl-arr">↗</span>'+
+// ── BUILD PRODUCT GRID ───────────────────────────────────────────
+var built = {};
+function buildGrid(niche) {
+  if (built[niche]) return;
+  built[niche] = true;
+  var panel = document.getElementById('panel-' + niche);
+  var grid = document.createElement('div');
+  grid.className = 'pgrid';
+  var items = DATA[niche];
+  for (var i = 0; i < items.length; i++) {
+    var p = items[i];
+    var card = document.createElement('div');
+    card.className = 'pcard';
+    card.innerHTML =
+      '<div class="p-num">' + p.n + '</div>' +
+      '<div class="p-name">' + p.name + '</div>' +
+      '<div class="p-desc">' + p.desc + '</div>' +
+      '<div class="p-div"></div>' +
+      '<div class="p-row"><span class="p-key">Problem</span><span class="p-val">' + p.prob + '</span></div>' +
+      '<div class="p-row"><span class="p-key">Use when</span><span class="p-val">' + p.use + '</span></div>' +
+      '<div class="p-hook">' + p.hook + '</div>' +
+      '<a class="dl" href="' + p.file + '" target="_blank" rel="noopener">' +
+        '<span>Open Free PDF</span><span class="dl-arr">\u2197</span>' +
       '</a>';
     grid.appendChild(card);
-  });
+  }
   panel.appendChild(grid);
 }
 
-// BUILD ALL FOUR GRIDS IMMEDIATELY on page load
 buildGrid('pm');
 buildGrid('ath');
 buildGrid('inj');
 buildGrid('stk');
 
-// ── AI PROMPTS DATA ─────────────────────────────────────────────────
+// ── AI PROMPTS DATA ───────────────────────────────────────────────
+// Stored as array elements — no inline onclick quoting issues
 var PROMPTS = {
   pm: {
     claude: [
-      { title:'Working Backwards from the Customer', use:'Before starting any new product initiative',
-        text:'I am a product manager starting a new initiative. Help me apply Amazon's Working Backwards framework. Ask me questions one at a time to help me write a PRFAQ: first the customer problem, then the proposed solution, then the success metrics, then the risks. Be rigorous — push back if my answers are vague or solution-first rather than customer-first.' },
-      { title:'PRD Review and Strengthening', use:'After writing a first draft PRD',
-        text:'I am going to paste my PRD draft below. Please review it as a senior PM would. Identify: (1) any sections where the customer problem is unclear, (2) success metrics that are not measurable, (3) risks I have not addressed, (4) scope that seems too large for one release. Be direct and specific. Then suggest the three most important improvements.
-
-[PASTE YOUR PRD HERE]' },
-      { title:'Roadmap Prioritisation Using RICE', use:'Before quarterly planning sessions',
-        text:'I need to prioritise my product roadmap using RICE scoring. I will give you a list of features. For each one, help me estimate Reach (users per quarter), Impact (0.25 to 3 scale), Confidence (50/80/100%), and Effort (person-months). Then calculate the RICE score and rank them. Challenge any estimates that seem unrealistic.
-
-Features to score:
-[LIST YOUR FEATURES HERE]' },
-      { title:'Stakeholder Disagreement Resolution', use:'When roadmap conflicts arise',
-        text:'I am a product manager facing a roadmap disagreement. Engineering wants to prioritise technical debt. Marketing wants a new user-facing feature. My CEO wants faster growth metrics. Help me: (1) map each stakeholder's underlying goal, (2) find where their goals actually overlap, (3) draft a proposal that addresses all three perspectives, (4) write the specific talking points I should use in each 1:1.' },
-      { title:'User Research Synthesis', use:'After completing user interviews',
-        text:'I have just completed [NUMBER] user interviews about [TOPIC]. I will paste my raw notes below. Help me: (1) identify the top 5 recurring themes, (2) write an insight statement for each theme in the format "Users struggle to [X] because [Y] which causes [Z]", (3) rank them by frequency and emotional intensity, (4) identify which insights point to the highest-value product opportunity.
-
-[PASTE YOUR NOTES HERE]' },
-      { title:'PM Interview Preparation — Product Sense', use:'One week before a PM interview',
-        text:'I have a product manager interview at [COMPANY] for a [ROLE] position. Help me practise product sense questions. Ask me one product sense question at a time — the type that tests whether I can define a user, identify a problem, and prioritise a solution. After each answer, give me specific feedback on: what I did well, what was missing, and how a top PM candidate would have answered it differently.' },
-      { title:'Jobs to Be Done Analysis', use:'When designing or improving a product',
-        text:'Help me apply the Jobs to Be Done framework to [PRODUCT OR FEATURE]. Walk me through: (1) the functional job the customer is hiring this product for, (2) the emotional job — how they want to feel, (3) the social job — how they want to be perceived, (4) the circumstances that trigger the job, (5) the current alternatives they use and why those fall short. Then help me identify the most underserved part of the job.' },
-      { title:'Metrics Dashboard Design', use:'When setting up product KPIs',
-        text:'I am building a metrics dashboard for [PRODUCT/FEATURE]. Help me define: (1) one north star metric that best represents long-term customer and business value, (2) three primary KPIs that drive the north star, (3) two guardrail metrics I must not let regress, (4) the leading indicators that predict each KPI before it shows up in lagging data. Explain the reasoning behind each choice.' },
-      { title:'Feature Scoping and Scope Creep Defence', use:'During sprint planning',
-        text:'I need to scope a feature for [DESCRIPTION]. Help me apply a strict MoSCoW method. For each item I describe, classify it as Must Have, Should Have, Could Have, or Won't Have — and explain the reasoning. Then tell me what I should explicitly cut to make this shippable in [TIMEFRAME]. If I try to add scope, push back and explain the cost.
-
-Feature scope to review:
-[DESCRIBE YOUR FEATURE]' },
-      { title:'90-Day Onboarding Strategy', use:'First week at a new PM role',
-        text:'I just started a new product manager role at [TYPE OF COMPANY — e.g. early-stage startup / enterprise SaaS]. It is day [X] of my role. Help me build a structured 90-day plan. For each phase — Listen and Learn (days 1–30), Build Credibility (days 31–60), and Lead and Drive (days 61–90) — give me specific weekly actions, the questions I should be asking, and the relationships I need to build. Tailor this to my specific context.' }
+      {title:'Working Backwards from the Customer',use:'Before starting any new product initiative',text:'I am a product manager starting a new initiative. Help me apply Amazon\u2019s Working Backwards framework. Ask me questions one at a time to help me write a PRFAQ: first the customer problem, then the proposed solution, then the success metrics, then the risks. Be rigorous \u2014 push back if my answers are vague or solution-first rather than customer-first.'},
+      {title:'PRD Review and Strengthening',use:'After writing a first draft PRD',text:'I am going to paste my PRD draft below. Please review it as a senior PM would. Identify: (1) any sections where the customer problem is unclear, (2) success metrics that are not measurable, (3) risks I have not addressed, (4) scope that seems too large for one release. Be direct and specific. Then suggest the three most important improvements.\n\n[PASTE YOUR PRD HERE]'},
+      {title:'Roadmap Prioritisation Using RICE',use:'Before quarterly planning sessions',text:'I need to prioritise my product roadmap using RICE scoring. I will give you a list of features. For each one, help me estimate Reach, Impact, Confidence, and Effort. Then calculate the RICE score and rank them. Challenge any estimates that seem unrealistic.\n\nFeatures to score:\n[LIST YOUR FEATURES HERE]'},
+      {title:'Stakeholder Disagreement Resolution',use:'When roadmap conflicts arise',text:'I am a product manager facing a roadmap disagreement. Engineering wants to prioritise technical debt. Marketing wants a new user-facing feature. My CEO wants faster growth metrics. Help me: (1) map each stakeholder\u2019s underlying goal, (2) find where their goals overlap, (3) draft a proposal that addresses all three perspectives, (4) write the specific talking points for each 1:1.'},
+      {title:'User Research Synthesis',use:'After completing user interviews',text:'I have just completed [NUMBER] user interviews about [TOPIC]. I will paste my raw notes below. Help me: (1) identify the top 5 recurring themes, (2) write an insight statement for each in the format \u201cUsers struggle to [X] because [Y] which causes [Z]\u201d, (3) rank them by frequency and emotional intensity, (4) identify the highest-value product opportunity.\n\n[PASTE YOUR NOTES HERE]'},
+      {title:'PM Interview Preparation',use:'One week before a PM interview',text:'I have a product manager interview at [COMPANY] for a [ROLE] position. Help me practise product sense questions. Ask me one question at a time. After each answer, give me specific feedback on: what I did well, what was missing, and how a top PM candidate would have answered differently.'},
+      {title:'Jobs to Be Done Analysis',use:'When designing or improving a product',text:'Help me apply the Jobs to Be Done framework to [PRODUCT OR FEATURE]. Walk me through: (1) the functional job, (2) the emotional job, (3) the social job, (4) the circumstances that trigger the job, (5) the current alternatives and why they fall short. Then identify the most underserved part of the job.'},
+      {title:'Metrics Dashboard Design',use:'When setting up product KPIs',text:'I am building a metrics dashboard for [PRODUCT]. Help me define: (1) one north star metric, (2) three primary KPIs that drive it, (3) two guardrail metrics I must not let regress, (4) the leading indicators that predict each KPI. Explain the reasoning behind each choice.'},
+      {title:'Feature Scoping and Scope Creep Defence',use:'During sprint planning',text:'I need to scope a feature for [DESCRIPTION]. Help me apply a strict MoSCoW method. For each item I describe, classify it as Must Have, Should Have, Could Have, or Won\u2019t Have \u2014 and explain the reasoning. Then tell me what to cut to make this shippable in [TIMEFRAME].\n\nFeature scope:\n[DESCRIBE YOUR FEATURE]'},
+      {title:'90-Day Onboarding Strategy',use:'First week at a new PM role',text:'I just started a new product manager role at [COMPANY TYPE]. It is day [X] of my role. Help me build a structured 90-day plan. For each phase \u2014 Listen and Learn (days 1\u201330), Build Credibility (days 31\u201360), and Lead and Drive (days 61\u201390) \u2014 give me specific weekly actions, key questions to ask, and relationships to build.'}
     ],
     gpt: [
-      { title:'Six-Pager Narrative Writing', use:'Before executive or board-level product reviews',
-        text:'Act as a senior Amazon product leader. Help me write a six-pager narrative for the following initiative: [DESCRIBE YOUR INITIATIVE]. Structure it with these sections: Executive Summary (one page), The Problem (one page), The Proposed Solution (one to two pages), Goals and Tenets (half a page), Risks and Mitigations (half a page), and an Appendix for supporting data. Write in Amazon's clear, direct narrative style — no bullet points in the main sections, no jargon, no passive voice.' },
-      { title:'Competitive Analysis Framework', use:'Before entering a new market or launching a feature',
-        text:'I am a product manager analysing the competitive landscape for [PRODUCT CATEGORY]. Help me build a structured competitive analysis. For each competitor I name, evaluate: (1) their primary customer segment, (2) their core value proposition, (3) their three strongest features, (4) their most significant weaknesses, (5) their likely strategic direction. Then identify the clearest gap in the market that none of them are addressing well.
-
-Competitors to analyse: [LIST COMPETITORS]' },
-      { title:'OKR Writing and Alignment', use:'During quarterly planning',
-        text:'Help me write strong OKRs for my product team for the next quarter. Our company objective is [COMPANY OBJECTIVE]. My team is responsible for [TEAM FOCUS AREA]. For each objective I draft, help me write three to five key results that are: specific and measurable, outcome-focused rather than output-focused, ambitious but achievable, and clearly linked to the company objective. Push back on any key results that are just tasks rather than outcomes.' },
-      { title:'Sprint Goal Setting', use:'Before each sprint planning session',
-        text:'I need to set a clear, compelling sprint goal for my engineering team. Our current backlog items are: [LIST BACKLOG ITEMS]. Help me: (1) identify the single most important outcome we could achieve this sprint, (2) write it as a sprint goal in one sentence that explains the value to the customer rather than describing the tasks, (3) list which backlog items directly support this goal, (4) identify which items I should deprioritise or defer.' },
-      { title:'Launch Plan Creation', use:'Two weeks before any product launch',
-        text:'I am launching [PRODUCT/FEATURE] in [TIMEFRAME]. Help me create a comprehensive launch plan covering: (1) the rollout strategy — phased percentages and timing, (2) internal communications — what each team needs to know and when, (3) external communications — announcement messaging and channel plan, (4) success criteria for declaring the launch successful at 24 hours, 7 days, and 30 days, (5) rollback criteria — what would trigger a rollback and how.' },
-      { title:'Technical Debt Prioritisation', use:'When negotiating with engineering on tech debt',
-        text:'My engineering team has a backlog of technical debt items. Help me evaluate each one from a product perspective using these criteria: (1) customer impact if the debt is not addressed, (2) velocity impact — how much it slows down future feature development, (3) risk — likelihood of causing an incident or degraded user experience, (4) effort to resolve. Score each item 1–5 on each dimension. Then help me build the business case for the top three items to present to leadership.
-
-Tech debt items: [LIST ITEMS]' },
-      { title:'A/B Test Design', use:'Before running any product experiment',
-        text:'I want to run an A/B test for [DESCRIBE THE CHANGE]. Help me design a rigorous experiment: (1) write the specific hypothesis in the format "If we change X, then Y will happen, because Z", (2) define the primary metric and how we will measure it, (3) identify the guardrail metrics that must not regress, (4) calculate the required sample size to reach statistical significance at 95% confidence, (5) define the exact success criteria before I run the test, (6) identify potential confounding variables.' },
-      { title:'Stakeholder Communication Email', use:'After making a major product decision',
-        text:'I need to write an email to senior stakeholders communicating a significant product decision. The decision is: [DESCRIBE THE DECISION]. The stakeholders are: [LIST STAKEHOLDERS AND THEIR CONCERNS]. Help me write an email that: leads with the decision clearly stated, explains the reasoning without being defensive, acknowledges trade-offs honestly, states what happens next and who owns each action, and ends with a clear ask or action from the reader.' },
-      { title:'User Persona Development', use:'During product discovery',
-        text:'I am building user personas for [PRODUCT]. I will describe the key user segments I have observed in my research. For each segment, help me build a persona that includes: a name and representative profile, their primary job title and context, their top three goals related to [PROBLEM SPACE], their top three frustrations with current solutions, their decision-making criteria when evaluating tools, and one defining quote that captures their worldview.
-
-User segments I have observed: [DESCRIBE SEGMENTS]' },
-      { title:'Post-Mortem Facilitation', use:'After a failed launch or major incident',
-        text:'I need to facilitate a blameless post-mortem for [DESCRIBE WHAT HAPPENED]. Help me structure a two-hour session that: (1) establishes a blameless, psychologically safe tone from the opening, (2) reconstructs the timeline of events with contributing factors — not causes, (3) identifies systemic issues rather than individual mistakes, (4) generates specific, actionable improvements with owners and deadlines, (5) closes with clear commitments the team can hold itself accountable to. Provide the agenda and key questions for each section.' }
+      {title:'Six-Pager Narrative Writing',use:'Before executive or board-level product reviews',text:'Act as a senior Amazon product leader. Help me write a six-pager narrative for this initiative: [DESCRIBE YOUR INITIATIVE]. Structure it with: Executive Summary, The Problem, The Proposed Solution, Goals and Tenets, Risks and Mitigations, and an Appendix. Write in Amazon\u2019s clear, direct narrative style \u2014 no bullet points in the main sections, no jargon, no passive voice.'},
+      {title:'Competitive Analysis Framework',use:'Before entering a new market or launching a feature',text:'I am a product manager analysing the competitive landscape for [PRODUCT CATEGORY]. For each competitor I name, evaluate: (1) their primary customer segment, (2) their core value proposition, (3) their three strongest features, (4) their most significant weaknesses, (5) their likely strategic direction. Then identify the clearest gap in the market.\n\nCompetitors: [LIST COMPETITORS]'},
+      {title:'OKR Writing and Alignment',use:'During quarterly planning',text:'Help me write strong OKRs for my product team. Our company objective is [COMPANY OBJECTIVE]. My team is responsible for [TEAM FOCUS AREA]. For each objective I draft, help me write three to five key results that are specific and measurable, outcome-focused, ambitious but achievable, and clearly linked to the company objective.'},
+      {title:'Sprint Goal Setting',use:'Before each sprint planning session',text:'I need to set a clear sprint goal for my engineering team. Our current backlog items are: [LIST BACKLOG ITEMS]. Help me: (1) identify the single most important outcome we could achieve this sprint, (2) write it as a sprint goal in one sentence focused on customer value, (3) list which backlog items directly support this goal, (4) identify what to deprioritise.'},
+      {title:'Launch Plan Creation',use:'Two weeks before any product launch',text:'I am launching [PRODUCT] in [TIMEFRAME]. Help me create a launch plan covering: (1) rollout strategy with phases and timing, (2) internal communications plan, (3) external announcement messaging, (4) success criteria at 24 hours, 7 days, and 30 days, (5) rollback criteria and process.'},
+      {title:'Technical Debt Prioritisation',use:'When negotiating with engineering on tech debt',text:'My engineering team has a backlog of technical debt. Evaluate each item on: (1) customer impact if not addressed, (2) velocity impact on future development, (3) risk of causing an incident, (4) effort to resolve. Score each 1\u20135 per dimension. Then help me build the business case for the top three items.\n\nTech debt items: [LIST ITEMS]'},
+      {title:'A/B Test Design',use:'Before running any product experiment',text:'I want to run an A/B test for [DESCRIBE THE CHANGE]. Help me design a rigorous experiment: (1) write the hypothesis, (2) define the primary metric, (3) identify guardrail metrics, (4) calculate the required sample size at 95% confidence, (5) define exact success criteria before running, (6) identify potential confounding variables.'},
+      {title:'Stakeholder Communication Email',use:'After making a major product decision',text:'I need to write an email communicating a significant product decision. The decision is: [DESCRIBE THE DECISION]. The stakeholders are: [LIST STAKEHOLDERS]. Help me write an email that leads with the decision clearly, explains the reasoning, acknowledges trade-offs, states next steps, and ends with a clear ask.'},
+      {title:'User Persona Development',use:'During product discovery',text:'I am building user personas for [PRODUCT]. For each segment I describe, build a persona with: name and profile, job title and context, top three goals, top three frustrations, decision-making criteria, and one defining quote.\n\nUser segments: [DESCRIBE SEGMENTS]'},
+      {title:'Post-Mortem Facilitation',use:'After a failed launch or major incident',text:'I need to facilitate a blameless post-mortem for [DESCRIBE WHAT HAPPENED]. Help me structure a two-hour session that: establishes psychological safety, reconstructs the timeline, identifies systemic issues, generates specific improvements with owners, and closes with team commitments. Provide the agenda and key questions for each section.'}
     ]
   },
   ath: {
     claude: [
-      { title:'Phase Assessment and Programme Selection', use:'At the start of any injury recovery',
-        text:'I am an injured athlete and I need help selecting the right recovery phase to start with. Here is my situation: I injured my [BODY PART] [TIME AGO]. My current pain level at rest is [X/10]. My pain level during movement is [X/10]. I can [CAN/CANNOT] bear full weight. My swelling is [NONE/MILD/MODERATE/SEVERE]. Based on the Vibemotion Labs five-phase recovery framework, which phase should I begin with, and what are the specific criteria I must meet before advancing to the next phase?' },
-      { title:'Daily Exercise Programme Builder', use:'At the start of each recovery week',
-        text:'I am in Phase [NUMBER] of my injury recovery. My injury is [DESCRIBE INJURY]. I have access to: [LIST EQUIPMENT — e.g. resistance bands, dumbbells, a gym, bodyweight only]. I can train [NUMBER] days per week. Build me a specific daily exercise programme for this week using the Vibemotion Labs Phase [NUMBER] exercises. For each day, list the exercises in order with sets, reps, rest periods, and one coaching cue for each exercise.' },
-      { title:'Pain Monitoring and Progression Decisions', use:'When unsure whether to progress to next phase',
-        text:'I need help making a progression decision in my recovery. I am currently in Phase [NUMBER]. Here is my pain data from the last 7 sessions: [LIST PAIN SCORES BEFORE, DURING, AND AFTER EACH SESSION]. My swelling status is: [DESCRIBE]. I can currently perform: [LIST WHAT YOU CAN DO]. Help me analyse this data and tell me clearly: (1) whether my recovery is progressing as expected, (2) any red flags I should address before progressing, (3) whether I am ready to advance to Phase [NEXT PHASE] and why.' },
-      { title:'Injury-Specific Exercise Modifications', use:'When standard exercises cause pain',
-        text:'I am following Phase [NUMBER] of the Vibemotion Labs recovery programme but I am having difficulty with [SPECIFIC EXERCISE]. When I perform it, I feel [DESCRIBE THE PAIN OR DIFFICULTY — location, type, intensity out of 10]. Help me: (1) identify the likely cause of this difficulty, (2) suggest two or three modifications that reduce the load while maintaining the therapeutic benefit, (3) tell me what I should feel vs. what is a warning sign to stop.' },
-      { title:'Nutrition Plan for Recovery Phase', use:'At the start of each recovery phase',
-        text:'I am in Phase [NUMBER] of injury recovery from a [INJURY TYPE]. I weigh [WEIGHT] kg. I am [MALE/FEMALE], aged [AGE]. My current activity level is [DESCRIBE — e.g. mostly sedentary due to injury / light rehab only / moderate rehab]. Using the Vibemotion Labs nutrition framework, calculate my specific daily protein, carbohydrate, and calorie targets for this phase. Then build me a 3-day sample meal plan that hits these targets and includes the key healing nutrients — Vitamin C, Zinc, Omega-3, and collagen.' },
-      { title:'Mental Barriers and Fear of Re-injury', use:'When motivation drops or fear holds you back',
-        text:'I am struggling with the mental side of my injury recovery. My injury is [DESCRIBE]. I am in week [NUMBER] of recovery. The main psychological barriers I am facing are: [DESCRIBE — e.g. fear of re-injury, loss of athletic identity, frustration with slow progress, anxiety about returning to sport]. Using evidence-based sports psychology principles, help me: (1) understand why these feelings are normal and expected, (2) give me three concrete daily practices to address each barrier, (3) help me write a weekly journal prompt for the Vibemotion Labs Mental Performance Journal.' },
-      { title:'Return-to-Sport Readiness Assessment', use:'When approaching sport clearance',
-        text:'I am preparing to return to [SPORT]. I have completed Phase [NUMBER] of the Vibemotion Labs recovery programme. Help me conduct a self-assessment against the return-to-sport clearance criteria. I will give you my current performance data: pain scores, single-leg balance duration, hop test distances on both legs, and any strength test results I have. Tell me clearly: (1) which criteria I meet, (2) which I do not yet meet, (3) exactly what I need to achieve in each incomplete area before I can safely return.' },
-      { title:'Long-Term Injury Prevention Planning', use:'After returning to full sport',
-        text:'I have returned to [SPORT] after recovering from a [INJURY]. I want to build a long-term injury prevention programme to ensure I never experience this same injury again. Based on the Vibemotion Labs Phase 5 prehab protocol: (1) design a 15-minute pre-training warm-up routine I can do before every session, (2) design a weekly maintenance strength programme that takes no more than 30 minutes, (3) identify the three highest-risk movements in my sport and give me specific techniques to perform each one more safely.' },
-      { title:'Sleep Optimisation for Injury Recovery', use:'When recovery feels slow',
-        text:'I am recovering from a [INJURY] and I want to maximise my sleep quality to accelerate tissue repair. My current sleep situation is: I typically sleep [HOURS] per night. I fall asleep [EASILY / WITH DIFFICULTY]. I wake up during the night [NEVER / OCCASIONALLY / FREQUENTLY]. My bedroom is [DESCRIBE SETUP]. My pre-bed routine currently includes [DESCRIBE]. Using the Vibemotion Labs sleep optimisation framework, give me a personalised nightly protocol with specific timing, environment changes, and supplement recommendations.' },
-      { title:'Weekly Recovery Progress Review', use:'Every Sunday throughout recovery',
-        text:'I want to do a structured weekly review of my injury recovery progress. This is week [NUMBER] of my recovery from [INJURY]. Help me analyse: (1) my pain scores across the week — trend improving, stable, or worsening, (2) which exercises I progressed on and which I struggled with, (3) my nutrition adherence this week and any gaps, (4) my mental state and any fear or frustration patterns, (5) my specific targets for next week. Then write a one-paragraph summary I can record in my Mental Performance Journal.' }
+      {title:'Phase Assessment and Programme Selection',use:'At the start of any injury recovery',text:'I am an injured athlete. I injured my [BODY PART] [TIME AGO]. My pain at rest is [X/10]. My pain during movement is [X/10]. I can [CAN/CANNOT] bear full weight. Swelling is [NONE/MILD/MODERATE/SEVERE]. Based on the Vibemotion Labs five-phase recovery framework, which phase should I begin with and what criteria must I meet before advancing?'},
+      {title:'Daily Exercise Programme Builder',use:'At the start of each recovery week',text:'I am in Phase [NUMBER] of my injury recovery. My injury is [DESCRIBE]. I have access to: [LIST EQUIPMENT]. I can train [NUMBER] days per week. Build me a specific daily exercise programme for this week using the Vibemotion Labs Phase [NUMBER] exercises. For each day, list exercises in order with sets, reps, rest periods, and one coaching cue per exercise.'},
+      {title:'Pain Monitoring and Progression Decisions',use:'When unsure whether to progress to next phase',text:'I need help with a progression decision. I am in Phase [NUMBER]. Here is my pain data from the last 7 sessions: [LIST PAIN SCORES BEFORE, DURING, AND AFTER EACH SESSION]. Swelling status: [DESCRIBE]. I can currently perform: [LIST]. Tell me: (1) whether my recovery is progressing as expected, (2) any red flags to address, (3) whether I am ready to advance to Phase [NEXT] and why.'},
+      {title:'Injury-Specific Exercise Modifications',use:'When standard exercises cause pain',text:'I am following Phase [NUMBER] of the Vibemotion Labs recovery programme but having difficulty with [SPECIFIC EXERCISE]. When I perform it, I feel [DESCRIBE THE PAIN \u2014 location, type, intensity out of 10]. Help me: (1) identify the likely cause, (2) suggest two or three modifications that reduce load while maintaining therapeutic benefit, (3) tell me what I should feel vs. what is a warning sign.'},
+      {title:'Nutrition Plan for Recovery Phase',use:'At the start of each recovery phase',text:'I am in Phase [NUMBER] of recovery from a [INJURY TYPE]. I weigh [WEIGHT] kg. I am [MALE/FEMALE], aged [AGE]. My current activity level is [DESCRIBE]. Using the Vibemotion Labs nutrition framework, calculate my daily protein, carbohydrate, and calorie targets. Then build me a 3-day sample meal plan that hits these targets and includes Vitamin C, Zinc, Omega-3, and collagen.'},
+      {title:'Mental Barriers and Fear of Re-injury',use:'When motivation drops or fear holds you back',text:'I am struggling with the mental side of my injury recovery. My injury is [DESCRIBE]. I am in week [NUMBER] of recovery. My main psychological barriers are: [DESCRIBE \u2014 e.g. fear of re-injury, loss of athletic identity, frustration with slow progress]. Help me: (1) understand why these feelings are normal, (2) give me three daily practices for each barrier, (3) write a weekly journal prompt for the Vibemotion Labs Mental Performance Journal.'},
+      {title:'Return-to-Sport Readiness Assessment',use:'When approaching sport clearance',text:'I am preparing to return to [SPORT]. I have completed Phase [NUMBER] of the Vibemotion Labs programme. My current performance data: pain scores [LIST], single-leg balance [DURATION], hop test distances on both legs [LIST], strength test results [LIST]. Tell me: (1) which clearance criteria I meet, (2) which I do not yet meet, (3) exactly what I need to achieve in each incomplete area.'},
+      {title:'Long-Term Injury Prevention Planning',use:'After returning to full sport',text:'I have returned to [SPORT] after recovering from a [INJURY]. Based on the Vibemotion Labs Phase 5 prehab protocol, help me: (1) design a 15-minute pre-training warm-up I can do before every session, (2) design a weekly maintenance strength programme under 30 minutes, (3) identify the three highest-risk movements in my sport and specific techniques to perform each one more safely.'},
+      {title:'Sleep Optimisation for Injury Recovery',use:'When recovery feels slow',text:'I am recovering from a [INJURY] and want to maximise sleep quality to accelerate tissue repair. I sleep [HOURS] per night. I fall asleep [EASILY/WITH DIFFICULTY]. I wake during the night [NEVER/OCCASIONALLY/FREQUENTLY]. My bedroom: [DESCRIBE]. Pre-bed routine: [DESCRIBE]. Using the Vibemotion Labs sleep framework, give me a personalised nightly protocol with specific timing, environment changes, and supplement recommendations.'},
+      {title:'Weekly Recovery Progress Review',use:'Every Sunday throughout recovery',text:'I want to do a structured weekly review of my recovery progress. This is week [NUMBER] from [INJURY]. Help me analyse: (1) my pain score trend this week, (2) which exercises I progressed on and which I struggled with, (3) my nutrition adherence and any gaps, (4) my mental state and any fear or frustration patterns, (5) my specific targets for next week. Then write a one-paragraph summary for my Mental Performance Journal.'}
     ],
     gpt: [
-      { title:'ACL Recovery Timeline Personalisation', use:'After ACL surgery',
-        text:'I have just had ACL reconstruction surgery [NUMBER] days ago. My graft type is [PATELLAR TENDON / HAMSTRING / QUADRICEPS / ALLOGRAFT]. My surgeon has given me the following restrictions: [LIST RESTRICTIONS]. Using the Vibemotion Labs ACL Recovery Programme, help me build a personalised week-by-week timeline from now until return to sport. For each phase, tell me the specific goals, the exercises I should focus on, and the measurable criteria that determine when I advance.' },
-      { title:'Hamstring Strain Grade Assessment', use:'Immediately after a hamstring injury',
-        text:'I think I have pulled my hamstring during [ACTIVITY]. The incident happened [TIME AGO]. Here is what I am experiencing: pain location is [DESCRIBE — e.g. mid-belly of the hamstring / near the buttock / behind the knee], pain intensity is [X/10], I [CAN / CANNOT] walk normally, swelling is [PRESENT / ABSENT], bruising is [PRESENT / ABSENT]. Help me assess the likely grade of my strain, what I should do in the next 72 hours, and which phase of the Vibemotion Labs Hamstring Recovery Programme to begin.' },
-      { title:'Knee Pain Diagnosis and Programme Selection', use:'When knee pain begins',
-        text:'I have been experiencing knee pain for [DURATION]. Describe my symptoms: the pain is located [FRONT / BEHIND / INSIDE / OUTSIDE] of the knee. It is worst when I [DESCRIBE ACTIVITY — e.g. go down stairs / sit for long periods / run / squat]. My pain level is [X/10] at its worst. I am [AGE] years old and I play [SPORT OR ACTIVITY LEVEL]. Help me identify whether this is more likely patellofemoral pain or patellar tendinopathy, then guide me to the correct starting point in the Vibemotion Labs Knee Recovery Programme.' },
-      { title:'Low Back Pain Exercise Safety Check', use:'When resuming training with back pain',
-        text:'I have low back pain and I want to know which exercises are safe for me to continue and which I should avoid. My diagnosis is [DESCRIBE — e.g. disc herniation at L4/L5 / non-specific low back pain / facet joint irritation]. My pain is currently [X/10]. I normally train [DESCRIBE TRAINING — e.g. CrossFit 4 times per week / weightlifting / running]. For each exercise in my current programme, tell me: safe to continue, modify and continue, or avoid — with the specific reasoning for each decision.' },
-      { title:'Shoulder Injury Rehab Progression', use:'During shoulder rehabilitation',
-        text:'I am rehabilitating a [ROTATOR CUFF TEAR / SHOULDER IMPINGEMENT / SLAP TEAR]. I am currently in week [NUMBER] of recovery. The exercises I can currently perform without pain are: [LIST]. The exercises that cause pain are: [LIST AND DESCRIBE THE PAIN]. Using the Vibemotion Labs Shoulder Recovery Programme, tell me: (1) which phase I am in based on my current ability, (2) the three exercises I should focus on most this week, (3) what I should feel vs. when I should stop during each exercise.' },
-      { title:'Ankle Instability Prevention Protocol', use:'After an ankle sprain or with chronic instability',
-        text:'I have [RECENTLY SPRAINED / CHRONIC INSTABILITY IN] my [LEFT / RIGHT] ankle. This is my [FIRST / SECOND / THIRD OR MORE] significant ankle sprain. I play [SPORT]. I want to break the cycle of repeated sprains. Build me a 6-week progressive balance and proprioception programme based on the Vibemotion Labs five-stage balance progression. For each week, specify the exercises, duration, and how I know I am ready to advance to the next stage.' },
-      { title:'Return to Running After Injury', use:'When beginning the running phase of recovery',
-        text:'I am preparing to return to running after recovering from [INJURY]. I have been cleared to begin jogging by my physiotherapist. My current fitness baseline is: I can walk for [DURATION] without pain. My pain level during fast walking is [X/10]. I have not run for [NUMBER] weeks. Using the Vibemotion Labs progressive running protocol, build me a 6-week return-to-running plan with specific session details — warm-up, intervals, duration, pace, and the signs that tell me to stop a session early.' },
-      { title:'Nordic Hamstring Curl Programme', use:'For hamstring injury prevention or rehabilitation',
-        text:'I want to build up to the full Nordic Hamstring Curl as described in the Vibemotion Labs Hamstring programme. Currently I [CAN / CANNOT] perform any Nordic curl at all. My hamstring strength compared to my uninjured side feels [DESCRIBE]. Build me a progressive 8-week Nordic curl programme starting from where I am now. For each week, specify the sets, reps, tempo, and what a successful session looks and feels like. Tell me what DOMS to expect and how to distinguish normal soreness from a warning sign.' },
-      { title:'Injury Recovery Nutrition — Supplement Stack', use:'When optimising nutrition for healing',
-        text:'I am recovering from [INJURY] and I want to optimise my supplement stack to accelerate tissue repair. I weigh [WEIGHT] kg. I am [MALE / FEMALE], aged [AGE]. My diet is [OMNIVORE / VEGETARIAN / VEGAN]. Based on the Vibemotion Labs nutrition framework, tell me: (1) the exact dose of each evidence-based healing supplement — Vitamin C, Zinc, Omega-3, Collagen Peptides, and Creatine, (2) the best timing for each supplement relative to meals and sleep, (3) any interactions between supplements I should be aware of, (4) the whole-food sources I can use instead of or alongside supplements.' },
-      { title:'Sport-Specific Return to Performance', use:'In the final phase of recovery',
-        text:'I am in the final phase of recovery from [INJURY] and I want to return to [SPORT] at the highest level possible — not just healed, but better than before. My sport demands: [DESCRIBE KEY PHYSICAL DEMANDS — e.g. repeated sprinting, jumping, change of direction, overhead throwing]. Using Phase 5 of the Vibemotion Labs programme, build me a 4-week sport-specific performance programme that bridges my rehab into full training. Include strength benchmarks I should hit before returning to unrestricted competition.' }
+      {title:'ACL Recovery Timeline Personalisation',use:'After ACL surgery',text:'I had ACL reconstruction surgery [NUMBER] days ago. My graft type is [PATELLAR TENDON/HAMSTRING/QUADRICEPS/ALLOGRAFT]. My surgeon\u2019s restrictions are: [LIST]. Using the Vibemotion Labs ACL Recovery Programme, build me a personalised week-by-week timeline from now until return to sport. For each phase, give me the specific goals, the exercises to focus on, and the measurable criteria that determine when I advance.'},
+      {title:'Hamstring Strain Grade Assessment',use:'Immediately after a hamstring injury',text:'I think I have pulled my hamstring during [ACTIVITY]. It happened [TIME AGO]. Pain location: [DESCRIBE]. Pain intensity: [X/10]. I [CAN/CANNOT] walk normally. Swelling: [PRESENT/ABSENT]. Bruising: [PRESENT/ABSENT]. Help me assess the likely grade of my strain, what to do in the next 72 hours, and which phase of the Vibemotion Labs Hamstring Recovery Programme to begin.'},
+      {title:'Knee Pain Diagnosis and Programme Selection',use:'When knee pain begins',text:'I have been experiencing knee pain for [DURATION]. The pain is located [FRONT/BEHIND/INSIDE/OUTSIDE] of the knee. It is worst when I [DESCRIBE ACTIVITY]. Pain level: [X/10] at worst. I am [AGE] years old and I play [SPORT]. Help me identify whether this is more likely patellofemoral pain or patellar tendinopathy, then guide me to the correct starting point in the Vibemotion Labs Knee Recovery Programme.'},
+      {title:'Low Back Pain Exercise Safety Check',use:'When resuming training with back pain',text:'I have low back pain and want to know which exercises are safe to continue and which to avoid. My diagnosis is [DESCRIBE]. Pain level: [X/10]. I normally train [DESCRIBE]. For each exercise in my current programme, tell me: safe to continue, modify and continue, or avoid \u2014 with the specific reasoning for each.'},
+      {title:'Shoulder Injury Rehab Progression',use:'During shoulder rehabilitation',text:'I am rehabilitating a [ROTATOR CUFF TEAR/SHOULDER IMPINGEMENT/SLAP TEAR]. I am in week [NUMBER] of recovery. Exercises I can perform without pain: [LIST]. Exercises that cause pain: [LIST AND DESCRIBE]. Using the Vibemotion Labs Shoulder Recovery Programme, tell me: (1) which phase I am in, (2) the three exercises to focus on most this week, (3) what I should feel vs. when to stop during each exercise.'},
+      {title:'Ankle Instability Prevention Protocol',use:'After an ankle sprain or with chronic instability',text:'I have [RECENTLY SPRAINED/CHRONIC INSTABILITY IN] my [LEFT/RIGHT] ankle. This is my [FIRST/SECOND/THIRD OR MORE] significant ankle sprain. I play [SPORT]. Build me a 6-week progressive balance and proprioception programme based on the Vibemotion Labs five-stage balance progression. For each week, specify the exercises, duration, and how to know I am ready to advance.'},
+      {title:'Return to Running After Injury',use:'When beginning the running phase of recovery',text:'I am preparing to return to running after recovering from [INJURY]. I have been cleared by my physiotherapist. I can walk for [DURATION] without pain. Pain during fast walking: [X/10]. I have not run for [NUMBER] weeks. Using the Vibemotion Labs progressive running protocol, build me a 6-week return-to-running plan with specific session details \u2014 warm-up, intervals, duration, pace, and the signs that tell me to stop a session early.'},
+      {title:'Nordic Hamstring Curl Programme',use:'For hamstring injury prevention or rehabilitation',text:'I want to build up to the full Nordic Hamstring Curl. Currently I [CAN/CANNOT] perform any Nordic curl. My hamstring strength compared to the uninjured side feels [DESCRIBE]. Build me a progressive 8-week Nordic curl programme starting from where I am now. For each week, specify the sets, reps, tempo, and what a successful session looks like. Tell me what DOMS to expect and how to distinguish normal soreness from a warning sign.'},
+      {title:'Injury Recovery Nutrition Supplement Stack',use:'When optimising nutrition for healing',text:'I am recovering from [INJURY]. I weigh [WEIGHT] kg. I am [MALE/FEMALE], aged [AGE]. My diet is [OMNIVORE/VEGETARIAN/VEGAN]. Based on the Vibemotion Labs nutrition framework, tell me: (1) the exact dose of each healing supplement \u2014 Vitamin C, Zinc, Omega-3, Collagen Peptides, and Creatine, (2) best timing relative to meals and sleep, (3) any interactions to be aware of, (4) whole-food sources I can use alongside supplements.'},
+      {title:'Sport-Specific Return to Performance',use:'In the final phase of recovery',text:'I am in the final phase of recovery from [INJURY] and want to return to [SPORT] at the highest level possible. My sport demands: [DESCRIBE KEY PHYSICAL DEMANDS]. Using Phase 5 of the Vibemotion Labs programme, build me a 4-week sport-specific performance programme that bridges my rehab into full training. Include strength benchmarks I should hit before returning to unrestricted competition.'}
     ]
   },
   stk: {
     claude: [
-      { title:'Company Deep Dive — Full Due Diligence', use:'Before investing in any individual stock',
-        text:'I want to do a thorough fundamental analysis of [COMPANY NAME / TICKER]. Help me work through the Vibemotion Labs Stock Screening Checklist systematically. Ask me one section at a time: first business quality, then financial health, then valuation, then risk. For each section, explain what I should be looking for, where to find the data, and what good vs. concerning looks like. At the end, summarise the key green flags and red flags and tell me what further research is most important.' },
-      { title:'Financial Statement Line-by-Line Analysis', use:'When reading a company annual report',
-        text:'I am going to paste the key financial data from [COMPANY]'s most recent annual report. Help me analyse each statement — income statement, balance sheet, and cash flow statement — using the Vibemotion Labs framework. For each line item, tell me: (1) what the number means in plain English, (2) whether it looks healthy, concerning, or requires context, (3) the trend I should look up compared to prior years. Be direct — tell me what you would focus on as a serious fundamental investor.
-
-[PASTE FINANCIAL DATA HERE]' },
-      { title:'IPO Red Flag Analysis', use:'Before participating in any IPO',
-        text:'I am considering investing in the upcoming IPO of [COMPANY]. Help me run through the Vibemotion Labs 10-point IPO checklist. I will give you what I know about the company and you flag every red flag you identify — do not be diplomatic. Specifically I want you to assess: business model clarity, revenue growth trend and direction, path to profitability, cash burn runway, use of proceeds, insider selling, competitive moat, customer concentration, valuation vs. peers, and management track record.
-
-Here is what I know about the company: [PASTE PROSPECTUS DETAILS OR WHAT YOU KNOW]' },
-      { title:'Chart Pattern Identification Practice', use:'When developing technical analysis skills',
-        text:'I want to practise identifying chart patterns from the Vibemotion Labs Technical Analysis guide. Describe a price action scenario to me — not a real stock, but a fictional price history — and I will try to identify the pattern. Then tell me: (1) whether I identified it correctly, (2) what the textbook entry, target, and stop would be for this pattern, (3) what additional confirmation I should look for before trading it. Give me 5 progressively more challenging scenarios.' },
-      { title:'Portfolio Position Sizing', use:'When deciding how much to invest in a position',
-        text:'Help me think through position sizing for a potential investment. My total portfolio is [AMOUNT]. The stock I am considering is [TICKER]. My conviction level is [LOW / MEDIUM / HIGH] based on my research. My stop loss would be at [PRICE OR % BELOW ENTRY]. Help me calculate: (1) the maximum position size based on risking no more than 1–2% of portfolio on this trade, (2) how this position relates to my other holdings for concentration risk, (3) how I should think about adding to the position if it moves in my favour.' },
-      { title:'Pre-Trade Journal Entry', use:'Before placing any trade',
-        text:'Help me complete a pre-trade journal entry using the Vibemotion Labs Trading Journal format. I am considering [BUYING / SELLING] [TICKER]. Walk me through each section: (1) my thesis in one clear sentence, (2) the specific entry trigger — what must happen for me to enter, (3) my exact stop loss price and why I chose that level, (4) my profit targets, (5) my risk-reward ratio, (6) my position size as a percentage of portfolio, (7) what would invalidate this trade. Ask me each question and push back if my answers are unclear or based on emotion rather than evidence.' },
-      { title:'Earnings Analysis Framework', use:'Before or after earnings reports',
-        text:'[COMPANY] is reporting earnings [IN X DAYS / YESTERDAY]. Help me analyse the report using a structured framework. I want to assess: (1) revenue growth vs. consensus estimate and vs. prior quarter — is the trend accelerating or decelerating, (2) gross and operating margin trend, (3) management guidance for next quarter and the tone of the commentary, (4) free cash flow generation, (5) any red flags in the balance sheet. Then give me your honest assessment of whether the reaction is justified or whether the market is overreacting in either direction.' },
-      { title:'Sector Rotation Analysis', use:'When macro conditions shift',
-        text:'Help me think through sector rotation given the current macro environment. The key conditions right now are: interest rates are [RISING / FALLING / FLAT], inflation is [HIGH / MODERATE / LOW AND FALLING], GDP growth is [STRONG / SLOWING / CONTRACTING], and the Fed is in [TIGHTENING / EASING / HOLDING] mode. Based on these conditions: (1) which sectors typically outperform and underperform in this environment, (2) which sectors of my current portfolio might be at risk, (3) which sectors I should consider adding exposure to, (4) what indicators I should watch to know when the rotation is shifting again.' },
-      { title:'Post-Trade Review and Pattern Analysis', use:'After closing any position',
-        text:'I just closed a trade on [TICKER] with a [PROFIT / LOSS] of [AMOUNT / %]. Help me do a thorough post-trade review. Here is what happened: [DESCRIBE THE TRADE FROM ENTRY TO EXIT]. Walk me through: (1) whether I followed my pre-trade plan — if not, why not, (2) what the outcome would have been if I had followed the plan exactly, (3) whether this was a good process even if the outcome was bad, or a bad process even if the outcome was good, (4) what specific behaviour I should change in my next trade, (5) the grade I should give this trade on process alone.' },
-      { title:'Building a Dividend Income Strategy', use:'When planning long-term income investing',
-        text:'I want to build a dividend income portfolio. My goals are: income target of [AMOUNT] per year in [NUMBER] years. My current portfolio is [AMOUNT]. I can invest [AMOUNT] per month. Help me: (1) calculate the portfolio size and average yield I need to hit my income target, (2) identify the characteristics of sustainable dividend payers vs. dividend traps, (3) suggest how to think about diversification across sectors, (4) build a reinvestment plan using the Vibemotion Labs Dividend Tracker framework, (5) identify the tax considerations I should research for my situation.' }
+      {title:'Company Deep Dive \u2014 Full Due Diligence',use:'Before investing in any individual stock',text:'I want to do a thorough fundamental analysis of [COMPANY NAME / TICKER]. Help me work through the Vibemotion Labs Stock Screening Checklist systematically. Ask me one section at a time: first business quality, then financial health, then valuation, then risk. For each section, explain what I should be looking for, where to find the data, and what good vs. concerning looks like. At the end, summarise the key green flags and red flags.'},
+      {title:'Financial Statement Line-by-Line Analysis',use:'When reading a company annual report',text:'I am going to paste the key financial data from [COMPANY]\u2019s most recent annual report. Help me analyse each statement \u2014 income statement, balance sheet, and cash flow statement \u2014 using the Vibemotion Labs framework. For each line item, tell me: (1) what the number means in plain English, (2) whether it looks healthy or concerning, (3) the trend to look up vs. prior years.\n\n[PASTE FINANCIAL DATA HERE]'},
+      {title:'IPO Red Flag Analysis',use:'Before participating in any IPO',text:'I am considering investing in the upcoming IPO of [COMPANY]. Help me run through the Vibemotion Labs 10-point IPO checklist. Flag every red flag you identify \u2014 do not be diplomatic. Assess: business model clarity, revenue growth trend, path to profitability, cash burn runway, use of proceeds, insider selling, competitive moat, customer concentration, valuation vs. peers, and management track record.\n\nWhat I know about the company: [PASTE DETAILS]'},
+      {title:'Chart Pattern Identification Practice',use:'When developing technical analysis skills',text:'I want to practise identifying chart patterns from the Vibemotion Labs Technical Analysis guide. Describe a fictional price action scenario to me, and I will try to identify the pattern. Then tell me: (1) whether I identified it correctly, (2) the textbook entry, target, and stop for this pattern, (3) what additional confirmation I should look for. Give me 5 progressively more challenging scenarios.'},
+      {title:'Portfolio Position Sizing',use:'When deciding how much to invest in a position',text:'Help me think through position sizing for a potential investment. My total portfolio is [AMOUNT]. The stock I am considering is [TICKER]. My conviction level is [LOW/MEDIUM/HIGH]. My stop loss would be at [PRICE OR % BELOW ENTRY]. Calculate: (1) the maximum position size based on risking no more than 1\u20132% of portfolio on this trade, (2) concentration risk vs. other holdings, (3) how to think about adding to the position if it moves in my favour.'},
+      {title:'Pre-Trade Journal Entry',use:'Before placing any trade',text:'Help me complete a pre-trade journal entry using the Vibemotion Labs Trading Journal format. I am considering [BUYING/SELLING] [TICKER]. Walk me through each section: (1) my thesis in one clear sentence, (2) the specific entry trigger, (3) my exact stop loss price and why, (4) my profit targets, (5) my risk-reward ratio, (6) my position size as a percentage of portfolio, (7) what would invalidate this trade. Push back if my answers are unclear or emotional.'},
+      {title:'Earnings Analysis Framework',use:'Before or after earnings reports',text:'[COMPANY] is reporting earnings [IN X DAYS / YESTERDAY]. Help me analyse the report: (1) revenue growth vs. consensus and vs. prior quarter \u2014 is the trend accelerating or decelerating, (2) gross and operating margin trend, (3) management guidance and tone, (4) free cash flow generation, (5) any balance sheet red flags. Then give me your honest assessment of whether the market reaction is justified.'},
+      {title:'Sector Rotation Analysis',use:'When macro conditions shift',text:'Help me think through sector rotation. Current conditions: interest rates are [RISING/FALLING/FLAT], inflation is [HIGH/MODERATE/LOW AND FALLING], GDP growth is [STRONG/SLOWING/CONTRACTING], the Fed is [TIGHTENING/EASING/HOLDING]. Based on these conditions: (1) which sectors typically outperform and underperform, (2) which sectors in my portfolio might be at risk, (3) which sectors to consider adding, (4) what indicators to watch for when the rotation shifts.'},
+      {title:'Post-Trade Review and Pattern Analysis',use:'After closing any position',text:'I just closed a trade on [TICKER] with a [PROFIT/LOSS] of [AMOUNT/%]. Here is what happened: [DESCRIBE THE TRADE]. Walk me through: (1) whether I followed my pre-trade plan and if not why, (2) what the outcome would have been if I followed the plan exactly, (3) whether this was good process or bad process regardless of outcome, (4) what specific behaviour to change in my next trade, (5) the grade I should give this trade on process alone.'},
+      {title:'Building a Dividend Income Strategy',use:'When planning long-term income investing',text:'I want to build a dividend income portfolio. My goals: income target of [AMOUNT] per year in [NUMBER] years. Current portfolio: [AMOUNT]. Monthly investment: [AMOUNT]. Help me: (1) calculate the portfolio size and average yield needed, (2) identify characteristics of sustainable dividend payers vs. dividend traps, (3) suggest sector diversification approach, (4) build a reinvestment plan, (5) identify tax considerations I should research.'}
     ],
     gpt: [
-      { title:'Stock Valuation — DCF Analysis', use:'When trying to estimate a stock's intrinsic value',
-        text:'Help me build a discounted cash flow valuation for [COMPANY / TICKER]. I will give you the key financial inputs. Walk me through each step: (1) estimating free cash flow for the next 5 years based on historical growth rates, (2) choosing an appropriate discount rate (WACC) for this type of business, (3) calculating the terminal value, (4) arriving at an intrinsic value per share, (5) comparing it to the current price to calculate the margin of safety. Use conservative assumptions and show me how the valuation changes if growth is 50% lower than expected.
-
-Financial inputs: [PASTE REVENUE, FCF, DEBT, SHARES OUTSTANDING]' },
-      { title:'Competitor Comparison Analysis', use:'When evaluating a company against its peers',
-        text:'I am evaluating [COMPANY] against its main competitors. Help me build a structured comparison table. For each company I list, compare: revenue growth rate (3-year CAGR), gross margin, operating margin, return on equity, debt-to-equity ratio, P/E ratio, and EV/EBITDA. Then tell me: (1) which company has the strongest financial profile and why, (2) which is the most attractively valued relative to its quality, (3) which has the clearest competitive moat, (4) what risks I should weight most heavily in my decision.
-
-Companies to compare: [LIST COMPANIES]' },
-      { title:'Reading an Annual Report — 10-K Analysis', use:'When starting fundamental research on a company',
-        text:'I want to read [COMPANY]'s most recent 10-K annual report like a professional analyst. Guide me through it section by section. Tell me: (1) which sections to read in full vs. skim, (2) the three most important things to look for in the Business Description, (3) the specific risk factors I should take most seriously vs. boilerplate language, (4) what the MD&A section reveals that the financials alone do not, (5) the five numbers I must extract from the financial statements before forming any opinion on the company.' },
-      { title:'Technical Chart Setup Identification', use:'When building a trading watchlist',
-        text:'I am building a watchlist of stocks with strong technical setups. For each ticker I give you, describe: (1) the primary chart pattern forming and its implications, (2) the key price levels — support, resistance, and the line in the sand that changes the technical picture, (3) the volume pattern and what it suggests about institutional interest, (4) whether the setup favours a long or short trade and why, (5) the ideal entry, target, and stop loss levels with risk-reward ratio.
-
-Tickers to analyse: [LIST TICKERS WITH ANY CONTEXT YOU HAVE]' },
-      { title:'Options Strategy Selection', use:'When exploring options as a strategy',
-        text:'I want to understand which options strategy is appropriate for my view on [TICKER]. My view is: I think the stock will [GO UP / GO DOWN / STAY FLAT] over the next [TIMEFRAME]. My conviction level is [LOW / MEDIUM / HIGH]. I am [COMFORTABLE / NOT COMFORTABLE] with the potential to lose my entire premium. Help me: (1) identify the two or three most appropriate options strategies for this view, (2) explain the maximum gain, maximum loss, and break-even for each, (3) tell me the key variables I should monitor, (4) explain what the Vibemotion Labs options basics guide means by delta, theta, and vega in the context of this specific trade.' },
-      { title:'Portfolio Rebalancing Analysis', use:'Quarterly portfolio review',
-        text:'I need to rebalance my investment portfolio. Here are my current holdings with percentages: [LIST HOLDINGS AND PERCENTAGES]. My target allocation is: [DESCRIBE TARGET — e.g. 60% equities, 20% bonds, 10% international, 10% cash]. Help me: (1) identify which positions are most overweight and underweight vs. target, (2) calculate the specific trades needed to rebalance, (3) consider the tax implications of selling overweight positions, (4) suggest whether current market conditions argue for staying overweight in any particular area before rebalancing, (5) set a rebalancing threshold for future reviews.' },
-      { title:'IPO Lock-Up Expiry Strategy', use:'When an IPO lock-up is expiring',
-        text:'The lock-up period for [COMPANY] IPO expires in [NUMBER] days. This means [NUMBER OF SHARES / ESTIMATED VALUE] in insider shares will become eligible for sale. Help me think through: (1) the typical price pattern around lock-up expiries and why it happens, (2) how to estimate the selling pressure from the specific insider ownership structure, (3) whether the company's recent earnings and growth trajectory changes the calculus, (4) how I should position — reduce, hold, add, or avoid — given my current position size and conviction, (5) what price levels I should watch as triggers.' },
-      { title:'Macro Impact on Portfolio', use:'When major economic events occur',
-        text:'A major macro event has just occurred: [DESCRIBE EVENT — e.g. Fed raised rates by 50bps / inflation came in hot / GDP missed expectations]. Help me analyse the likely second and third-order effects on my portfolio. My holdings are: [LIST SECTORS OR SPECIFIC HOLDINGS]. For each holding, tell me: (1) the direct impact of this event on the company's business fundamentals, (2) the likely market reaction over the next 1–3 months, (3) whether this changes my long-term thesis, (4) any position adjustments I should consider as a result.' },
-      { title:'Earnings Season Preparation', use:'Before each earnings season',
-        text:'Earnings season is approaching. I hold positions in the following companies: [LIST TICKERS AND EARNINGS DATES]. For each company, help me prepare by: (1) identifying the single most important metric the market will focus on, (2) setting my expectations for revenue and EPS based on analyst consensus, (3) identifying the two or three questions from the earnings call that will most determine the stock's reaction, (4) deciding in advance how I will respond if earnings beat, meet, or miss expectations — so I am not making emotional decisions in the moment.' },
-      { title:'Risk Management and Stop Loss Strategy', use:'When building a trade management system',
-        text:'I need to build a disciplined risk management system for my stock portfolio. My total account size is [AMOUNT]. Help me establish: (1) the maximum I should risk on any single trade as a percentage of portfolio, (2) how to set stop losses that are technically meaningful rather than arbitrary round numbers, (3) how to use trailing stops vs. fixed stops for different types of positions, (4) the maximum drawdown level at which I should stop trading and reassess my strategy, (5) a rules-based process using the Vibemotion Labs Trading Journal to ensure I follow my risk rules consistently.' }
+      {title:'Stock Valuation \u2014 DCF Analysis',use:'When trying to estimate intrinsic value',text:'Help me build a discounted cash flow valuation for [COMPANY / TICKER]. Walk me through each step: (1) estimating free cash flow for the next 5 years based on historical growth rates, (2) choosing an appropriate discount rate, (3) calculating the terminal value, (4) arriving at an intrinsic value per share, (5) comparing it to the current price to calculate the margin of safety. Use conservative assumptions and show me how the valuation changes if growth is 50% lower than expected.\n\nFinancial inputs: [PASTE REVENUE, FCF, DEBT, SHARES OUTSTANDING]'},
+      {title:'Competitor Comparison Analysis',use:'When evaluating a company against its peers',text:'I am evaluating [COMPANY] against its main competitors. Build a structured comparison for each company on: revenue growth rate (3-year CAGR), gross margin, operating margin, return on equity, debt-to-equity ratio, P/E ratio, and EV/EBITDA. Then tell me: (1) which company has the strongest financial profile, (2) which is the most attractively valued relative to its quality, (3) which has the clearest competitive moat, (4) the risks I should weight most heavily.\n\nCompanies: [LIST COMPANIES]'},
+      {title:'Reading an Annual Report \u2014 10-K Analysis',use:'When starting fundamental research on a company',text:'I want to read [COMPANY]\u2019s most recent 10-K annual report like a professional analyst. Guide me through it section by section. Tell me: (1) which sections to read in full vs. skim, (2) the three most important things to look for in the Business Description, (3) specific risk factors to take seriously vs. boilerplate language, (4) what the MD&A reveals that the financials alone do not, (5) the five numbers I must extract before forming any opinion.'},
+      {title:'Technical Chart Setup Identification',use:'When building a trading watchlist',text:'I am building a watchlist of stocks with strong technical setups. For each ticker I give you, describe: (1) the primary chart pattern forming and its implications, (2) the key price levels \u2014 support, resistance, and the line in the sand, (3) the volume pattern and what it suggests about institutional interest, (4) whether the setup favours a long or short trade and why, (5) the ideal entry, target, and stop loss levels with risk-reward ratio.\n\nTickers: [LIST TICKERS WITH ANY CONTEXT]'},
+      {title:'Options Strategy Selection',use:'When exploring options as a strategy',text:'I want to understand which options strategy is appropriate for my view on [TICKER]. My view: I think the stock will [GO UP/GO DOWN/STAY FLAT] over the next [TIMEFRAME]. My conviction level is [LOW/MEDIUM/HIGH]. I am [COMFORTABLE/NOT COMFORTABLE] with the potential to lose my entire premium. Help me: (1) identify the two or three most appropriate options strategies, (2) explain the maximum gain, maximum loss, and break-even for each, (3) tell me the key variables to monitor.'},
+      {title:'Portfolio Rebalancing Analysis',use:'Quarterly portfolio review',text:'I need to rebalance my investment portfolio. Current holdings with percentages: [LIST HOLDINGS AND PERCENTAGES]. My target allocation: [DESCRIBE TARGET]. Help me: (1) identify which positions are most overweight and underweight, (2) calculate the specific trades needed to rebalance, (3) consider tax implications of selling overweight positions, (4) suggest whether current market conditions argue for staying overweight anywhere before rebalancing, (5) set a rebalancing threshold for future reviews.'},
+      {title:'IPO Lock-Up Expiry Strategy',use:'When an IPO lock-up is expiring',text:'The lock-up period for [COMPANY] IPO expires in [NUMBER] days. This means [NUMBER OF SHARES / ESTIMATED VALUE] in insider shares will become eligible for sale. Help me think through: (1) the typical price pattern around lock-up expiries, (2) how to estimate the selling pressure, (3) whether the company\u2019s recent earnings change the calculus, (4) how I should position given my current conviction, (5) what price levels to watch as triggers.'},
+      {title:'Macro Impact on Portfolio',use:'When major economic events occur',text:'A major macro event has just occurred: [DESCRIBE EVENT]. Help me analyse the likely second and third-order effects on my portfolio. My holdings are: [LIST SECTORS OR SPECIFIC HOLDINGS]. For each holding, tell me: (1) the direct impact on the company\u2019s fundamentals, (2) the likely market reaction over the next 1\u20133 months, (3) whether this changes my long-term thesis, (4) any position adjustments to consider.'},
+      {title:'Earnings Season Preparation',use:'Before each earnings season',text:'Earnings season is approaching. I hold positions in: [LIST TICKERS AND EARNINGS DATES]. For each company, help me prepare by: (1) identifying the single most important metric the market will focus on, (2) setting my expectations vs. analyst consensus, (3) identifying the two or three questions from the earnings call that will most determine the stock reaction, (4) deciding in advance how I will respond if earnings beat, meet, or miss \u2014 so I am not making emotional decisions in the moment.'},
+      {title:'Risk Management and Stop Loss Strategy',use:'When building a trade management system',text:'I need to build a disciplined risk management system for my portfolio. Total account size: [AMOUNT]. Help me establish: (1) the maximum I should risk on any single trade as a percentage of portfolio, (2) how to set technically meaningful stop losses rather than arbitrary round numbers, (3) how to use trailing stops vs. fixed stops for different position types, (4) the maximum drawdown level at which I should stop trading and reassess, (5) a rules-based process using the Vibemotion Labs Trading Journal to follow my risk rules consistently.'}
     ]
   }
 };
 
-// ── AI PROMPT UI FUNCTIONS ───────────────────────────────────────────
+// ── AI PROMPT UI ───────────────────────────────────────────────────
 function showAiStream(stream, btn) {
   var panels = document.querySelectorAll('.ai-panel');
   for (var i = 0; i < panels.length; i++) { panels[i].classList.remove('on'); }
@@ -689,31 +621,39 @@ function showLlm(stream, llm, btn) {
   btn.classList.add('on');
 }
 
-function copyPrompt(text, btn) {
+// Store prompt texts in a lookup so copy buttons reference by index — no escaping issues
+var PROMPT_TEXTS = {};
+function storePromptTexts() {
+  var streams = ['pm','ath','stk'];
+  var llms = ['claude','gpt'];
+  for (var s = 0; s < streams.length; s++) {
+    for (var l = 0; l < llms.length; l++) {
+      var key = streams[s] + '_' + llms[l];
+      PROMPT_TEXTS[key] = [];
+      var arr = PROMPTS[streams[s]][llms[l]];
+      for (var i = 0; i < arr.length; i++) {
+        PROMPT_TEXTS[key].push(arr[i].text);
+      }
+    }
+  }
+}
+storePromptTexts();
+
+function copyPrompt(stream, llm, idx) {
+  var text = PROMPT_TEXTS[stream + '_' + llm][idx];
+  var btn = document.getElementById('cpbtn-' + stream + '-' + llm + '-' + idx);
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(text).then(function() {
       btn.textContent = 'Copied!';
       btn.classList.add('copied');
-      setTimeout(function() {
-        btn.textContent = 'Copy Prompt';
-        btn.classList.remove('copied');
-      }, 1800);
+      setTimeout(function() { btn.textContent = 'Copy Prompt'; btn.classList.remove('copied'); }, 1800);
     });
   } else {
     var ta = document.createElement('textarea');
-    ta.value = text;
-    ta.style.position = 'fixed';
-    ta.style.opacity = '0';
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    document.body.removeChild(ta);
-    btn.textContent = 'Copied!';
-    btn.classList.add('copied');
-    setTimeout(function() {
-      btn.textContent = 'Copy Prompt';
-      btn.classList.remove('copied');
-    }, 1800);
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+    btn.textContent = 'Copied!'; btn.classList.add('copied');
+    setTimeout(function() { btn.textContent = 'Copy Prompt'; btn.classList.remove('copied'); }, 1800);
   }
 }
 
@@ -725,35 +665,26 @@ function buildPromptGrid(stream, llm) {
     var p = prompts[i];
     var card = document.createElement('div');
     card.className = 'prompt-card';
-    var safeText = p.text.replace(/\/g, '\\').replace(/'/g, "\'").replace(/
-/g, '\n');
+    var displayText = p.text.replace(/\n/g, '<br>');
     card.innerHTML =
-      '<div class="prompt-n">0' + (i+1) + '</div>' +
+      '<div class="prompt-n">0' + (i + 1) + '</div>' +
       '<div class="prompt-title">' + p.title + '</div>' +
       '<div class="prompt-use">Best used: ' + p.use + '</div>' +
-      '<div class="prompt-text">' + p.text.replace(/
-/g,'<br>') + '</div>' +
-      '<button class="copy-btn" onclick="copyPrompt('' + safeText + '', this)">Copy Prompt</button>';
+      '<div class="prompt-text">' + displayText + '</div>' +
+      '<button class="copy-btn" id="cpbtn-' + stream + '-' + llm + '-' + i + '" ' +
+        'onclick="copyPrompt(\'' + stream + '\',\'' + llm + '\',' + i + ')">' +
+        'Copy Prompt</button>';
     grid.appendChild(card);
   }
 }
 
-// Build all prompt grids on load
 buildPromptGrid('pm','claude'); buildPromptGrid('pm','gpt');
 buildPromptGrid('ath','claude'); buildPromptGrid('ath','gpt');
 buildPromptGrid('stk','claude'); buildPromptGrid('stk','gpt');
 
-// Show AI section when AI Prompts tab is clicked
-var origShow = show;
-show = function(niche, btn) {
-  origShow(niche, btn);
-  var aiSection = document.getElementById('ai-section');
-  if (niche === 'ai') {
-    aiSection.style.display = 'block';
-    aiSection.scrollIntoView({behavior:'smooth'});
-  }
-};
-
+// Hide AI section initially — show when AI tab clicked
+var aiSec = document.getElementById('ai-section');
+if (aiSec) aiSec.style.display = 'none';
 </script>
 </body>
 </html>
